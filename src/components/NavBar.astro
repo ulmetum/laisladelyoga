@@ -1,0 +1,36 @@
+---
+import { actions } from 'astro:actions'
+
+const { data } = await actions.getDataMainMenu()
+
+const dataMainMenu = data?.dataMainMenu.data[0].attributes.menuItems
+
+const currentPath = Astro.url.pathname
+
+console.log({ currentPath, dataMainMenu })
+---
+
+<!-- component -->
+<nav class="bg-white shadow dark:bg-gray-800">
+	<div
+		class="container mx-auto flex items-center justify-center p-6 capitalize text-gray-600 dark:text-gray-300"
+	>
+		<!-- border-sky-700 text-sky-700 -->
+		{
+			dataMainMenu?.map((item) => (
+				<div class="relative mx-2">
+					<a href={item.url} class="dark:text-gray-200">
+						{item.label}
+					</a>
+					{currentPath === item.url && <div transition:name="menu-line" class="active-link" />}
+				</div>
+			))
+		}
+	</div>
+</nav>
+
+<style>
+	.active-link {
+		@apply absolute bottom-0 left-0 h-1 w-full bg-sky-700 transition-all duration-300;
+	}
+</style>
