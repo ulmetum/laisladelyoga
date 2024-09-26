@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from 'astro'
+import MainLayout from '@/layouts/MainLayout.astro'
+import { actions } from 'astro:actions'
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const { data, error } = await actions.getAllArticles()
+
+	const articles = data?.articles.data ?? []
+	return paginate(articles, { pageSize: 5, props: { articles }, params: { test: 'page' } })
+}) satisfies GetStaticPaths
+
+// const { article } = Astro.props
+const { page, articles } = Astro.props
+const { test } = Astro.params
+console.log({ page, articles, test })
+---
+
+<MainLayout title="Blog">
+	<ul>
+		{
+			page.data.map((article) => (
+				<li>
+					<a href={`/blog/${article.attributes.slug}`}>{article.attributes.title}</a>
+				</li>
+			))
+		}
+	</ul>
+
+	<!-- Pagination -->
+	<nav class="pagination">
+		<a href={page.url.prev} class="prev"> Prev </a>
+		<a href={page.url.next} class="next"> Next </a>
+	</nav>
+</MainLayout>

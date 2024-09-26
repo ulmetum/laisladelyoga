@@ -7,7 +7,7 @@ export interface Datum {
 	attributes: Attributes
 }
 
-export interface Attributes {
+interface Attributes {
 	name: string
 	menuItems: MenuItem[]
 }

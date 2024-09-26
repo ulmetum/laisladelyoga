@@ -18,6 +18,6 @@ export const getDataMainMenu = defineAction({
 		const dataMainMenu = (await response.json()) as MainMenu
 
 		// console.log({ query })
-		return { success: true, dataMainMenu }
+		return { dataMainMenu }
 	}
 })
