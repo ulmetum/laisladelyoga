@@ -1,6 +1,9 @@
 ---
-const menuItems = [
+const menuItemsLeft = [
 	{ label: 'Home', url: '/' },
+	{ label: 'About Me', url: '/about-me' }
+]
+const menuItemsRight = [
 	{ label: 'Contacto', url: '/contacto' },
 	{ label: 'Blog', url: '/blog' }
 ]
@@ -9,19 +12,64 @@ const currentPath = Astro.url.pathname
 ---
 
 <!-- component -->
-<header>
-	<nav class="bg-white shadow dark:bg-gray-800">
+<header class="flex h-[var(--header-height)] items-center justify-center bg-white shadow">
+	<nav class="">
 		<div
 			class="container mx-auto flex items-center justify-center p-6 capitalize text-gray-600 dark:text-gray-300"
 		>
 			<ul class="flex items-center gap-x-4">
 				{
-					menuItems.map((item) => (
-						<li class="relative mx-2">
-							<a href={item.url} class="dark:text-gray-200">
+					menuItemsLeft.map((item) => (
+						<li
+							class:list={[
+								'group relative mx-2 overflow-hidden uppercase',
+								{ 'pointer-events-none text-amber-700': currentPath === item.url }
+							]}
+						>
+							<a
+								href={item.url}
+								class="block font-heading transition-all duration-[400ms] ease-[var(--ease)] group-hover:-translate-y-full"
+							>
 								{item.label}
 							</a>
-							{currentPath === item.url && <div transition:name="menu-line" class="active-link" />}
+							<a
+								href={item.url}
+								class="absolute left-0 top-full font-heading text-amber-700 transition-all duration-[400ms] ease-[var(--ease)] group-hover:top-0"
+							>
+								{item.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</nav>
+	<div class="">Logo</div>
+	<nav class="">
+		<div
+			class="container mx-auto flex items-center justify-center p-6 capitalize text-gray-600 dark:text-gray-300"
+		>
+			<ul class="flex items-center gap-x-4">
+				{
+					menuItemsRight.map((item) => (
+						<li
+							class:list={[
+								'group relative mx-2 overflow-hidden uppercase',
+								{ 'pointer-events-none text-amber-700': currentPath === item.url }
+							]}
+						>
+							<a
+								href={item.url}
+								class="block font-heading transition-all duration-[400ms] ease-[var(--ease)] group-hover:-translate-y-full"
+							>
+								{item.label}
+							</a>
+							<a
+								href={item.url}
+								class="absolute left-0 top-full font-heading text-amber-700 transition-all duration-[400ms] ease-[var(--ease)] group-hover:top-0"
+							>
+								{item.label}
+							</a>
 						</li>
 					))
 				}
@@ -32,6 +80,6 @@ const currentPath = Astro.url.pathname
 
 <style>
 	.active-link {
-		@apply absolute bottom-0 left-0 h-[1px] w-full bg-sky-700 transition-all duration-300;
+		/* @apply absolute bottom-0 left-0 h-[1px] w-full bg-sky-700 transition-all duration-300; */
 	}
 </style>

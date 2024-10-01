@@ -1,0 +1,70 @@
+---
+import type { GetStaticPaths } from 'astro'
+import MainLayout from '@/layouts/MainLayout.astro'
+import { actions } from 'astro:actions'
+import { Image } from 'astro:assets'
+
+export const getStaticPaths = (async () => {
+	const { data, error } = await actions.getAllArticles()
+
+	if (error) {
+		throw new Error('Hubo un error al obtener el artículo')
+	}
+
+	const articles = data.articles.data ?? []
+
+	return articles.map((article) => ({
+		params: { slug: article.attributes.slug },
+		props: { article, articles }
+	}))
+}) satisfies GetStaticPaths
+
+const { slug } = Astro.params
+const { article, articles } = Astro.props
+
+const currentArticleId = article.id
+
+// Obtener la lista de IDs de los artículos
+const articlesIds = articles.map((article) => article.id)
+
+// Encontrar el índice del artículo actual en la lista de IDs
+const currentIndex = articlesIds.indexOf(currentArticleId)
+
+// Si no se encuentra el índice (error de lógica), lanzamos un error
+if (currentIndex === -1) {
+	throw new Error(`Artículo con ID ${currentArticleId} no encontrado.`)
+}
+
+// Obtener el ID del artículo anterior y siguiente de manera circular
+const prevArticleId = articlesIds[(currentIndex - 1 + articlesIds.length) % articlesIds.length]
+const nextArticleId = articlesIds[(currentIndex + 1) % articlesIds.length]
+
+// Encontrar el artículo anterior y siguiente
+const prevArticle = articles.find((article) => article.id === prevArticleId)
+const nextArticle = articles.find((article) => article.id === nextArticleId)
+
+const image = article.attributes.featuredImage.data.attributes.url.startsWith('http')
+	? article.attributes.featuredImage.data.attributes.url
+	: `${import.meta.env.URL_BASE}${article.attributes.featuredImage.data.attributes.url}`
+---
+
+<MainLayout title="Blog page | La isla del Yoga">
+	<h1>{slug}</h1>
+	<Image
+		class="block h-full w-full object-cover"
+		src={image}
+		alt={article.attributes.title}
+		width={300}
+		height={200}
+		<div
+		class="flex justify-between"
+	/>
+	<div class="flex justify-between">
+		<a href={`/articles/${prevArticle?.attributes.slug}`}>
+			<h4>{prevArticle?.attributes.title}</h4>
+		</a>
+		<a href={`/articles/${nextArticle?.attributes.slug}`}>
+			<h4>{nextArticle?.attributes.title}</h4>
+		</a>
+	</div>
+</MainLayout>

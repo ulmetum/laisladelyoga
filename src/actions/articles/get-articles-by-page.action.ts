@@ -12,8 +12,6 @@ export const getArticlesByPage = defineAction({
 		const query = getArticlesByPageQuery({ page })
 		const url = `${import.meta.env.API_URL}/articles?${query}`
 
-		console.log({ url })
-
 		const res = await fetch(url)
 
 		if (res.status !== 200) {

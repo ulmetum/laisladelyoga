@@ -9,7 +9,6 @@ export const getAllArticles = defineAction({
 
 		const url = `${import.meta.env.API_URL}/articles?${query}`
 
-		console.log({ url })
 		const res = await fetch(url)
 
 		if (res.status !== 200) {

@@ -486,6 +486,16 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz#acad351d582d157bb145535db2a6ff53dd514b5c"
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
+"@fontsource/merriweather@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/merriweather/-/merriweather-5.1.0.tgz#3644b3d19fc7f4171aff8d18dad113f595eec7d1"
+  integrity sha512-CliXFoCACKkrx8G93xGw6cD7RYCOytuY/Afe1W/htsRRlaSyGA6HGNQzQJc6NKzjs9XenBH2CcMQsONyppd+uQ==
+
+"@fontsource/oswald@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/oswald/-/oswald-5.1.0.tgz#00fdbe5ab911bfb261ec26e565eb51d02cb95095"
+  integrity sha512-MwHMRCNCeTvaUWk15AHVfUi84T4TB4dshJrCOcfBYqUkY0V8IxKEwqFzSgGBG7zIfTZ0Diu+/CKpiktKqo5Gkg==
+
 "@img/sharp-darwin-arm64@0.33.5":
   version "0.33.5"
   resolved "https://registry.yarnpkg.com/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.33.5.tgz#ef5b5a07862805f1e8145a377c8ba6e98813ca08"

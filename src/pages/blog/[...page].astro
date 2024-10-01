@@ -2,34 +2,113 @@
 import type { GetStaticPaths } from 'astro'
 import MainLayout from '@/layouts/MainLayout.astro'
 import { actions } from 'astro:actions'
+import { Image } from 'astro:assets'
+import Container from '@/components/Container.astro'
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const { data, error } = await actions.getAllArticles()
 
+	if (error) {
+		throw new Error('Hubo un error al obtener los artículos')
+	}
+
 	const articles = data?.articles.data ?? []
-	return paginate(articles, { pageSize: 5, props: { articles }, params: { test: 'page' } })
+	return paginate(articles, { pageSize: 4, props: { articles } })
 }) satisfies GetStaticPaths
 
 // const { article } = Astro.props
 const { page, articles } = Astro.props
-const { test } = Astro.params
-console.log({ page, articles, test })
 ---
 
-<MainLayout title="Blog">
-	<ul>
-		{
-			page.data.map((article) => (
-				<li>
-					<a href={`/blog/${article.attributes.slug}`}>{article.attributes.title}</a>
-				</li>
-			))
-		}
-	</ul>
+<MainLayout title="Blog page | La isla del Yoga">
+	<Container className="post my-10">
+		<ul class="grid-blog">
+			{
+				page.data.map((article, i) => {
+					const image = article.attributes.featuredImage.data.attributes.url.startsWith('http')
+						? article.attributes.featuredImage.data.attributes.url
+						: `${import.meta.env.URL_BASE}${article.attributes.featuredImage.data.attributes.url}`
+					return (
+						<li
+							data-article={i + 1}
+							class="group mx-auto flex flex-col max-xl:my-8 max-xl:w-[min(100%,900px)] xl:gap-10 xl:first:flex-row xl:[&:nth-child(3)]:flex xl:[&:nth-child(3)]:flex-col-reverse"
+						>
+							<a
+								href={`/articles/${article.attributes.slug}`}
+								data-image={i + 1}
+								class="container-image h-[30dvh] w-full xl:h-[calc(50%-1.25rem)]"
+							>
+								<Image
+									class="block h-full w-full object-cover"
+									src={image}
+									alt={article.attributes.title}
+									width={300}
+									height={200}
+								/>
+							</a>
+							<article class="w-full xl:h-[calc(50%-1.25rem)] xl:group-first:w-1/3">
+								<a href={`/articles/${article.attributes.slug}`}>
+									<h3 class="text-center font-normal max-xl:my-8">{article.attributes.title}</h3>
+								</a>
+								<div class="mx-auto my-8 h-[2px] w-28 bg-zinc-400 xl:my-6" />
+								<p set:html={article.attributes.excerpt} class="text-center text-lg" />
+							</article>
+						</li>
+					)
+				})
+			}
+		</ul>
 
-	<!-- Pagination -->
-	<nav class="pagination">
-		<a href={page.url.prev} class="prev"> Prev </a>
-		<a href={page.url.next} class="next"> Next </a>
-	</nav>
+		<!-- Pagination -->
+		<nav class="pagination">
+			<a href={page.url.prev} class="prev"> Prev </a>
+			<a href={page.url.next} class="next"> Next </a>
+		</nav>
+	</Container>
 </MainLayout>
+
+<style define:vars={{ headerHeight: 'var(--header-height)' }}>
+	.container-image {
+		position: relative;
+		display: block;
+		&:before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			/* border-radius: 6px; */
+			box-shadow:
+				0 0 0 1px #f6f2ef,
+				0 0 0 2px rgba(0, 0, 0, 0.35);
+		}
+	}
+	@media (width >= 1280px) {
+		.grid-blog {
+			display: grid;
+			gap: 2.5rem;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(3, 30dvh);
+			grid-template-areas:
+				'top top top'
+				'left center right'
+				'left center right';
+		}
+
+		[data-article='1'] {
+			grid-area: top;
+		}
+		[data-article='2'] {
+			grid-area: left;
+		}
+		[data-article='3'] {
+			grid-area: center;
+		}
+		[data-article='4'] {
+			grid-area: right;
+		}
+
+		[data-image='1'] {
+			height: 100%;
+			width: 66%;
+		}
+	}
+</style>

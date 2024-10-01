@@ -3,14 +3,14 @@ import qs from 'qs'
 export const getAllArticlesQuery = () => {
 	return qs.stringify(
 		{
-			fields: ['title', 'createdAt', 'content', 'slug'],
+			fields: ['title', 'createdAt', 'content', 'slug', 'excerpt'],
 			sort: ['createdAt:desc'],
 			populate: {
 				tags: { fields: ['name'] },
 				featuredImage: {
 					fields: ['url']
 				},
-				author: {
+				writer: {
 					populate: { picture: { fields: ['url'] } },
 					fields: ['name', 'email']
 				}
