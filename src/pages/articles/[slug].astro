@@ -3,6 +3,13 @@ import type { GetStaticPaths } from 'astro'
 import MainLayout from '@/layouts/MainLayout.astro'
 import { actions } from 'astro:actions'
 import { Image } from 'astro:assets'
+import TikTok from '@/components/icons/TikTok.icon.astro'
+import Youtube from '@/components/icons/Youtube.icon.astro'
+
+import dayjs from 'dayjs'
+import 'dayjs/locale/es'
+import Instagram from '@/components/icons/Instagram.icon.astro'
+dayjs.locale('es')
 
 export const getStaticPaths = (async () => {
 	const { data, error } = await actions.getAllArticles()
@@ -49,22 +56,68 @@ const image = article.attributes.featuredImage.data.attributes.url.startsWith('h
 ---
 
 <MainLayout title="Blog page | La isla del Yoga">
-	<h1>{slug}</h1>
-	<Image
-		class="block h-full w-full object-cover"
-		src={image}
-		alt={article.attributes.title}
-		width={300}
-		height={200}
+	<section class="relative py-6">
+		<div class="absolute -top-[75%] h-[200%] w-full -skew-y-6 bg-white"></div>
 		<div
-		class="flex justify-between"
-	/>
-	<div class="flex justify-between">
-		<a href={`/articles/${prevArticle?.attributes.slug}`}>
-			<h4>{prevArticle?.attributes.title}</h4>
-		</a>
-		<a href={`/articles/${nextArticle?.attributes.slug}`}>
-			<h4>{nextArticle?.attributes.title}</h4>
-		</a>
-	</div>
+			class="flex flex-col items-center justify-center gap-2 xl:flex-row xl:justify-between xl:px-6"
+		>
+			<div class="relative h-[360px] w-full overflow-hidden lg:w-[800px] xl:w-[min(50%,768px)]">
+				<Image
+					class="block h-full w-full object-cover"
+					src={image}
+					alt={article.attributes.title}
+					width={300}
+					height={200}
+				/>
+			</div>
+			<div
+				class="relative mx-auto mt-24 flex w-[min(100%,900px)] flex-col items-center justify-center gap-4 px-2 xl:mt-0 xl:w-[min(50%,768px)]"
+			>
+				<div
+					class="absolute h-[200%] w-[15%] border-4 border-pampas-50 brightness-[.85] md:w-[10%] xl:w-[75px]"
+				>
+				</div>
+				<div class="relative w-full bg-white py-4">
+					<h2 class="text-center leading-none">{article.attributes.title}</h2>
+					<small
+						class="my-6 block text-center text-sm italic leading-none text-pampas-50 brightness-[.35]"
+						>Quidem tempora voluptatem officiis</small
+					>
+					<div class="flex items-center justify-center md:justify-between">
+						<small class="block w-[45%] font-heading capitalize leading-none"
+							>{dayjs(article.attributes.createdAt).format('MMMM D, YYYY')}</small
+						>
+						<div class="mx-4 h-1 w-[min(15%,70px)] bg-pampas-50 brightness-[.85]"></div>
+						<ul class="flex w-[45%] items-center justify-end gap-1 lg:gap-2 xl:gap-3">
+							<li>
+								<a href="#" target="_blank">
+									<TikTok size="medium" />
+								</a>
+							</li>
+							<li>
+								<a href="#" target="_blank">
+									<Youtube size="medium" />
+								</a>
+							</li>
+							<li>
+								<a href="#" target="_blank">
+									<Instagram size="medium" />
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="px-1 xl:px-6">
+		<div class="relative flex justify-between">
+			<a href={`/articles/${prevArticle?.attributes.slug}`}>
+				<h4>{prevArticle?.attributes.title}</h4>
+			</a>
+			<a href={`/articles/${nextArticle?.attributes.slug}`}>
+				<h4>{nextArticle?.attributes.title}</h4>
+			</a>
+		</div>
+	</section>
 </MainLayout>
