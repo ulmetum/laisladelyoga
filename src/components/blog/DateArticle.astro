@@ -1,0 +1,13 @@
+---
+import dayjs from 'dayjs'
+
+interface Props {
+	createdAt: Date
+}
+
+const { createdAt } = Astro.props
+---
+
+<small class="block w-[45%] font-heading capitalize leading-none"
+	>{dayjs(createdAt).format('MMMM D, YYYY')}</small
+>
