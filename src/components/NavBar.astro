@@ -1,4 +1,6 @@
 ---
+import LogoIsla from './icons/Logo-isla.icon.astro'
+
 const menuItemsLeft = [
 	{ label: 'Home', url: '/' },
 	{ label: 'About Me', url: '/about-me' }
@@ -46,7 +48,9 @@ const currentPath = Astro.url.pathname
 			</ul>
 		</div>
 	</nav>
-	<div class="mx-8 hidden sm:block">Logo</div>
+	<div class="mx-8 hidden sm:block">
+		<LogoIsla />
+	</div>
 	<nav class="">
 		<div
 			class="container mx-auto flex items-center justify-center capitalize text-gray-600 dark:text-gray-300"

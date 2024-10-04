@@ -40,7 +40,6 @@ const { page } = Astro.props
 								data-image={i + 1}
 								class="container-image h-[30dvh] w-full xl:h-[calc(50%-1.25rem)]"
 							>
-								<div />
 								<Image
 									class="block h-full w-full object-cover"
 									src={image}
@@ -49,17 +48,17 @@ const { page } = Astro.props
 									height={200}
 								/>
 							</a>
-							<article class="flex h-full flex-col xl:group-first:w-1/2">
+							<article class="mx-1 my-6 flex h-full flex-col gap-4 xl:m-0 xl:group-first:w-1/2">
 								<a href={`/articles/${article.attributes.slug}`}>
-									<h3 class="text-center font-light max-xl:my-8 xl:text-3xl">
+									<h3 class="!my-0 text-center font-light xl:text-3xl">
 										{article.attributes.title}
 									</h3>
 								</a>
-								<div class="mx-auto my-8 h-[2px] w-28 bg-zinc-400 xl:my-6" />
+								<div class="mx-auto h-[2px] w-28 bg-zinc-400" />
 								<p set:html={article.attributes.excerpt} class="!m-0 flex-1 text-center text-lg" />
-								<div class="flex items-center justify-between">
+								<div class="flex items-end justify-between">
 									<DateArticle createdAt={article.attributes.createdAt} />
-									<MenuIcons className="" />
+									<MenuIcons className="items-end" />
 								</div>
 							</article>
 						</li>

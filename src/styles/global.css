@@ -27,6 +27,11 @@ body span,
 body main {
 	@apply font-body font-light text-zinc-900 [font-size:var(--fs-300)] lg:text-[var(--fs-300)];
 }
+
+body article p {
+	@apply my-4;
+}
+
 h1,
 h2,
 h3,
