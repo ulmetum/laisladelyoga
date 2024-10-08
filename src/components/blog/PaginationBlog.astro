@@ -7,10 +7,55 @@ interface Props {
 }
 
 const { page } = Astro.props
+const { currentPage, size, total } = page
+
 const { prev, next } = page.url
 ---
 
-<nav class="pagination my-16 flex justify-between font-heading text-2xl text-amber-700">
+<div class="my-16 flex flex-col items-center">
+	<span class="my-2 font-heading text-lg text-amber-700">
+		Mostrando <span class="font-heading text-amber-700">{(currentPage - 1) * size + 1}</span> a{' '}
+		<span class="font-heading text-amber-700">
+			{Math.min(total, size * currentPage)}
+		</span>{' '}
+		de <span class="font-heading text-amber-700">{total}</span> entradas
+	</span>
+
+	<div class="xs:mt-0 mt-2 inline-flex space-x-2">
+		<a
+			href={prev}
+			class:list={[
+				`group relative z-10 flex h-8 items-center justify-center overflow-hidden rounded border border-amber-700 px-3 font-heading text-base font-medium text-amber-700 transition-all duration-700 ease-[var(--ease)] hover:text-white`,
+				{
+					'pointer-events-none border-zinc-900/20 text-zinc-900/20': currentPage <= 1
+				}
+			]}
+		>
+			<div
+				class="absolute inset-0 -inset-x-2 -inset-y-2 top-[calc(100%+8px)] -z-[1] skew-y-6 bg-amber-700 transition-all duration-700 ease-[var(--ease)] group-hover:-top-[30%]"
+			>
+			</div>
+			Anteriores
+		</a>
+		<a
+			href={next}
+			class:list={[
+				'group relative z-10 flex h-8 items-center justify-center overflow-hidden rounded border border-amber-700 px-3 font-heading text-base font-medium text-amber-700 transition-all duration-700 ease-[var(--ease)] hover:text-white',
+				{
+					'pointer-events-none border-zinc-900/20 text-zinc-900/20': currentPage >= total / size
+				}
+			]}
+		>
+			<div
+				class="absolute inset-0 -inset-x-2 -inset-y-2 top-[calc(100%+8px)] -z-[1] -skew-y-6 bg-amber-700 transition-all duration-700 ease-[var(--ease)] group-hover:-top-[30%]"
+			>
+			</div>
+			Siguientes
+		</a>
+	</div>
+</div>
+
+<!-- <nav class="pagination my-16 flex justify-between font-heading text-2xl text-amber-700">
 	<a
 		href={prev}
 		class:list={[
@@ -23,4 +68,4 @@ const { prev, next } = page.url
 		Anteriores
 	</a>
 	<a href={next} class="next"> Siguientes </a>
-</nav>
+</nav> -->

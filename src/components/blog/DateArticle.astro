@@ -3,11 +3,17 @@ import dayjs from 'dayjs'
 
 interface Props {
 	createdAt: Date
+	color?: 'alternative' | 'dark'
 }
 
-const { createdAt } = Astro.props
+const { createdAt, color = 'dark' } = Astro.props
+
+const colors = {
+	alternative: 'text-amber-700',
+	dark: 'text-zinc-900'
+}
 ---
 
-<small class="block w-[45%] font-heading capitalize leading-none"
+<small class:list={['block w-[45%] font-heading capitalize leading-none', colors[color]]}
 	>{dayjs(createdAt).format('MMMM D, YYYY')}</small
 >

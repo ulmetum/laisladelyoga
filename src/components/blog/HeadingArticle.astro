@@ -5,28 +5,29 @@ import Date from '@/components/blog/DateArticle.astro'
 interface Props {
 	title: string
 	createdAt: Date
+	excerpt: string
 }
 
-const { title, createdAt } = Astro.props
+const { title, createdAt, excerpt } = Astro.props
 ---
 
 <div
 	class="relative mx-auto mt-28 flex w-[min(100%,900px)] flex-col items-center justify-center gap-4 px-2 xl:mt-0 xl:w-[60%]"
 >
 	<div
-		class="absolute h-[200%] w-[15%] border-4 border-pampas-50 brightness-[.85] md:w-[10%] xl:w-[75px]"
+		class="absolute h-[165%] w-[15%] border-2 border-sky-950 brightness-[.85] md:w-[10%] xl:w-[75px]"
 	>
 	</div>
 	<div class="relative w-full bg-white py-4">
 		<h2 class="text-center leading-none text-sky-950">{title}</h2>
 		<small
-			class="my-6 block text-center text-sm italic leading-none text-pampas-50 brightness-[.35]"
-			>Quidem tempora voluptatem officiis</small
+			class="my-6 block text-center text-sm italic leading-normal text-pampas-50 brightness-[.35]"
+			>{excerpt}</small
 		>
 		<div class="flex items-center justify-center md:justify-between">
-			<Date createdAt={createdAt} />
-			<div class="mx-4 h-1 w-[min(15%,70px)] bg-zinc-900"></div>
-			<MenuIcons className="w-[45%] justify-end" />
+			<Date color="alternative" createdAt={createdAt} />
+			<div class="mx-4 h-[2px] w-[min(15%,70px)] bg-sky-950"></div>
+			<MenuIcons color="alternative" className="w-[45%] justify-end" />
 		</div>
 	</div>
 </div>

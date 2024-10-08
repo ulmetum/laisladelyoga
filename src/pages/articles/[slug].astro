@@ -53,23 +53,24 @@ const nextArticleId = articlesIds[(currentIndex + 1) % articlesIds.length]
 const prevArticle = articles.find((article) => article.id === prevArticleId)
 const nextArticle = articles.find((article) => article.id === nextArticleId)
 
-const image = article.featuredImage.url.startsWith('http')
-	? article.featuredImage.url
-	: `${STRAPI_HOST}${article.featuredImage.url}`
+const { title, createdAt, content, featuredImage, excerpt } = article
+const image = featuredImage.url.startsWith('http')
+	? featuredImage.url
+	: `${STRAPI_HOST}${featuredImage.url}`
 ---
 
 <MainLayout title="Blog page | La isla del Yoga">
 	<section class="relative">
 		<!-- <div class="absolute inset-0 w-full bg-black"></div> -->
 		<div
-			class="flex flex-col items-center justify-center gap-2 bg-white py-16 pb-36 xl:flex-row xl:justify-between xl:px-6 xl:pb-16"
+			class="flex flex-col items-center justify-center gap-2 bg-white py-16 pb-36 xl:flex-row xl:justify-between xl:px-6 xl:py-20"
 		>
-			<FeaturedImageArticle title={article.title} image={image} />
-			<HeadingArticle title={article.title} createdAt={article.createdAt} />
+			<FeaturedImageArticle title={title} image={image} />
+			<HeadingArticle excerpt={excerpt} title={title} createdAt={createdAt} />
 		</div>
 	</section>
 	<Container className="relative my-32">
-		<ContentArticle content={article.content} />
+		<ContentArticle content={content} />
 	</Container>
 	<section class="px-1 xl:px-6">
 		<div class="relative flex justify-between">
