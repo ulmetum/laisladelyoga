@@ -1,9 +1,15 @@
 ---
 interface Props {
 	size?: 'small' | 'medium' | 'large'
+	color?: 'alternative' | 'dark'
 }
 
-const { size = 'small' } = Astro.props
+const { size = 'small', color = 'dark' } = Astro.props
+
+const colors = {
+	alternative: '#b45309',
+	dark: '#18181b'
+}
 ---
 
 <svg
@@ -20,7 +26,13 @@ const { size = 'small' } = Astro.props
 	height="40"
 	viewBox="0 0 24 24"
 >
-	<g fill="none" stroke="#18181b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+	<g
+		fill="none"
+		stroke={colors[color]}
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		stroke-width="1.5"
+	>
 		<path
 			stroke-dasharray="64"
 			stroke-dashoffset="64"

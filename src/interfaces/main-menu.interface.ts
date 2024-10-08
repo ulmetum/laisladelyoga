@@ -2,7 +2,7 @@ export interface MainMenu {
 	data: Datum[]
 }
 
-export interface Datum {
+interface Datum {
 	id: number
 	attributes: Attributes
 }

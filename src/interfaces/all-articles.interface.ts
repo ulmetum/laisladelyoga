@@ -4,42 +4,32 @@ export interface AllArticles {
 
 export interface Datum {
 	id: number
-	attributes: DatumAttributes
-}
-
-export interface DatumAttributes {
+	documentId: string
 	title: string
 	createdAt: Date
-	excerpt: string
 	content: string
 	slug: string
+	excerpt: string
+	tags: Tag[]
 	featuredImage: FeaturedImage
 	writer: Writer
 }
 
 export interface FeaturedImage {
-	data: FeaturedImageData
-}
-
-export interface FeaturedImageData {
 	id: number
-	attributes: PurpleAttributes
-}
-
-export interface PurpleAttributes {
+	documentId: string
 	url: string
 }
 
-export interface Writer {
-	data: WriterData | null
-}
-
-export interface WriterData {
+export interface Tag {
 	id: number
-	attributes: FluffyAttributes
+	documentId: string
+	name: string
 }
 
-export interface FluffyAttributes {
+export interface Writer {
+	id: number
+	documentId: string
 	name: string
 	email: string
 	picture: FeaturedImage

@@ -1,9 +1,15 @@
 ---
 interface Props {
 	size?: 'small' | 'medium' | 'large'
+	color?: 'alternative' | 'dark'
 }
 
-const { size = 'small' } = Astro.props
+const { size = 'small', color = 'dark' } = Astro.props
+
+const colors = {
+	alternative: '#b45309',
+	dark: '#18181b'
+}
 ---
 
 <svg
@@ -20,11 +26,17 @@ const { size = 'small' } = Astro.props
 	height="36"
 	viewBox="0 0 24 24"
 >
-	<circle cx="17" cy="7" r="1.5" fill="#18181b" fill-opacity="0">
+	<circle cx="17" cy="7" r="1.5" fill={colors[color]} fill-opacity="0">
 		<animate fill="freeze" attributeName="fill-opacity" begin="1.3s" dur="0.15s" values="0;1"
 		></animate>
 	</circle>
-	<g fill="none" stroke="#18181b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+	<g
+		fill="none"
+		stroke={colors[color]}
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		stroke-width="2"
+	>
 		<path
 			stroke-dasharray="72"
 			stroke-dashoffset="72"

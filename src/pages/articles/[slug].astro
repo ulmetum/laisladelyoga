@@ -12,6 +12,8 @@ import 'dayjs/locale/es'
 import Container from '@/components/Container.astro'
 dayjs.locale('es')
 
+const { STRAPI_HOST } = import.meta.env
+
 export const getStaticPaths = (async () => {
 	const { data, error } = await actions.getAllArticles()
 
@@ -22,7 +24,7 @@ export const getStaticPaths = (async () => {
 	const articles = data.articles.data ?? []
 
 	return articles.map((article) => ({
-		params: { slug: article.attributes.slug },
+		params: { slug: article.slug },
 		props: { article, articles }
 	}))
 }) satisfies GetStaticPaths
@@ -51,9 +53,9 @@ const nextArticleId = articlesIds[(currentIndex + 1) % articlesIds.length]
 const prevArticle = articles.find((article) => article.id === prevArticleId)
 const nextArticle = articles.find((article) => article.id === nextArticleId)
 
-const image = article.attributes.featuredImage.data.attributes.url.startsWith('http')
-	? article.attributes.featuredImage.data.attributes.url
-	: `${import.meta.env.URL_BASE}${article.attributes.featuredImage.data.attributes.url}`
+const image = article.featuredImage.url.startsWith('http')
+	? article.featuredImage.url
+	: `${STRAPI_HOST}${article.featuredImage.url}`
 ---
 
 <MainLayout title="Blog page | La isla del Yoga">
@@ -62,20 +64,20 @@ const image = article.attributes.featuredImage.data.attributes.url.startsWith('h
 		<div
 			class="flex flex-col items-center justify-center gap-2 bg-white py-16 pb-36 xl:flex-row xl:justify-between xl:px-6 xl:pb-16"
 		>
-			<FeaturedImageArticle title={article.attributes.title} image={image} />
-			<HeadingArticle title={article.attributes.title} createdAt={article.attributes.createdAt} />
+			<FeaturedImageArticle title={article.title} image={image} />
+			<HeadingArticle title={article.title} createdAt={article.createdAt} />
 		</div>
 	</section>
 	<Container className="relative my-32">
-		<ContentArticle content={article.attributes.content} />
+		<ContentArticle content={article.content} />
 	</Container>
 	<section class="px-1 xl:px-6">
 		<div class="relative flex justify-between">
-			<a href={`/articles/${prevArticle?.attributes.slug}`}>
-				<h4>{prevArticle?.attributes.title}</h4>
+			<a href={`/articles/${prevArticle?.slug}`}>
+				<h4>{prevArticle?.title}</h4>
 			</a>
-			<a href={`/articles/${nextArticle?.attributes.slug}`}>
-				<h4>{nextArticle?.attributes.title}</h4>
+			<a href={`/articles/${nextArticle?.slug}`}>
+				<h4>{nextArticle?.title}</h4>
 			</a>
 		</div>
 	</section>

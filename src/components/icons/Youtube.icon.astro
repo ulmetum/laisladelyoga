@@ -1,9 +1,15 @@
 ---
 interface Props {
 	size?: 'small' | 'medium' | 'large'
+	color?: 'alternative' | 'dark'
 }
 
-const { size = 'small' } = Astro.props
+const { size = 'small', color = 'dark' } = Astro.props
+
+const colors = {
+	alternative: '#b45309',
+	dark: '#18181b'
+}
 ---
 
 <!-- class="brightness-[.35] transition-all duration-300 hover:fill-pampas-50" -->
@@ -21,7 +27,7 @@ const { size = 'small' } = Astro.props
 	height="40"
 	viewBox="0 0 24 24"
 >
-	<path fill="#18181b" fill-opacity="0" d="M12 11L12 12L12 13z">
+	<path fill={colors[color]} fill-opacity="0" d="M12 11L12 12L12 13z">
 		<animate
 			fill="freeze"
 			attributeName="d"
@@ -32,7 +38,7 @@ const { size = 'small' } = Astro.props
 	</path>
 	<path
 		fill="none"
-		stroke="#18181b"
+		stroke={colors[color]}
 		stroke-dasharray="64"
 		stroke-dashoffset="64"
 		stroke-linecap="round"

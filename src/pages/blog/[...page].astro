@@ -7,6 +7,9 @@ import MainLayout from '@/layouts/MainLayout.astro'
 import Container from '@/components/Container.astro'
 import MenuIcons from '@/components/icons/MenuIcons.astro'
 import DateArticle from '@/components/blog/DateArticle.astro'
+import PaginationBlog from '@/components/blog/PaginationBlog.astro'
+
+const { STRAPI_HOST } = import.meta.env
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const { data, error } = await actions.getAllArticles()
@@ -26,39 +29,40 @@ const { page } = Astro.props
 	<Container className="post my-10">
 		<ul class="grid-blog">
 			{
-				page.data.map((article, i) => {
-					const image = article.attributes.featuredImage.data.attributes.url.startsWith('http')
-						? article.attributes.featuredImage.data.attributes.url
-						: `${import.meta.env.URL_BASE}${article.attributes.featuredImage.data.attributes.url}`
+				page.data.map(({ slug, title, featuredImage, excerpt, createdAt }, i) => {
+					const image = featuredImage.url.startsWith('http')
+						? featuredImage.url
+						: `${STRAPI_HOST}${featuredImage.url}`
 					return (
 						<li
 							data-article={i + 1}
 							class="group mx-auto flex flex-col max-xl:my-8 max-xl:w-[min(100%,900px)] xl:gap-10 xl:first:flex-row xl:[&:nth-child(3)]:flex xl:[&:nth-child(3)]:flex-col-reverse"
 						>
 							<a
-								href={`/articles/${article.attributes.slug}`}
+								href={`/articles/${slug}`}
 								data-image={i + 1}
 								class="container-image h-[30dvh] w-full xl:h-[calc(50%-1.25rem)]"
 							>
 								<Image
 									class="block h-full w-full object-cover"
 									src={image}
-									alt={article.attributes.title}
+									alt={title}
 									width={300}
 									height={200}
 								/>
 							</a>
 							<article class="mx-1 my-6 flex h-full flex-col gap-4 xl:m-0 xl:group-first:w-1/2">
-								<a href={`/articles/${article.attributes.slug}`}>
-									<h3 class="!my-0 text-center font-light xl:text-3xl">
-										{article.attributes.title}
-									</h3>
+								<a href={`/articles/${slug}`}>
+									<h3 class="!my-0 text-center font-light text-sky-950 xl:text-3xl">{title}</h3>
 								</a>
 								<div class="mx-auto h-[2px] w-28 bg-zinc-400" />
-								<p set:html={article.attributes.excerpt} class="!m-0 flex-1 text-center text-lg" />
-								<div class="flex items-end justify-between">
-									<DateArticle createdAt={article.attributes.createdAt} />
-									<MenuIcons className="items-end" />
+								<h5
+									set:html={excerpt}
+									class="!m-0 flex-1 text-center text-lg font-light italic leading-6 text-gray-600"
+								/>
+								<div class="flex items-end justify-between text-amber-700">
+									<DateArticle createdAt={createdAt} />
+									<MenuIcons color="alternative" className="items-end" />
 								</div>
 							</article>
 						</li>
@@ -68,10 +72,7 @@ const { page } = Astro.props
 		</ul>
 
 		<!-- Pagination -->
-		<nav class="pagination">
-			<a href={page.url.prev} class="prev"> Prev </a>
-			<a href={page.url.next} class="next"> Next </a>
-		</nav>
+		<PaginationBlog page={page} />
 	</Container>
 </MainLayout>
 
