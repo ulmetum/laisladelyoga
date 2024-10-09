@@ -6,10 +6,11 @@ import MainLayout from '@/layouts/MainLayout.astro'
 import HeadingArticle from '@/components/blog/HeadingArticle.astro'
 import FeaturedImageArticle from '@/components/blog/FeaturedImageArticle.astro'
 import ContentArticle from '@/components/blog/ContentArticle.astro'
+import PaginationArticle from '@/components/blog/PaginationArticle.astro'
+import Container from '@/components/Container.astro'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/es'
-import Container from '@/components/Container.astro'
 dayjs.locale('es')
 
 const { STRAPI_HOST } = import.meta.env
@@ -69,17 +70,10 @@ const image = featuredImage.url.startsWith('http')
 			<HeadingArticle excerpt={excerpt} title={title} createdAt={createdAt} />
 		</div>
 	</section>
-	<Container className="relative my-32">
-		<ContentArticle content={content} />
+	<Container className="relative mb-16 mt-32">
+		<ContentArticle className="mx-2" content={content} />
 	</Container>
 	<section class="px-1 xl:px-6">
-		<div class="relative flex justify-between">
-			<a href={`/articles/${prevArticle?.slug}`}>
-				<h4>{prevArticle?.title}</h4>
-			</a>
-			<a href={`/articles/${nextArticle?.slug}`}>
-				<h4>{nextArticle?.title}</h4>
-			</a>
-		</div>
+		<PaginationArticle prevArticle={prevArticle} nextArticle={nextArticle} />
 	</section>
 </MainLayout>

@@ -29,7 +29,7 @@ const { page } = Astro.props
 	<Container className="post my-10">
 		<ul class="grid-blog">
 			{
-				page.data.map(({ slug, title, featuredImage, excerpt, createdAt }, i) => {
+				page.data.map(({ slug, title, featuredImage, excerpt, createdAt, writer }, i) => {
 					const image = featuredImage.url.startsWith('http')
 						? featuredImage.url
 						: `${STRAPI_HOST}${featuredImage.url}`
@@ -41,21 +41,29 @@ const { page } = Astro.props
 							<a
 								href={`/articles/${slug}`}
 								data-image={i + 1}
-								class="container-image h-[30dvh] w-full xl:h-[calc(50%-1.25rem)]"
+								class="container-image h-[35dvh] w-full xl:h-[calc(50%-1.25rem)]"
 							>
-								<Image
-									class="block h-full w-full object-cover"
-									src={image}
-									alt={title}
-									width={300}
-									height={200}
-								/>
+								<div class="h-full w-full overflow-hidden">
+									<small class="absolute left-1 top-1 z-20 font-heading text-pampas-50 duration-500 ease-[var(--ease)] group-hover:opacity-15">
+										Escrito por @{writer.name}
+									</small>
+									<div class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-black transition-opacity duration-500 ease-[var(--ease)] group-hover:opacity-55" />
+									<Image
+										class="block h-full w-full object-cover object-center duration-500 ease-[var(--ease)] group-hover:scale-105"
+										src={image}
+										alt={title}
+										width={300}
+										height={200}
+									/>
+								</div>
 							</a>
 							<article class="mx-1 my-6 flex h-full flex-col gap-4 xl:m-0 xl:group-first:w-1/2">
 								<a href={`/articles/${slug}`}>
-									<h3 class="!my-0 text-center font-light text-sky-950 xl:text-3xl">{title}</h3>
+									<h3 class="!my-0 text-center font-light text-sky-950 duration-500 ease-[var(--ease)] group-hover:text-amber-700 xl:text-3xl">
+										{title}
+									</h3>
 								</a>
-								<div class="mx-auto h-[2px] w-28 bg-zinc-400" />
+								<div class="mx-auto h-[1px] w-28 bg-sky-950 duration-500 ease-[var(--ease)] group-hover:w-44 group-hover:bg-amber-700" />
 								<h5
 									set:html={excerpt}
 									class="!m-0 flex-1 text-center text-lg font-light italic leading-6 text-gray-600"
@@ -76,7 +84,7 @@ const { page } = Astro.props
 	</Container>
 </MainLayout>
 
-<style define:vars={{ headerHeight: 'var(--header-height)' }}>
+<style define:vars={{ amber700: 'var(--amber-700)' }}>
 	.container-image {
 		position: relative;
 		display: block;
@@ -86,7 +94,7 @@ const { page } = Astro.props
 			inset: 0;
 			box-shadow:
 				0 0 0 1px #f6f2ef,
-				0 0 0 2px rgba(0, 0, 0, 0.35);
+				0 0 0 2px var(--amber700);
 		}
 	}
 	@media (width >= 1280px) {
@@ -94,7 +102,7 @@ const { page } = Astro.props
 			display: grid;
 			gap: 2.5rem;
 			grid-template-columns: repeat(3, 1fr);
-			grid-template-rows: repeat(3, 30dvh);
+			grid-template-rows: repeat(3, 35dvh);
 			grid-template-areas:
 				'top top top'
 				'left center right'
