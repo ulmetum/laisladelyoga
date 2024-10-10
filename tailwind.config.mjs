@@ -12,7 +12,7 @@ export default {
 				}
 			},
 			fontFamily: {
-				body: ['Merriweather'],
+				body: ['Ubuntu'],
 				heading: ['Oswald']
 			}
 		}

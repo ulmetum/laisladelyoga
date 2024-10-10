@@ -1,6 +1,6 @@
 ---
-import MenuIcons from '@/components/icons/MenuIcons.astro'
 import Date from '@/components/blog/DateArticle.astro'
+import MenuIcons from '@/components/MenuIcons.astro'
 
 interface Props {
 	title: string
@@ -15,7 +15,7 @@ const { title, createdAt, excerpt } = Astro.props
 	class="relative mx-auto mt-28 flex w-[min(100%,900px)] flex-col items-center justify-center gap-4 px-2 xl:mt-0 xl:w-[60%]"
 >
 	<div
-		class="absolute h-[165%] w-[15%] border-2 border-sky-950 brightness-[.85] md:w-[10%] xl:w-[75px]"
+		class="absolute h-[165%] w-[15%] border-2 border-amber-700 brightness-[.85] md:w-[10%] xl:w-[75px]"
 	>
 	</div>
 	<div class="relative w-full bg-white py-4">
@@ -26,7 +26,7 @@ const { title, createdAt, excerpt } = Astro.props
 		>
 		<div class="flex items-center justify-center md:justify-between">
 			<Date color="alternative" createdAt={createdAt} />
-			<div class="mx-4 h-[2px] w-[min(15%,70px)] bg-sky-950"></div>
+			<div class="mx-4 h-[2px] w-[min(15%,70px)] bg-amber-700"></div>
 			<MenuIcons color="alternative" className="w-[45%] justify-end" />
 		</div>
 	</div>

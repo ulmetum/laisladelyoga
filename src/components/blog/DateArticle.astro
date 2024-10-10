@@ -14,6 +14,7 @@ const colors = {
 }
 ---
 
-<small class:list={['block w-[45%] font-heading capitalize leading-none', colors[color]]}
+<small
+	class:list={['block w-[45%] font-heading font-normal capitalize leading-none', colors[color]]}
 	>{dayjs(createdAt).format('MMMM D, YYYY')}</small
 >

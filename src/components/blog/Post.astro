@@ -1,0 +1,115 @@
+---
+import type { FeaturedImage, Writer } from '@/interfaces'
+import { Image } from 'astro:assets'
+import DateArticle from '@/components/blog/DateArticle.astro'
+import MenuIcons from '@/components/MenuIcons.astro'
+
+const { STRAPI_HOST } = import.meta.env
+
+interface Props {
+	featuredImage: FeaturedImage
+	slug: string
+	title: string
+	excerpt: string
+	createdAt: Date
+	writer: Writer
+	i: number
+}
+
+const { slug, title, excerpt, createdAt, writer, i, featuredImage } = Astro.props
+const image = featuredImage.url.startsWith('http')
+	? featuredImage.url
+	: `${STRAPI_HOST}${featuredImage.url}`
+---
+
+<li
+	data-article={i + 1}
+	class="group mx-auto flex flex-col max-xl:my-8 max-xl:w-[min(100%,900px)] xl:gap-10 xl:first:flex-row xl:[&:nth-child(3)]:flex xl:[&:nth-child(3)]:flex-col-reverse"
+>
+	<a
+		href={`/articles/${slug}`}
+		data-image={i + 1}
+		class="container-image h-[35dvh] w-full xl:h-[calc(50%-1.25rem)]"
+	>
+		<div class="h-full w-full overflow-hidden">
+			<small class="absolute left-1 top-1 z-20 font-heading text-pampas-50">
+				Escrito por @{writer.name}
+			</small>
+			<div
+				class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-black transition-opacity duration-500 ease-[var(--ease)] group-hover:opacity-55"
+			>
+			</div>
+			<Image
+				class="block h-full w-full object-cover object-center duration-500 ease-[var(--ease)] group-hover:scale-105"
+				src={image}
+				alt={title}
+				width={300}
+				height={200}
+			/>
+		</div>
+	</a>
+	<article class="mx-1 my-6 flex h-full flex-col gap-4 xl:m-0 xl:group-first:w-1/2">
+		<a href={`/articles/${slug}`}>
+			<h3
+				class="!my-0 text-center font-light text-sky-950 duration-500 ease-[var(--ease)] group-hover:text-amber-700 xl:text-3xl"
+			>
+				{title}
+			</h3>
+		</a>
+		<div
+			class="mx-auto h-[1px] w-28 bg-sky-950 duration-500 ease-[var(--ease)] group-hover:w-44 group-hover:bg-amber-700"
+		>
+		</div>
+		<h5
+			set:html={excerpt}
+			class="!m-0 flex-1 text-center text-lg font-light italic leading-6 text-gray-600"
+		/>
+		<div class="flex items-end justify-between text-amber-700">
+			<DateArticle color="alternative" createdAt={createdAt} />
+			<MenuIcons color="alternative" className="items-end" />
+		</div>
+	</article>
+</li>
+
+<style define:vars={{ amber700: 'var(--amber-700)', zinc900: 'var(--zinc-900)' }}>
+	.container-image {
+		position: relative;
+		display: block;
+		&:before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			box-shadow:
+				0 0 0 1px #f6f2ef,
+				0 0 0 2px var(--zinc900);
+			transition: box-shadow 0.5s var(--ease);
+		}
+	}
+
+	.group:hover {
+		.container-image:before {
+			box-shadow:
+				0 0 0 1px #f6f2ef,
+				0 0 0 2px var(--amber700);
+		}
+	}
+
+	@media (width >= 1280px) {
+		[data-article='1'] {
+			grid-area: top;
+		}
+		[data-article='2'] {
+			grid-area: left;
+		}
+		[data-article='3'] {
+			grid-area: center;
+		}
+		[data-article='4'] {
+			grid-area: right;
+		}
+		[data-image='1'] {
+			height: 100%;
+			width: 50%;
+		}
+	}
+</style>

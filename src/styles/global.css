@@ -15,6 +15,9 @@
 	--amber-700: #b45309;
 	--zinc-900: #18181b;
 	--sky-950: #082f49;
+	--turquoise: #349098;
+	--purple-pale: #b06dcc;
+	--green: #166534;
 }
 
 html {
@@ -24,17 +27,14 @@ html,
 body {
 	@apply bg-pampas-50;
 }
-body p {
-	@apply leading-[1.8] [text-wrap:pretty];
-}
+
 body p,
-body span,
-body main {
-	@apply font-body font-light text-zinc-900 [font-size:var(--fs-300)] lg:text-[var(--fs-300)];
+body span {
+	@apply font-body font-light leading-[1.8] text-zinc-900 [font-size:var(--fs-300)] [text-wrap:pretty];
 }
 
 body article p {
-	@apply my-4;
+	@apply my-4 leading-[1.8] lg:text-2xl;
 }
 
 h1,
