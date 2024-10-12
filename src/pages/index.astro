@@ -11,7 +11,45 @@ import MainLayout from '@/layouts/MainLayout.astro'
 ---
 
 <MainLayout title="Home page | La isla del Yoga">
-	<section class="bg-white py-10">
+	<section class="grid h-screen items-center">
+		<div class="flex h-[300px] items-center justify-center overflow-hidden">
+			<div class="grid-isla">
+				<span
+					class="animate-up-1 row-span-2 flex items-end justify-center font-heading text-[18rem] font-bold uppercase leading-none [grid-area:i]"
+					>i</span
+				>
+				<span
+					class="animate-down-1 flex justify-center font-heading text-[12rem] font-bold uppercase leading-none [grid-area:s] [scale:1.3_1.075]"
+					>s</span
+				>
+				<span
+					class="animate-up-2 row-span-2 flex items-end justify-center font-heading text-[18rem] font-bold uppercase leading-none [grid-area:l]"
+					>l</span
+				>
+				<span
+					class="animate-down-2 flex justify-center font-heading text-[12rem] font-bold uppercase leading-none [grid-area:a] [scale:1.1]"
+					>a</span
+				>
+				<span
+					class="animate-up-1 flex justify-center font-heading text-[12rem] font-bold uppercase leading-none [grid-area:y] [scale:1.1]"
+					>y</span
+				>
+				<span
+					class="animate-down-1 row-span-2 flex justify-center font-heading text-[18rem] font-bold uppercase leading-none [grid-area:o] [scale:.9_1]"
+					>o</span
+				>
+				<span
+					class="animate-up-2 flex justify-center font-heading text-[12rem] font-bold uppercase leading-none [grid-area:g] [scale:1.1]"
+					>g</span
+				>
+				<span
+					class="animate-down-2 row-span-2 flex justify-center font-heading text-[18rem] font-bold uppercase leading-none [grid-area:e] [scale:.9_1]"
+					>a</span
+				>
+			</div>
+		</div>
+	</section>
+	<!-- <section class="bg-white py-10">
 		<Container>
 			<div class="relative px-2 lg:flex lg:justify-between lg:gap-4">
 				<div class="mb-4 max-lg:py-10 lg:mb-0 lg:w-[40%] lg:self-end">
@@ -78,18 +116,65 @@ import MainLayout from '@/layouts/MainLayout.astro'
 				</div>
 			</div>
 		</Container>
-	</section>
+	</section> -->
 </MainLayout>
 
 <style>
 	.grid-home {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(3, minmax(100px, 1fr));
+		grid-template-columns: repeat(3, max-content);
+		grid-template-rows: repeat(3, 150px);
 		grid-template-areas:
 			'text text top'
 			'text text right'
 			'left bottom bottom';
 		gap: 1rem;
 	}
+	.grid-isla {
+		display: grid;
+		grid-template-columns: repeat(4, 125px);
+		grid-template-rows: repeat(3, 175px);
+		grid-template-areas:
+			'i s l a'
+			'i o l e'
+			'y o g e';
+	}
+
+	@keyframes bounceUp {
+		0% {
+			transform: translateY(0);
+		}
+		100% {
+			transform: translateY(-150px); /* Sube 120px */
+		}
+	}
+
+	@keyframes bounceDown {
+		0% {
+			transform: translateY(0);
+		}
+		100% {
+			transform: translateY(150px); /* Baja 120px */
+		}
+	}
+
+	/* Animaciones para las letras */
+	.animate-up-1 {
+		animation: bounceUp 4s var(--ease) infinite alternate;
+	}
+	.animate-up-2 {
+		animation: bounceUp 2.4s 0.6s var(--ease) infinite alternate;
+	}
+
+	.animate-down-1 {
+		animation: bounceDown 2.75s 0.25s var(--ease) infinite alternate;
+	}
+	.animate-down-2 {
+		animation: bounceDown 2s 1s var(--ease) infinite alternate;
+	}
+
+	/* span {
+		-webkit-text-stroke: 3px var(--amber-700);
+		-webkit-text-fill-color: transparent;
+	} */
 </style>
