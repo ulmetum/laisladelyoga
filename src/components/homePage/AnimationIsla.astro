@@ -1,0 +1,92 @@
+---
+
+---
+
+<div
+	class="flex h-[130px] items-center justify-center overflow-hidden md:w-[35%] md:justify-start md:pr-4"
+>
+	<div class="grid-isla">
+		<span
+			class="animate-up-1 row-span-2 flex items-end justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:i]"
+			>i</span
+		>
+		<span
+			class="animate-down-1 flex items-end justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:s] [scale:.9_1]"
+			>o</span
+		>
+		<span
+			class="animate-up-2 row-span-2 flex items-end justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:l]"
+			>l</span
+		>
+		<span
+			class="animate-down-2 flex items-end justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:a]"
+			>a</span
+		>
+		<span
+			class="animate-up-1 flex justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:y]"
+			>y</span
+		>
+		<span
+			class="animate-down-1 flex justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:o]"
+			>s</span
+		>
+		<span
+			class="animate-up-2 flex justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:g]"
+			>g</span
+		>
+		<span
+			class="animate-down-2 row-span-2 flex justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:e]"
+			>a</span
+		>
+	</div>
+</div>
+
+<style>
+	.grid-isla {
+		display: grid;
+		grid-template-columns: repeat(4, 53px);
+		grid-template-rows: repeat(3, 96px);
+		grid-template-areas:
+			'i s l a'
+			'i o l e'
+			'y o g e';
+
+		span {
+			-webkit-text-stroke: 3px var(--amber-700);
+			-webkit-text-fill-color: transparent;
+		}
+	}
+
+	@keyframes bounceUp {
+		0% {
+			transform: translateY(0px);
+		}
+		100% {
+			transform: translateY(-96px); /* Sube 120px */
+		}
+	}
+
+	@keyframes bounceDown {
+		0% {
+			transform: translateY(0px);
+		}
+		100% {
+			transform: translateY(96px); /* Baja 120px */
+		}
+	}
+
+	/* Animaciones para las letras */
+	.animate-up-1 {
+		animation: bounceUp 4s var(--ease) infinite alternate;
+	}
+	.animate-up-2 {
+		animation: bounceUp 4s var(--ease) infinite alternate;
+	}
+
+	.animate-down-1 {
+		animation: bounceDown 4s var(--ease) infinite alternate;
+	}
+	.animate-down-2 {
+		animation: bounceDown 4s var(--ease) infinite alternate;
+	}
+</style>
