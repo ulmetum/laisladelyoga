@@ -1,5 +1,4 @@
 ---
-import NavBar from '@/components/NavBar.astro'
 import { ViewTransitions } from 'astro:transitions'
 import '@fontsource/ubuntu'
 import '@fontsource/ubuntu/300.css'
@@ -10,6 +9,9 @@ import '@fontsource/oswald/300.css'
 import '@fontsource/oswald/400.css'
 import '@fontsource/oswald/700.css'
 import '@/styles/global.css'
+
+import Footer from '@/components/Footer.astro'
+import NavBar from '@/components/NavBar.astro'
 
 interface Props {
 	title: string
@@ -27,10 +29,11 @@ const { title } = Astro.props
 		<title>{title}</title>
 		<ViewTransitions />
 	</head>
-	<body>
+	<body class="relative">
 		<NavBar />
-		<main class="min-h-dvh">
+		<main class="relative z-40 min-h-dvh bg-pampas-50">
 			<slot />
 		</main>
+		<Footer />
 	</body>
 </html>

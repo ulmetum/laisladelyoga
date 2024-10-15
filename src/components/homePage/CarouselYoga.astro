@@ -1,30 +1,39 @@
 ---
+import { Image } from 'astro:assets'
 import 'swiper/css'
+
+import Yoga01 from '@/images/yoga-01.webp'
+import Yoga02 from '@/images/yoga-02.webp'
+import Yoga03 from '@/images/yoga-03.webp'
 ---
 
-<div class="flex flex-col gap-2">
+<div
+	class="mx-auto flex max-w-[440px] flex-col gap-2 xl:absolute xl:right-0 xl:top-0 xl:h-[275px] xl:max-w-[350px]"
+>
 	<div class="swiper mySwiper">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">Slide 1</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide">
+				<Image class="object-cover" src={Yoga01} alt="yoga image 01" width="400" height="200" />
+			</div>
+			<div class="swiper-slide">
+				<Image class="object-cover" src={Yoga02} alt="yoga image 02" width="400" height="200" />
+			</div>
+			<div class="swiper-slide">
+				<Image class="object-cover" src={Yoga03} alt="yoga image 03" width="400" height="200" />
+			</div>
 		</div>
 	</div>
-	<div class="swiper-pagination flex justify-start"></div>
+	<div class="swiper-pagination flex justify-start xl:justify-end"></div>
 </div>
 
 <script>
 	import Swiper from 'swiper'
 	import { Pagination, Autoplay, EffectFade } from 'swiper/modules'
-	// const autoplayProgress = document.querySelector('.autoplay-progress') as HTMLDivElement
-	// const progressBar = document.querySelector('.autoplay-progress .progress-bar') as SVGRectElement
-	// const progressContent = document.querySelector('.autoplay-progress span') as HTMLSpanElement
 
 	const swiper = new Swiper('.swiper', {
 		centeredSlides: true,
 		slidesPerView: 1,
 		loop: true,
-
 		speed: 600,
 		autoplay: {
 			pauseOnMouseEnter: true,
@@ -38,14 +47,14 @@ import 'swiper/css'
 				// Crea un contenedor para los elementos
 				return `
             <div class="flex items-center gap-2 justify-center">
-							<span class="font-heading swiper-pagination-current">${current}</span>
+							<span class="font-heading swiper-pagination-current xl:text-sm">${current}</span>
 							<div class="autoplay-progress">
 									<svg width="100" height="2" xmlns="http://www.w3.org/2000/svg">
 											<rect width="100" height="2" class="progress-background" fill="lightgray"></rect>
 											<rect width="100" height="2" class="progress-bar" fill="var(--amber-700)" width="0"></rect>
 									</svg>
 							</div>
-							<span class="font-heading swiper-pagination-total">${total}</span>
+							<span class="font-heading swiper-pagination-total xl:text-sm">${total}</span>
 						</div>
         `
 			}
@@ -65,7 +74,7 @@ import 'swiper/css'
 	})
 </script>
 
-<style define:vars={{ swiperTiming: 'var(--ease)' }}>
+<style>
 	.swiper {
 		width: 100%;
 		height: 300px;
@@ -78,7 +87,7 @@ import 'swiper/css'
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		transition-timing-function: var(--swiperTiming);
+		transition-timing-function: var(--ease);
 	}
 
 	.swiper-slide img {

@@ -7,13 +7,18 @@ import GridServices from '@/components/homePage/GridServices.astro'
 import CarouselYoga from '@/components/homePage/CarouselYoga.astro'
 ---
 
-<MainLayout title="Home page | La isla del Yoga">
-	<section class="flex w-full flex-col gap-4 py-8">
+<MainLayout title="relative Home page | La isla del Yoga">
+	<section class="flex flex-col gap-4 bg-pampas-50 px-2 py-10 sm:px-6">
 		<div class="flex justify-center">
-			<div class="relative flex flex-col items-center justify-center gap-4 px-4">
+			<div class="relative flex flex-col items-center justify-center gap-6">
 				<MainHeading />
-				<div class="relative mx-auto flex max-w-[900px] flex-col gap-4 md:flex-row-reverse md:px-8">
-					<AnimationIsla />
+				<div
+					class="relative mx-auto flex max-w-[900px] flex-col gap-4 md:flex-row-reverse xl:gap-0"
+				>
+					<AnimationIsla
+						color="amber"
+						className="justify-center md:w-[35%] md:justify-start md:pr-4"
+					/>
 					<div class="flex items-center md:w-[65%]">
 						<p
 							class="mx-auto w-[min(100%,480px)] text-[.95rem] leading-snug md:text-right md:text-sm lg:text-base"
@@ -24,14 +29,14 @@ import CarouselYoga from '@/components/homePage/CarouselYoga.astro'
 						</p>
 					</div>
 				</div>
+				<CarouselYoga />
 			</div>
 		</div>
-		<CarouselYoga />
 	</section>
-	<section class="bg-white py-10">
+	<section class="bg-white px-2 py-10 sm:px-6">
 		<Container>
-			<div class="relative px-2 lg:flex lg:justify-between lg:gap-4">
-				<div class="mb-4 max-lg:py-10 lg:mb-0 lg:w-[40%] lg:self-end">
+			<div class="relative lg:flex lg:justify-between lg:gap-4">
+				<div class="mb-4 lg:mb-0 lg:w-[40%] lg:self-end">
 					<h4
 						class="mb-4 text-3xl tracking-[.12em] text-amber-700 max-lg:text-center lg:tracking-wider"
 					>
@@ -43,9 +48,9 @@ import CarouselYoga from '@/components/homePage/CarouselYoga.astro'
 						Mi pasión por el Yoga
 					</h2>
 					<p class="text-md mt-6 leading-[1.5] max-lg:text-center lg:indent-12">
-						Años de dedicación, trabajo y estudio de diversas prácticas de yoga se han convertido en
-						un viaje de conocimiento y crecimiento continuo que ahora quiero compartir con todo el
-						mundo.
+						Estos años de dedicación, de trabajo y estudio de diversas prácticas de yoga se han
+						convertido en un hermoso viaje de conocimientos y crecimiento continuo que ahora me
+						gustaría compartir.
 					</p>
 				</div>
 				<GridServices />

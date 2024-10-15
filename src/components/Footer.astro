@@ -1,0 +1,41 @@
+---
+import AnimationIsla from './homePage/AnimationIsla.astro'
+---
+
+<footer
+	class="relative h-[900px] bg-pampas-50"
+	style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
+>
+	<div class="relative -top-[100vh] h-[calc(100vh+900px)]">
+		<div class="sticky top-[calc(100vh-900px)] h-[900px]">
+			<div class="flex h-full flex-col justify-between gap-4 px-2 py-10 sm:px-6">
+				<div class="flex flex-col gap-4">
+					<nav>
+						<ul>
+							<li><a href="#" class="font-heading text-2xl font-light uppercase">Inicio</a></li>
+							<li><a href="#" class="font-heading text-2xl font-light uppercase">Sobre Mí</a></li>
+							<li><a href="#" class="font-heading text-2xl font-light uppercase">Contacto</a></li>
+							<li><a href="#" class="font-heading text-2xl font-light uppercase">Blog</a></li>
+						</ul>
+					</nav>
+					<h2 class="w-2/3 text-5xl font-normal uppercase">Ponte en contacto conmigo</h2>
+				</div>
+				<div class="flex flex-col gap-4">
+					<p class="w-2/3 text-sm">
+						Muchas Gracias por llegar hasta aquí. Si tienes alguna pregunta o duda, no dudes en
+						ponerte en contacto conmigo. Estaré encantada de ayudarte.
+					</p>
+					<h2 class="text-center font-bold text-amber-700">contacto@laisladelyoga.com</h2>
+				</div>
+				<div class="flex justify-center">
+					<AnimationIsla />
+				</div>
+				<div class="">
+					<p class="flex items-center justify-center gap-1 font-heading">
+						2024 Thrymr <span class="font-heading text-amber-700">©laisladelyoga.com</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
