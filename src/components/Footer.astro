@@ -1,4 +1,5 @@
 ---
+import CustomEmail from './CustomEmail.astro'
 import AnimationIsla from './homePage/AnimationIsla.astro'
 ---
 
@@ -20,14 +21,12 @@ import AnimationIsla from './homePage/AnimationIsla.astro'
 					</nav>
 					<h2 class="w-2/3 text-5xl font-normal uppercase md:w-1/2">Ponte en contacto conmigo</h2>
 				</div>
-				<div class="flex flex-col gap-4 lg:flex-row lg:items-center">
+				<div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 					<p class="w-2/3 text-sm lg:w-1/3">
 						Muchas gracias por llegar hasta aquí. Si tienes alguna pregunta o duda, no dudes en
 						ponerte en contacto conmigo. Estaré encantada de ayudarte.
 					</p>
-					<h2 class="font-normal text-amber-700 md:text-right lg:w-2/3">
-						contacto@laisladelyoga.com
-					</h2>
+					<CustomEmail />
 				</div>
 				<div class="flex justify-center">
 					<AnimationIsla delay="4s" fill="dark" />
