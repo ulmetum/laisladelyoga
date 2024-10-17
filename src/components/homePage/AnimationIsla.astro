@@ -1,14 +1,22 @@
 ---
 interface Props {
 	color?: 'amber' | 'dark'
+	fill?: 'amber' | 'dark' | 'transparent'
 	className?: string
+	delay?: string
 }
 
-const { color = 'dark', className } = Astro.props
+const { fill = 'dark', color = 'dark', className, delay = '0s' } = Astro.props
 
 const colors = {
 	amber: 'var(--amber-700)',
 	dark: 'var(--zinc-900)'
+}
+
+const colorsFill = {
+	amber: 'var(--amber-700)',
+	dark: 'var(--zinc-900)',
+	transparent: 'transparent'
 }
 ---
 
@@ -49,7 +57,7 @@ const colors = {
 	</div>
 </div>
 
-<style define:vars={{ color: colors[color] }}>
+<style define:vars={{ color: colors[color], fill: colorsFill[fill], delay }}>
 	.grid-isla {
 		display: grid;
 		grid-template-columns: repeat(4, 53px);
@@ -61,7 +69,7 @@ const colors = {
 
 		span {
 			-webkit-text-stroke: 3px var(--color);
-			-webkit-text-fill-color: transparent;
+			-webkit-text-fill-color: var(--fill);
 		}
 	}
 
@@ -85,16 +93,16 @@ const colors = {
 
 	/* Animaciones para las letras */
 	.animate-up-1 {
-		animation: bounceUp 4s var(--ease) infinite alternate;
+		animation: bounceUp 4s var(--delay, 0s) var(--ease) infinite alternate;
 	}
 	.animate-up-2 {
-		animation: bounceUp 4s var(--ease) infinite alternate;
+		animation: bounceUp 4s var(--delay, 0s) var(--ease) infinite alternate;
 	}
 
 	.animate-down-1 {
-		animation: bounceDown 4s var(--ease) infinite alternate;
+		animation: bounceDown 4s var(--delay, 0s) var(--ease) infinite alternate;
 	}
 	.animate-down-2 {
-		animation: bounceDown 4s var(--ease) infinite alternate;
+		animation: bounceDown 4s var(--delay, 0s) var(--ease) infinite alternate;
 	}
 </style>

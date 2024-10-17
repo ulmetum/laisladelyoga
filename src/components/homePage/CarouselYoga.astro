@@ -8,7 +8,7 @@ import Yoga03 from '@/images/yoga-03.webp'
 ---
 
 <div
-	class="mx-auto flex max-w-[440px] flex-col gap-2 xl:absolute xl:right-0 xl:top-0 xl:h-[275px] xl:max-w-[350px]"
+	class="mx-auto flex max-w-[440px] flex-col gap-2 xl:absolute xl:right-[-4%] xl:top-[.5rem] xl:h-[275px] xl:max-w-[350px]"
 >
 	<div class="swiper mySwiper">
 		<div class="swiper-wrapper">
@@ -30,47 +30,51 @@ import Yoga03 from '@/images/yoga-03.webp'
 	import Swiper from 'swiper'
 	import { Pagination, Autoplay, EffectFade } from 'swiper/modules'
 
-	const swiper = new Swiper('.swiper', {
-		centeredSlides: true,
-		slidesPerView: 1,
-		loop: true,
-		speed: 600,
-		autoplay: {
-			pauseOnMouseEnter: true,
-			delay: 2000,
-			disableOnInteraction: true
-		},
-		pagination: {
-			el: '.swiper-pagination',
-			type: 'custom',
-			renderCustom: function (swiper, current, total) {
-				// Crea un contenedor para los elementos
-				return `
-            <div class="flex items-center gap-2 justify-center">
-							<span class="font-heading swiper-pagination-current xl:text-sm">${current}</span>
-							<div class="autoplay-progress">
-									<svg width="100" height="2" xmlns="http://www.w3.org/2000/svg">
-											<rect width="100" height="2" class="progress-background" fill="lightgray"></rect>
-											<rect width="100" height="2" class="progress-bar" fill="var(--amber-700)" width="0"></rect>
-									</svg>
+	document.addEventListener('astro:page-load', () => {
+		const swiper = new Swiper('.swiper', {
+			centeredSlides: true,
+			slidesPerView: 1,
+			loop: true,
+			speed: 600,
+			autoplay: {
+				pauseOnMouseEnter: true,
+				delay: 2000,
+				disableOnInteraction: true
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				type: 'custom',
+				renderCustom: function (swiper, current, total) {
+					// Crea un contenedor para los elementos
+					return `
+							<div class="flex items-center gap-2 justify-center">
+								<span class="font-heading swiper-pagination-current xl:text-sm">${current}</span>
+								<div class="autoplay-progress">
+										<svg width="100" height="2" xmlns="http://www.w3.org/2000/svg">
+												<rect width="100" height="2" class="progress-background" fill="lightgray"></rect>
+												<rect width="100" height="2" class="progress-bar" fill="var(--amber-700)" width="0"></rect>
+										</svg>
+								</div>
+								<span class="font-heading swiper-pagination-total xl:text-sm">${total}</span>
 							</div>
-							<span class="font-heading swiper-pagination-total xl:text-sm">${total}</span>
-						</div>
-        `
-			}
-		},
-		on: {
-			autoplayTimeLeft(s, time, progress) {
-				const roundedProgress = Math.round((1 - progress) * 100) // Redondea el progreso al valor más cercano.
-				const progressBar = document.querySelector(
-					'.autoplay-progress .progress-bar'
-				) as SVGRectElement
-				progressBar.setAttribute('width', `${roundedProgress}`)
-				// console.log('Progress width:', roundedProgress)
-				// progressContent.textContent = `${Math.ceil(time / 1000)}s`
-			}
-		},
-		modules: [Pagination, Autoplay, EffectFade]
+					`
+				}
+			},
+			on: {
+				autoplayTimeLeft(s, time, progress) {
+					const roundedProgress = Math.round((1 - progress) * 100) // Redondea el progreso al valor más cercano.
+					const progressBar = document.querySelector(
+						'.autoplay-progress .progress-bar'
+					) as SVGRectElement
+
+					if (!progressBar) return
+					progressBar.setAttribute('width', `${roundedProgress}`)
+					// console.log('Progress width:', roundedProgress)
+					// progressContent.textContent = `${Math.ceil(time / 1000)}s`
+				}
+			},
+			modules: [Pagination, Autoplay, EffectFade]
+		})
 	})
 </script>
 
