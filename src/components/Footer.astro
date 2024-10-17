@@ -1,6 +1,7 @@
 ---
 import Container from './Container.astro'
 import CustomEmail from './CustomEmail.astro'
+import MenuFooter from './footer/MenuFooter.astro'
 import AnimationIsla from './homePage/AnimationIsla.astro'
 ---
 
@@ -13,14 +14,7 @@ import AnimationIsla from './homePage/AnimationIsla.astro'
 			<Container className="h-full">
 				<div class="flex h-full flex-col justify-between gap-4 px-2 py-10 sm:px-6">
 					<div class="flex flex-col gap-10 md:flex-row">
-						<nav class="text-right md:order-1 md:w-3/5 md:justify-between">
-							<ul>
-								<li><a href="#" class="font-heading text-2xl font-light uppercase">Inicio</a></li>
-								<li><a href="#" class="font-heading text-2xl font-light uppercase">Sobre Mí</a></li>
-								<li><a href="#" class="font-heading text-2xl font-light uppercase">Contacto</a></li>
-								<li><a href="#" class="font-heading text-2xl font-light uppercase">Blog</a></li>
-							</ul>
-						</nav>
+						<MenuFooter />
 						<h2 class="w-2/5 text-5xl font-normal uppercase">Ponte en contacto conmigo</h2>
 					</div>
 					<div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">

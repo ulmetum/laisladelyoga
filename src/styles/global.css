@@ -14,7 +14,9 @@
 
 	/* Colores */
 	--amber-700: #b45309;
+	--amber-700-rgb: rgb(180, 83, 9);
 	--zinc-900: #18181b;
+	--zinc-900-rgb: rgb(24, 24, 27);
 	--sky-950: #082f49;
 	--turquoise: #349098;
 	--purple-pale: #b06dcc;
