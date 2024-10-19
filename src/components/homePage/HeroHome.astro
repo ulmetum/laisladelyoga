@@ -1,0 +1,31 @@
+---
+import Container from '@/components/Container.astro'
+import MainHeading from '@/components/homePage/MainHeading.astro'
+import AnimationIsla from '@/components/homePage/AnimationIsla.astro'
+import CarouselYoga from '@/components/homePage/CarouselYoga.astro'
+---
+
+<Container>
+	<div class="flex justify-center">
+		<div class="relative flex flex-col items-center justify-center gap-6">
+			<MainHeading />
+			<div class="relative mx-auto flex max-w-[900px] flex-col gap-4 md:flex-row-reverse xl:gap-0">
+				<AnimationIsla
+					color="amber"
+					fill="transparent"
+					className="justify-center md:w-[35%] md:justify-start md:pr-4"
+				/>
+				<div class="flex items-center md:w-[65%]">
+					<p
+						class="mx-auto w-[min(100%,480px)] text-[.95rem] leading-snug md:text-right md:text-sm lg:text-base"
+					>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit tenetur consequuntur enim
+						aut perspiciatis quo delectus nulla doloremque ad fuga! Laudantium modi atque laboriosam
+						unde delectus at commodi?
+					</p>
+				</div>
+			</div>
+			<CarouselYoga />
+		</div>
+	</div>
+</Container>

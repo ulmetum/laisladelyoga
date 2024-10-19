@@ -1,136 +1,16 @@
 ---
-import Container from '@/components/Container.astro'
 import MainLayout from '@/layouts/MainLayout.astro'
-import MainHeading from '@/components/homePage/MainHeading.astro'
-import AnimationIsla from '@/components/homePage/AnimationIsla.astro'
-import CarouselYoga from '@/components/homePage/CarouselYoga.astro'
-import PoseWomanOne from '@/components/icons/Pose-woman-one.icon.astro'
+import HeroHome from '@/components/homePage/HeroHome.astro'
+import ContentHome from '@/components/homePage/ContentHome.astro'
 ---
 
 <MainLayout title="relative Home page | La isla del Yoga">
 	<section class="light sticky left-0 top-0 flex w-full flex-col gap-4 px-2 py-10 sm:px-6">
-		<Container>
-			<div class="flex justify-center">
-				<div class="relative flex flex-col items-center justify-center gap-6">
-					<MainHeading />
-					<div
-						class="relative mx-auto flex max-w-[900px] flex-col gap-4 md:flex-row-reverse xl:gap-0"
-					>
-						<AnimationIsla
-							color="amber"
-							fill="transparent"
-							className="justify-center md:w-[35%] md:justify-start md:pr-4"
-						/>
-						<div class="flex items-center md:w-[65%]">
-							<p
-								class="mx-auto w-[min(100%,480px)] text-[.95rem] leading-snug md:text-right md:text-sm lg:text-base"
-							>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit tenetur consequuntur
-								enim aut perspiciatis quo delectus nulla doloremque ad fuga! Laudantium modi atque
-								laboriosam unde delectus at commodi?
-							</p>
-						</div>
-					</div>
-					<CarouselYoga />
-				</div>
-			</div>
-		</Container>
+		<HeroHome />
 	</section>
 	<section
-		class="shadow-y-section relative grid min-h-[100dvh] place-items-center bg-white px-2 py-8 sm:px-6"
+		class="relative grid min-h-[100dvh] place-items-center bg-white px-2 py-8 shadow-y-section sm:px-6"
 	>
-		<Container>
-			<div class="relative lg:flex lg:justify-between lg:gap-4">
-				<div class="mb-8 lg:w-[50%]">
-					<h4
-						class="text-primary mb-4 text-3xl tracking-[.12em] max-lg:text-center lg:tracking-wider"
-					>
-						¿Qué puedo hacer por tí?
-					</h4>
-					<h2
-						class="text-[12vw] font-light leading-none max-lg:text-center md:text-[10vw] lg:text-5xl xl:text-6xl"
-					>
-						Mi pasión por el Yoga
-					</h2>
-					<p class="text-md mt-6 leading-[1.5] max-lg:text-center lg:indent-12">
-						Estos años de dedicación, de trabajo y estudio de diversas prácticas de yoga se han
-						convertido en un hermoso viaje de conocimientos y crecimiento continuo que ahora me
-						gustaría compartir.
-					</p>
-				</div>
-				<div
-					class="border-text relative mx-auto flex h-[300px] max-w-[600px] items-end justify-start overflow-hidden rounded-3xl border p-2 [grid-area:text] lg:w-[50%] lg:p-0"
-				>
-					<div class="absolute -right-6 top-4 md:block">
-						<PoseWomanOne />
-					</div>
-
-					<h3 class="relative w-2/3 p-2 sm:p-4 md:p-8 md:text-4xl">
-						Conecta profundamente con tu esencia
-					</h3>
-				</div>
-			</div>
-			<div
-				class="grid-services lg:border-text mt-8 gap-8 rounded-3xl p-8 max-lg:w-[590px] lg:border"
-			>
-				<div
-					class="border-text px-4 pb-4 max-[480px]:border-b min-[480px]:border-l md:pr-4 lg:border-l-0 lg:border-r lg:pl-0"
-				>
-					<div class="bg-primary mb-2 h-3 w-3 rounded-full"></div>
-					<div class="flex h-[20vh] flex-col justify-between">
-						<p
-							class="text-text mt-2 font-heading text-3xl font-bold leading-none tracking-tighter md:block"
-						>
-							Cursos y Talleres
-						</p>
-						<p class="text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-					</div>
-				</div>
-				<div
-					class="border-text px-4 pb-4 max-[480px]:border-b min-[480px]:border-l md:pr-4 lg:border-l-0 lg:border-r lg:pl-0"
-				>
-					<div class="bg-primary mb-2 h-3 w-3 rounded-full"></div>
-					<div class="flex h-[20vh] flex-col justify-between">
-						<p
-							class="text-text mt-2 font-heading text-3xl font-bold leading-none tracking-tighter md:block"
-						>
-							Artículos y Libros
-						</p>
-						<p class="text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-					</div>
-				</div>
-				<div
-					class="border-text px-4 pb-4 max-[480px]:border-b min-[480px]:border-l md:pr-4 lg:border-0 lg:pl-0"
-				>
-					<div class="bg-primary mb-2 h-3 w-3 rounded-full"></div>
-					<div class="flex h-[20vh] flex-col justify-between">
-						<p
-							class="text-text mt-2 font-heading text-3xl font-bold leading-none tracking-tighter md:block"
-						>
-							Prácticas Personalizadas
-						</p>
-						<p class="text-base" class="flex-1">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						</p>
-					</div>
-				</div>
-			</div>
-			<p>
-				porro quibusdam rerum quam quisquam ut numquam perferendis illo veniam pariatur libero
-				aspernatur placeat dolore inventore dolores iusto laborum! Voluptatibus, praesentium modi
-				laboriosam architecto aspernatur odit excepturi officiis? Dolorum nisi commodi iste corrupti
-				provident accusantium! Eius, repudiandae laudantium temporibus iusto rem, illo velit
-				excepturi sint sed facilis incidunt vitae. Cum eveniet in, veritatis labore et sed atque
-				quidem repellat vel obcaecati aliquam at distinctio eum soluta nemo? Quod repellendus porro
-				similique asperiores quasi aperiam corrupti consectetur hic repellat temporibus.
-			</p>
-		</Container>
+		<ContentHome />
 	</section>
 </MainLayout>
-
-<style>
-	.grid-services {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	}
-</style>
