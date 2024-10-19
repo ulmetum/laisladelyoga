@@ -8,7 +8,7 @@ import PoseWomanOne from '@/components/icons/Pose-woman-one.icon.astro'
 ---
 
 <MainLayout title="relative Home page | La isla del Yoga">
-	<section class="sticky left-0 top-0 flex w-full flex-col gap-4 bg-pampas-50 px-2 py-10 sm:px-6">
+	<section class="light sticky left-0 top-0 flex w-full flex-col gap-4 px-2 py-10 sm:px-6">
 		<Container>
 			<div class="flex justify-center">
 				<div class="relative flex flex-col items-center justify-center gap-6">
@@ -36,12 +36,14 @@ import PoseWomanOne from '@/components/icons/Pose-woman-one.icon.astro'
 			</div>
 		</Container>
 	</section>
-	<section class="relative min-h-[100dvh] bg-white px-2 py-10 shadow sm:px-6">
+	<section
+		class="shadow-y-section relative grid min-h-[100dvh] place-items-center bg-white px-2 py-8 sm:px-6"
+	>
 		<Container>
 			<div class="relative lg:flex lg:justify-between lg:gap-4">
 				<div class="mb-8 lg:w-[50%]">
 					<h4
-						class="mb-4 text-3xl tracking-[.12em] text-amber-700 max-lg:text-center lg:tracking-wider"
+						class="text-primary mb-4 text-3xl tracking-[.12em] max-lg:text-center lg:tracking-wider"
 					>
 						¿Qué puedo hacer por tí?
 					</h4>
@@ -57,7 +59,7 @@ import PoseWomanOne from '@/components/icons/Pose-woman-one.icon.astro'
 					</p>
 				</div>
 				<div
-					class="relative mx-auto flex h-[300px] max-w-[600px] items-end justify-start overflow-hidden rounded-3xl border border-zinc-900 p-2 [grid-area:text] lg:w-[50%] lg:p-0"
+					class="border-text relative mx-auto flex h-[300px] max-w-[600px] items-end justify-start overflow-hidden rounded-3xl border p-2 [grid-area:text] lg:w-[50%] lg:p-0"
 				>
 					<div class="absolute -right-6 top-4 md:block">
 						<PoseWomanOne />
@@ -68,34 +70,42 @@ import PoseWomanOne from '@/components/icons/Pose-woman-one.icon.astro'
 					</h3>
 				</div>
 			</div>
-			<div class="grid-services mt-20 gap-8">
-				<div class="border-zinc-900 px-4 max-[480px]:border-b min-[480px]:border-l">
-					<div class="mb-2 h-3 w-3 rounded-full bg-amber-700"></div>
+			<div
+				class="grid-services lg:border-text mt-8 gap-8 rounded-3xl p-8 max-lg:w-[590px] lg:border"
+			>
+				<div
+					class="border-text px-4 pb-4 max-[480px]:border-b min-[480px]:border-l md:pr-4 lg:border-l-0 lg:border-r lg:pl-0"
+				>
+					<div class="bg-primary mb-2 h-3 w-3 rounded-full"></div>
 					<div class="flex h-[20vh] flex-col justify-between">
 						<p
-							class="mt-2 font-heading text-3xl font-bold leading-none tracking-tighter text-zinc-900 md:block"
+							class="text-text mt-2 font-heading text-3xl font-bold leading-none tracking-tighter md:block"
 						>
 							Cursos y Talleres
 						</p>
 						<p class="text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 					</div>
 				</div>
-				<div class="border-zinc-900 px-4 max-[480px]:border-b min-[480px]:border-l">
-					<div class="mb-2 h-3 w-3 rounded-full bg-amber-700"></div>
+				<div
+					class="border-text px-4 pb-4 max-[480px]:border-b min-[480px]:border-l md:pr-4 lg:border-l-0 lg:border-r lg:pl-0"
+				>
+					<div class="bg-primary mb-2 h-3 w-3 rounded-full"></div>
 					<div class="flex h-[20vh] flex-col justify-between">
 						<p
-							class="mt-2 font-heading text-3xl font-bold leading-none tracking-tighter text-zinc-900 md:block"
+							class="text-text mt-2 font-heading text-3xl font-bold leading-none tracking-tighter md:block"
 						>
 							Artículos y Libros
 						</p>
 						<p class="text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 					</div>
 				</div>
-				<div class="border-zinc-900 px-4 max-[480px]:border-b min-[480px]:border-l">
-					<div class="mb-2 h-3 w-3 rounded-full bg-amber-700"></div>
+				<div
+					class="border-text px-4 pb-4 max-[480px]:border-b min-[480px]:border-l md:pr-4 lg:border-0 lg:pl-0"
+				>
+					<div class="bg-primary mb-2 h-3 w-3 rounded-full"></div>
 					<div class="flex h-[20vh] flex-col justify-between">
 						<p
-							class="mt-2 font-heading text-3xl font-bold leading-none tracking-tighter text-zinc-900 md:block"
+							class="text-text mt-2 font-heading text-3xl font-bold leading-none tracking-tighter md:block"
 						>
 							Prácticas Personalizadas
 						</p>
@@ -105,6 +115,15 @@ import PoseWomanOne from '@/components/icons/Pose-woman-one.icon.astro'
 					</div>
 				</div>
 			</div>
+			<p>
+				porro quibusdam rerum quam quisquam ut numquam perferendis illo veniam pariatur libero
+				aspernatur placeat dolore inventore dolores iusto laborum! Voluptatibus, praesentium modi
+				laboriosam architecto aspernatur odit excepturi officiis? Dolorum nisi commodi iste corrupti
+				provident accusantium! Eius, repudiandae laudantium temporibus iusto rem, illo velit
+				excepturi sint sed facilis incidunt vitae. Cum eveniet in, veritatis labore et sed atque
+				quidem repellat vel obcaecati aliquam at distinctio eum soluta nemo? Quod repellendus porro
+				similique asperiores quasi aperiam corrupti consectetur hic repellat temporibus.
+			</p>
 		</Container>
 	</section>
 </MainLayout>
@@ -113,11 +132,5 @@ import PoseWomanOne from '@/components/icons/Pose-woman-one.icon.astro'
 	.grid-services {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	}
-
-	.shadow {
-		box-shadow:
-			0px -10px 20px -20px var(--zinc-900-rgb),
-			0px 10px 20px -20px var(--zinc-900-rgb);
 	}
 </style>

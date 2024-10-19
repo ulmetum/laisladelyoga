@@ -13,11 +13,12 @@
 	--fs-700: clamp(3rem, calc(2rem + 5vw), 5.6rem);
 
 	/* Colores */
-	--amber-700: #b45309;
-	--amber-700-rgb: rgb(180, 83, 9);
-	--zinc-900: #18181b;
-	--zinc-900-rgb: rgb(24, 24, 27);
-	--sky-950: #082f49;
+	--light: #f6f2ef;
+	--primary: #b45309;
+	--primary-rgb: rgb(180, 83, 9);
+	--text: #18181b;
+	--text-rgb: rgb(24, 24, 27);
+	--secondary: #082f49;
 	--turquoise: #349098;
 	--purple-pale: #b06dcc;
 	--green: #166534;
@@ -28,12 +29,12 @@ html {
 }
 html,
 body {
-	@apply bg-pampas-50;
+	@apply bg-light;
 }
 
 body p,
 body span {
-	@apply font-body font-light leading-[1.8] text-zinc-900 [font-size:var(--fs-300)] [text-wrap:pretty];
+	@apply text-text font-body font-light leading-[1.8] [font-size:var(--fs-300)] [text-wrap:pretty];
 }
 
 body article p {
@@ -45,7 +46,7 @@ h2,
 h3,
 h4,
 h5 {
-	@apply font-heading font-light leading-[1.2] text-zinc-900 [text-wrap:balance];
+	@apply text-text font-heading font-light leading-[1.2] [text-wrap:balance];
 }
 
 h1 {
@@ -67,3 +68,9 @@ h5 {
 .post article p {
 	@apply my-6;
 }
+
+/* .b-shadow {
+	box-shadow:
+		0px -10px 20px -20px var(--text-rgb),
+		0px 10px 20px -20px var(--text-rgb);
+} */

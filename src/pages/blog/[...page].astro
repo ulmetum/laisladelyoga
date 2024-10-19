@@ -22,26 +22,27 @@ const { page } = Astro.props
 ---
 
 <MainLayout title="Blog page | La isla del Yoga">
-	<Container className="post my-10">
-		<ul class="grid-blog">
-			{
-				page.data.map(({ slug, title, featuredImage, excerpt, createdAt, writer }, i) => (
-					<Post
-						i={i}
-						slug={slug}
-						title={title}
-						featuredImage={featuredImage}
-						excerpt={excerpt}
-						createdAt={createdAt}
-						writer={writer}
-					/>
-				))
-			}
-		</ul>
-
-		<!-- Pagination -->
-		<PaginationBlog page={page} />
-	</Container>
+	<section class="shadow-b-section pb-4">
+		<Container className="post my-10">
+			<ul class="grid-blog">
+				{
+					page.data.map(({ slug, title, featuredImage, excerpt, createdAt, writer }, i) => (
+						<Post
+							i={i}
+							slug={slug}
+							title={title}
+							featuredImage={featuredImage}
+							excerpt={excerpt}
+							createdAt={createdAt}
+							writer={writer}
+						/>
+					))
+				}
+			</ul>
+			<!-- Pagination -->
+			<PaginationBlog page={page} />
+		</Container>
+	</section>
 </MainLayout>
 
 <style>

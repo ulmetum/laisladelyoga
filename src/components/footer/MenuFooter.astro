@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname
 								class:list={[
 									'inline-block font-heading text-2xl font-normal uppercase',
 									{
-										'text-amber-700': currentPath === item.url
+										'text-primary': currentPath === item.url
 									}
 								]}
 							>
@@ -58,7 +58,7 @@ const currentPath = Astro.url.pathname
 					// Solo animar si no está en hover
 					isHovered = true
 					const spans = [...link.querySelectorAll('span')]
-					animateElements(spans, 'var(--amber-700-rgb)', 0.05)
+					animateElements(spans, 'var(--primary-rgb)', 0.05)
 				}
 			})
 
@@ -66,7 +66,7 @@ const currentPath = Astro.url.pathname
 				isHovered = false // Cuando salga del área, se puede volver a animar
 				const spans = [...link.querySelectorAll('span')]
 
-				animateElements(spans, 'var(--zinc-900-rgb)', 0.05)
+				animateElements(spans, 'var(--text-rgb)', 0.05)
 			})
 		})
 	})

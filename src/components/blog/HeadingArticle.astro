@@ -15,18 +15,17 @@ const { title, createdAt, excerpt } = Astro.props
 	class="relative mx-auto mt-28 flex w-[min(100%,900px)] flex-col items-center justify-center gap-4 px-2 xl:mt-0 xl:w-[60%]"
 >
 	<div
-		class="absolute h-[165%] w-[15%] border-2 border-amber-700 brightness-[.85] md:w-[10%] xl:w-[75px]"
+		class="border-primary absolute h-[165%] w-[15%] border-2 brightness-[.85] md:w-[10%] xl:w-[75px]"
 	>
 	</div>
 	<div class="relative w-full bg-white py-4">
-		<h2 class="text-center leading-none text-sky-950">{title}</h2>
-		<small
-			class="my-6 block text-center text-sm italic leading-normal text-pampas-50 brightness-[.35]"
+		<h2 class="text-secondary text-center leading-none">{title}</h2>
+		<small class="text-light my-6 block text-center text-sm italic leading-normal brightness-[.35]"
 			>{excerpt}</small
 		>
 		<div class="flex items-center justify-center md:justify-between">
 			<Date color="alternative" createdAt={createdAt} />
-			<div class="mx-4 h-[2px] w-[min(15%,70px)] bg-amber-700"></div>
+			<div class="bg-primary mx-4 h-[2px] w-[min(15%,70px)]"></div>
 			<MenuIcons color="alternative" className="w-[45%] justify-end" />
 		</div>
 	</div>

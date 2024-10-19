@@ -61,7 +61,7 @@ const image = featuredImage.url.startsWith('http')
 ---
 
 <MainLayout title="Blog page | La isla del Yoga">
-	<section class="relative">
+	<section class="sticky left-0 top-0 w-full">
 		<div
 			class="flex flex-col items-center justify-center gap-2 bg-white py-16 pb-36 xl:flex-row xl:justify-between xl:px-6 xl:py-20"
 		>
@@ -69,10 +69,10 @@ const image = featuredImage.url.startsWith('http')
 			<HeadingArticle excerpt={excerpt} title={title} createdAt={createdAt} />
 		</div>
 	</section>
-	<Container className="relative mb-16 mt-32">
-		<ContentArticle className="mx-2" content={content} />
-	</Container>
-	<section class="px-1 xl:px-6">
-		<PaginationArticle prevArticle={prevArticle} nextArticle={nextArticle} />
+	<section class="bg-light shadow-y-section relative py-8">
+		<Container className="relative">
+			<ContentArticle className="mx-2" content={content} />
+			<PaginationArticle prevArticle={prevArticle} nextArticle={nextArticle} />
+		</Container>
 	</section>
 </MainLayout>

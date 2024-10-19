@@ -1,5 +1,4 @@
 import typography from '@tailwindcss/typography'
-import defaultTheme from 'tailwindcss/defaultTheme'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,13 +6,21 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				pampas: {
-					50: '#f6f2ef'
-				}
+				primary: '#b45309',
+				secondary: '#082f49',
+				text: '#18181b',
+				light: '#f6f2ef',
+				turquoise: '#349098',
+				'purple-pale': '#b06dcc',
+				green: '#166534'
 			},
 			fontFamily: {
 				body: ['Ubuntu'],
 				heading: ['Oswald']
+			},
+			boxShadow: {
+				'b-section': '0px 10px 20px -20px var(--text-rgb)',
+				'y-section': '0px -10px 20px -20px var(--text-rgb), 0px 10px 20px -20px var(--text-rgb)'
 			}
 		}
 	},
