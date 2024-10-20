@@ -17,7 +17,9 @@ const currentPath = Astro.url.pathname
 					class:list={[
 						'',
 						{
-							'pointer-events-none': currentPath === item.url
+							'pointer-events-none':
+								currentPath === item.url ||
+								(item.url === '/blog' && currentPath.includes('/articles/'))
 						}
 					]}
 				>
@@ -27,7 +29,9 @@ const currentPath = Astro.url.pathname
 								class:list={[
 									'inline-block font-heading text-2xl font-normal uppercase',
 									{
-										'text-primary': currentPath === item.url
+										'text-primary':
+											currentPath === item.url ||
+											(item.url === '/blog' && currentPath.includes('/articles/'))
 									}
 								]}
 							>

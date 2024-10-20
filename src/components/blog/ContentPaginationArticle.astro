@@ -1,0 +1,19 @@
+---
+import Container from '@/components/Container.astro'
+import ContentArticle from '@/components/blog/ContentArticle.astro'
+import PaginationArticle from '@/components/blog/PaginationArticle.astro'
+import type { Datum } from '@/interfaces'
+
+interface Props {
+	prevArticle: Datum
+	nextArticle: Datum
+	content: string
+}
+
+const { prevArticle, nextArticle, content } = Astro.props
+---
+
+<Container className="relative">
+	<ContentArticle className="mx-2" content={content} />
+	<PaginationArticle prevArticle={prevArticle} nextArticle={nextArticle} />
+</Container>

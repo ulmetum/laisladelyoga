@@ -3,11 +3,8 @@ import { actions } from 'astro:actions'
 import type { GetStaticPaths } from 'astro'
 
 import MainLayout from '@/layouts/MainLayout.astro'
-import HeadingArticle from '@/components/blog/HeadingArticle.astro'
-import FeaturedImageArticle from '@/components/blog/FeaturedImageArticle.astro'
-import ContentArticle from '@/components/blog/ContentArticle.astro'
-import PaginationArticle from '@/components/blog/PaginationArticle.astro'
-import Container from '@/components/Container.astro'
+import ContentPaginationArticle from '@/components/blog/ContentPaginationArticle.astro'
+import HeroArticle from '@/components/blog/HeroArticle.astro'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/es'
@@ -51,8 +48,8 @@ const prevArticleId = articlesIds[(currentIndex - 1 + articlesIds.length) % arti
 const nextArticleId = articlesIds[(currentIndex + 1) % articlesIds.length]
 
 // Encontrar el artículo anterior y siguiente
-const prevArticle = articles.find((article) => article.id === prevArticleId)
-const nextArticle = articles.find((article) => article.id === nextArticleId)
+const prevArticle = articles.find((article) => article.id === prevArticleId)!
+const nextArticle = articles.find((article) => article.id === nextArticleId)!
 
 const { title, createdAt, content, featuredImage, excerpt } = article
 const image = featuredImage.url.startsWith('http')
@@ -62,17 +59,13 @@ const image = featuredImage.url.startsWith('http')
 
 <MainLayout title="Blog page | La isla del Yoga">
 	<section class="sticky left-0 top-0 w-full">
-		<div
-			class="flex flex-col items-center justify-center gap-2 bg-white py-16 pb-36 xl:flex-row xl:justify-between xl:px-6 xl:py-20"
-		>
-			<FeaturedImageArticle title={title} image={image} />
-			<HeadingArticle excerpt={excerpt} title={title} createdAt={createdAt} />
-		</div>
+		<HeroArticle title={title} createdAt={createdAt} excerpt={excerpt} image={image} />
 	</section>
-	<section class="bg-light shadow-y-section relative py-8">
-		<Container className="relative">
-			<ContentArticle className="mx-2" content={content} />
-			<PaginationArticle prevArticle={prevArticle} nextArticle={nextArticle} />
-		</Container>
+	<section class="relative bg-light py-8 shadow-y-section">
+		<ContentPaginationArticle
+			prevArticle={prevArticle}
+			nextArticle={nextArticle}
+			content={content}
+		/>
 	</section>
 </MainLayout>
