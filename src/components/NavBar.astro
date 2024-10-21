@@ -1,6 +1,12 @@
 ---
 import LogoIsla from './icons/Logo-isla.icon.astro'
 
+interface Props {
+	idName?: string
+}
+
+const { idName } = Astro.props
+
 const menuItemsLeft = [
 	{ label: 'Inicio', url: '/' },
 	{ label: 'Sobre Mí', url: '/sobre-mi' }
@@ -13,10 +19,9 @@ const menuItemsRight = [
 const currentPath = Astro.url.pathname
 ---
 
-<!-- component -->
 <header
-	id="main-header"
-	class="relative z-50 flex h-[var(--header-height)] items-center justify-center gap-2 bg-white shadow"
+	id={idName}
+	class="fixed left-0 top-0 z-50 flex h-[var(--header-height)] w-full items-center justify-center gap-2 bg-white shadow"
 >
 	<nav class="">
 		<div
@@ -96,5 +101,11 @@ const currentPath = Astro.url.pathname
 <style>
 	.active {
 		@apply pointer-events-none text-primary;
+	}
+	.animate-up {
+		@apply -translate-y-full transition-all duration-500 ease-[var(--ease)];
+	}
+	.animate-down {
+		@apply translate-y-0 transition-all duration-500 ease-[var(--ease)];
 	}
 </style>

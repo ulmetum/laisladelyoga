@@ -34,7 +34,7 @@ body {
 
 body p,
 body span {
-	@apply text-text font-body font-light leading-[1.8] [font-size:var(--fs-300)] [text-wrap:pretty];
+	@apply font-body font-light leading-[1.8] text-text [font-size:var(--fs-300)] [text-wrap:pretty];
 }
 
 body article p {
@@ -46,7 +46,7 @@ h2,
 h3,
 h4,
 h5 {
-	@apply text-text font-heading font-light leading-[1.2] [text-wrap:balance];
+	@apply font-heading font-light leading-[1.2] text-text [text-wrap:balance];
 }
 
 h1 {
