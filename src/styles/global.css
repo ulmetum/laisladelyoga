@@ -1,6 +1,9 @@
 :root {
 	--header-height: 4.5rem;
 	--ease: cubic-bezier(0.83, 0, 0.17, 1);
+	--header-bar-height: 0.25rem;
+	--header-bar-width: 5rem;
+	--header-bar-top: 95%;
 
 	/* Tamaño fuente */
 
@@ -21,7 +24,7 @@
 	--secondary: #082f49;
 	--turquoise: #349098;
 	--purple-pale: #b06dcc;
-	--green: #166534;
+	--sky-pale: #61bbf7;
 }
 
 html {

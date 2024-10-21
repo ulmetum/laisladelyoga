@@ -12,7 +12,7 @@ export default {
 				light: '#f6f2ef',
 				turquoise: '#349098',
 				'purple-pale': '#b06dcc',
-				green: '#166534'
+				'sky-pale': '#61bbf7'
 			},
 			fontFamily: {
 				body: ['Ubuntu'],

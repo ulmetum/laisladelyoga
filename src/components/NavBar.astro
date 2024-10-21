@@ -21,8 +21,12 @@ const currentPath = Astro.url.pathname
 
 <header
 	id={idName}
-	class="fixed left-0 top-0 z-50 flex h-[var(--header-height)] w-full items-center justify-center gap-2 bg-white shadow"
+	class="fixed left-1/2 top-2 z-50 flex h-[var(--header-height)] w-full max-w-7xl -translate-x-1/2 items-center justify-center gap-2 rounded-3xl bg-white/75 shadow-lg backdrop-blur-sm"
 >
+	<div
+		class="header-bar absolute bottom-[calc(2.5%+(var(--header-bar-height)/2))] left-1/2 h-[var(--header-bar-height)] w-[var(--header-bar-width)] -translate-x-1/2 rounded-full bg-secondary opacity-5 transition-opacity duration-1000"
+	>
+	</div>
 	<nav class="">
 		<div
 			class="container mx-auto flex items-center justify-center capitalize text-gray-600 dark:text-gray-300"
@@ -103,9 +107,15 @@ const currentPath = Astro.url.pathname
 		@apply pointer-events-none text-primary;
 	}
 	.animate-up {
-		@apply -translate-y-full transition-all duration-500 ease-[var(--ease)];
+		@apply -translate-y-[var(--header-bar-top)] bg-white backdrop-blur-0 transition-all duration-1000 ease-[var(--ease)];
+		.header-bar {
+			@apply opacity-100;
+		}
 	}
 	.animate-down {
-		@apply translate-y-0 transition-all duration-500 ease-[var(--ease)];
+		@apply translate-y-0 transition-all duration-1000 ease-[var(--ease)];
+		.header-bar {
+			@apply opacity-5;
+		}
 	}
 </style>

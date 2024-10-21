@@ -19,6 +19,8 @@ interface Props {
 }
 
 const { title } = Astro.props
+
+const currentPath = Astro.url.pathname
 ---
 
 <html lang="es">
@@ -31,7 +33,14 @@ const { title } = Astro.props
 	</head>
 	<body class="relative">
 		<NavBar idName="main-header" />
-		<main class="light relative z-40 min-h-dvh pt-[calc(var(--header-height)+1rem)]">
+		<main
+			class:list={[
+				'light relative z-40 min-h-dvh pt-[calc(var(--header-height)+1rem)]',
+				{
+					'pt-0': currentPath.includes('/articles/')
+				}
+			]}
+		>
 			<slot />
 		</main>
 		<Footer />
@@ -41,13 +50,15 @@ const { title } = Astro.props
 <script>
 	import Lenis from 'lenis'
 
+	type State = 'animate-up' | 'animate-down'
+
 	document.addEventListener('astro:page-load', () => {
 		const lenis = new Lenis()
 		const header = document.querySelector('#main-header')
 
 		lenis.on('scroll', (e) => {
-			console.log(e)
 			if (!header) return
+
 			const position = e.animatedScroll
 			const direction = e.direction
 			if (position > 0 && direction > 0) {
@@ -58,6 +69,17 @@ const { title } = Astro.props
 				header.classList.add('animate-down')
 			}
 		})
+
+		function updateState(state: State) {
+			const states = ['animate-up', 'animate-down'] as const
+			states.forEach((stateClass) => header?.classList.remove(stateClass))
+			header?.classList.add(state)
+		}
+
+		header?.addEventListener('mouseenter', () => {
+			updateState('animate-down')
+		})
+
 		function raf(time: number) {
 			lenis.raf(time)
 			requestAnimationFrame(raf)
