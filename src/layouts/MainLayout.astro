@@ -45,21 +45,17 @@ const { title } = Astro.props
 		const lenis = new Lenis()
 		const header = document.querySelector('#main-header')
 
-		// Listen for the scroll event and log the event data
 		lenis.on('scroll', (e) => {
 			console.log(e)
 			if (!header) return
 			const position = e.animatedScroll
 			const direction = e.direction
-			// console.log({ current, velocity })
 			if (position > 0 && direction > 0) {
 				header.classList.remove('animate-down')
 				header.classList.add('animate-up')
-				// animate(header, { y: '-100%' }, { duration: 0.35, easing: [0.83, 0, 0.17, 1] })
 			} else {
 				header.classList.remove('animate-up')
 				header.classList.add('animate-down')
-				// animate(header, { y: '0%' }, { duration: 0.35, easing: [0.83, 0, 0.17, 1] })
 			}
 		})
 		function raf(time: number) {
