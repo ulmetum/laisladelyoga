@@ -1,0 +1,117 @@
+---
+import BlobOne from '@/components/icons/Blob-one.icon.astro'
+import BlobThree from '@/components/icons/Blob-three.icon.astro'
+import BlobTwo from '@/components/icons/Blob-two.icon.astro'
+import BlobFour from '@/components/icons/Blob-four.icon.astro'
+
+import PoseWomanThree from '@/components/icons/Pose-women-three.icon.astro'
+import PoseWomanFour from '@/components/icons/Pose-woman-four.icon.astro'
+import PoseWomanFive from '@/components/icons/Pose-woman-five.icon.astro'
+import PoseWomanSix from '@/components/icons/Pose-woman-six.icon.astro'
+
+const dataChallenge = [
+	{
+		title: 'Empoderamiento',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.',
+		Blob: BlobOne,
+		Silhouette: PoseWomanThree,
+		bgColor: 'bg-primary/10',
+		textColor: 'text-primary'
+	},
+	{
+		title: 'Confianza',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.',
+		Blob: BlobTwo,
+		Silhouette: PoseWomanFive,
+		bgColor: 'bg-turquoise/10',
+		textColor: 'text-turquoise'
+	},
+	{
+		title: 'Libertad',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.',
+		Blob: BlobThree,
+		Silhouette: PoseWomanFour,
+		bgColor: 'bg-purple-pale/10',
+		textColor: 'text-purple-pale brightness-50'
+	},
+	{
+		title: 'Autoestima',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.',
+		Blob: BlobFour,
+		Silhouette: PoseWomanSix,
+		bgColor: 'bg-sky-pale/10',
+		textColor: 'text-sky-950'
+	}
+] as const
+---
+
+<div class="grid-challenge max-xl:space-y-4 xl:w-full">
+	{
+		dataChallenge.map(({ title, textColor, Blob, Silhouette, bgColor }, i) => (
+			<div
+				data-challenge={i}
+				class:list={['relative mx-auto h-[35vh] w-[min(100%,600px)] rounded-3xl', bgColor]}
+			>
+				<h2 class:list={['relative pr-4 pt-4 text-right text-5xl brightness-50', textColor]}>
+					{title}
+				</h2>
+				<div
+					data-blob
+					class="absolute bottom-[-2rem] h-[350px] w-[350px] -translate-x-1/2 max-xl:left-1/2"
+				>
+					<Blob />
+				</div>
+				<div data-silhouette class="absolute bottom-[-4rem] h-full w-full scale-[85%] xl:scale-75">
+					<Silhouette className="h-full w-full" />
+				</div>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	[data-challenge='0'] {
+		[data-silhouette] {
+			bottom: -1.5rem;
+			scale: 75%;
+		}
+	}
+	[data-challenge='1'] {
+		[data-silhouette] {
+			bottom: 0rem;
+		}
+	}
+	@media (width >= 1024px) {
+		.grid-challenge {
+			display: grid;
+			gap: 1rem;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(2, 35vh);
+			min-height: 100dvh;
+			grid-template-areas:
+				'top top aside'
+				'bottom middle aside';
+		}
+
+		[data-challenge='0'] {
+			grid-area: top;
+			width: 100%;
+			[data-silhouette] {
+				bottom: -2.5rem;
+			}
+		}
+		[data-challenge='1'] {
+			grid-area: aside;
+			width: 100%;
+			height: 100%;
+		}
+		[data-challenge='2'] {
+			grid-area: bottom;
+			width: 100%;
+		}
+		[data-challenge='3'] {
+			grid-area: middle;
+			width: 100%;
+		}
+	}
+</style>
