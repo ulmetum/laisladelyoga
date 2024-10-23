@@ -42,9 +42,9 @@ const services = [
 					]}
 				/>
 				<div class="flex h-full flex-col justify-between p-2">
-					<p
+					<h3
 						class:list={[
-							'font-heading text-3xl font-bold leading-none tracking-tighter brightness-[.85] md:block',
+							'font-heading text-3xl font-normal leading-none tracking-tighter brightness-50 md:block',
 							{
 								'text-turquoise': color === 'turquoise',
 								'text-primary': color === 'primary',
@@ -53,10 +53,10 @@ const services = [
 						]}
 					>
 						{title}
-					</p>
+					</h3>
 					<p
 						class:list={[
-							'text-base brightness-[.55]',
+							'text-base brightness-50',
 							{
 								'text-turquoise': color === 'turquoise',
 								'text-primary': color === 'primary',
