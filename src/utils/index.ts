@@ -1,2 +1,2 @@
-export * from './mergeClass'
 export * from './wrap'
+export * from './fetchData'

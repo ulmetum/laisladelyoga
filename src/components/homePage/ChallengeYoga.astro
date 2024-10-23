@@ -12,7 +12,8 @@ import PoseWomanSix from '@/components/icons/Pose-woman-six.icon.astro'
 const dataChallenge = [
 	{
 		title: 'Empoderamiento',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.',
+		description:
+			'Dentro de ti hay una fuerza primigenia que ha de ser expresada de forma consciente para que puedas, por fin, ser tú misma y enfrentarte a todos los desafíos que la vida te presenta',
 		Blob: BlobOne,
 		Silhouette: PoseWomanThree,
 		bgColor: 'bg-primary/10',
@@ -20,7 +21,8 @@ const dataChallenge = [
 	},
 	{
 		title: 'Confianza',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.',
+		description:
+			'Llegarás a entender cómo valorarte más y a recuperar la confianza en ti misma para poder construir la vida que realmente deseas sin miedo.',
 		Blob: BlobTwo,
 		Silhouette: PoseWomanFive,
 		bgColor: 'bg-turquoise/10',
@@ -28,7 +30,8 @@ const dataChallenge = [
 	},
 	{
 		title: 'Libertad',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.',
+		description:
+			'Podrás expresarte sin juicios ni prejuicios, y finalmente abrirte al mundo desde tu ser interior',
 		Blob: BlobThree,
 		Silhouette: PoseWomanFour,
 		bgColor: 'bg-purple-pale/10',
@@ -36,7 +39,8 @@ const dataChallenge = [
 	},
 	{
 		title: 'Autoestima',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.',
+		description:
+			'Aprenderás a respetarte como ser humano y a encontrar la belleza intrínseca que reside en ti',
 		Blob: BlobFour,
 		Silhouette: PoseWomanSix,
 		bgColor: 'bg-sky-pale/10',
@@ -45,23 +49,42 @@ const dataChallenge = [
 ] as const
 ---
 
-<div class="grid-challenge max-xl:space-y-4 xl:w-full">
+<div class="grid-challenge max-lg:space-y-4 xl:w-full">
 	{
-		dataChallenge.map(({ title, textColor, Blob, Silhouette, bgColor }, i) => (
+		dataChallenge.map(({ title, textColor, Blob, Silhouette, bgColor, description }, i) => (
 			<div
 				data-challenge={i}
-				class:list={['relative mx-auto h-[35vh] w-[min(100%,600px)] rounded-3xl', bgColor]}
+				class:list={[
+					'group relative mx-auto h-[35vh] w-[min(100%,600px)] overflow-hidden rounded-3xl',
+					bgColor
+				]}
 			>
-				<h2 class:list={['relative pr-4 pt-4 text-right text-5xl brightness-50', textColor]}>
+				<h2
+					class:list={[
+						'relative pr-4 pt-4 text-right text-5xl brightness-50 transition-all duration-700 ease-[var(--ease)]',
+						textColor
+					]}
+				>
 					{title}
 				</h2>
+				<p
+					class:list={[
+						'absolute left-0 top-1/2 w-full -translate-y-1/2 scale-[95%] px-8 text-center font-normal opacity-0 brightness-50 transition-all duration-700 ease-[var(--ease)] group-hover:scale-100 group-hover:opacity-100',
+						textColor
+					]}
+				>
+					{description}
+				</p>
 				<div
 					data-blob
-					class="absolute bottom-[-2rem] h-[350px] w-[350px] -translate-x-1/2 max-xl:left-1/2"
+					class="absolute left-1/2 top-1/2 h-[550px] w-[550px] -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-[var(--ease)] group-hover:scale-[700%]"
 				>
 					<Blob />
 				</div>
-				<div data-silhouette class="absolute bottom-[-4rem] h-full w-full scale-[85%] xl:scale-75">
+				<div
+					data-silhouette
+					class="absolute bottom-[-4rem] h-full w-full scale-[85%] transition-all duration-700 ease-[var(--ease)] group-hover:scale-[78%] group-hover:opacity-0 xl:scale-75"
+				>
 					<Silhouette className="h-full w-full" />
 				</div>
 			</div>
@@ -74,11 +97,18 @@ const dataChallenge = [
 		[data-silhouette] {
 			bottom: -1.5rem;
 			scale: 75%;
+			[data-blob] {
+				width: 600px;
+				height: 600px;
+			}
 		}
 	}
 	[data-challenge='1'] {
 		[data-silhouette] {
 			bottom: 0rem;
+		}
+		[data-blob] {
+			bottom: 0%;
 		}
 	}
 	@media (width >= 1024px) {
@@ -87,7 +117,6 @@ const dataChallenge = [
 			gap: 1rem;
 			grid-template-columns: repeat(3, 1fr);
 			grid-template-rows: repeat(2, 35vh);
-			min-height: 100dvh;
 			grid-template-areas:
 				'top top aside'
 				'bottom middle aside';
@@ -104,6 +133,10 @@ const dataChallenge = [
 			grid-area: aside;
 			width: 100%;
 			height: 100%;
+			[data-blob] {
+				bottom: 25%;
+				left: 60%;
+			}
 		}
 		[data-challenge='2'] {
 			grid-area: bottom;
@@ -113,5 +146,9 @@ const dataChallenge = [
 			grid-area: middle;
 			width: 100%;
 		}
+	}
+
+	.group:hover h2 {
+		text-shadow: 1px 0 0 currentColor;
 	}
 </style>

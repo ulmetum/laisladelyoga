@@ -1,6 +1,6 @@
 import type { AllArticles } from '@/interfaces'
 import { getAllArticlesQuery } from '@/queries'
-import { fetchData } from '@/utils/fetchData'
+import { fetchData } from '@/utils'
 import { defineAction } from 'astro:actions'
 
 export const getAllArticles = defineAction({
