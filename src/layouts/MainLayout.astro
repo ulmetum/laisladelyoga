@@ -22,6 +22,7 @@ interface Props {
 const { title } = Astro.props
 
 const currentPath = Astro.url.pathname
+console.log({ currentPath })
 ---
 
 <html lang="es">
@@ -38,7 +39,7 @@ const currentPath = Astro.url.pathname
 			class:list={[
 				'light relative z-40 min-h-dvh pt-[calc(var(--header-height)+1rem)]',
 				{
-					'pt-0': currentPath.includes('/articles/')
+					'!pt-0': currentPath.includes('/articles/') || currentPath === '/contacto'
 				}
 			]}
 		>
