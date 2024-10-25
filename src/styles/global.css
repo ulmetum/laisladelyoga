@@ -72,3 +72,12 @@ h5 {
 .post article p {
 	@apply my-6;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+	position: relative;
+	z-index: -12;
+}
