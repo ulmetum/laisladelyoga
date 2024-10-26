@@ -1,4 +1,5 @@
 ---
+import PoseWomanEight from '@/components/icons/Pose-woman-eight.icon.astro'
 import MainLayout from '@/layouts/MainLayout.astro'
 
 const email = Astro.cookies.get('email')?.value ?? ''
@@ -9,16 +10,32 @@ export const prerender = false
 ---
 
 <MainLayout title="Contacto | La isla del Yoga">
-	<div class="flex min-h-screen items-center justify-start bg-white">
+	<div class="min-h-screen bg-white py-[calc(var(--header-height)+2rem)] max-xl:space-y-24">
+		<div class="relative">
+			<h2
+				class="absolute top-1/2 flex h-full w-1/2 -translate-y-1/2 flex-col justify-center bg-white text-right leading-none"
+			>
+				<span class="mr-4 inline-block text-right font-heading text-7xl leading-none">Puedes</span>
+				<span class="mr-4 inline-block text-right font-heading text-7xl leading-none">ponerte</span>
+				<span class="mr-4 inline-block text-right font-heading text-7xl leading-none">en</span>
+				<span class="mr-4 inline-block text-right font-heading text-7xl leading-none">contacto</span
+				>
+				<span class="mr-4 inline-block text-right font-heading text-7xl leading-none">conmigo</span>
+			</h2>
+			<div class="absolute -bottom-6 left-1/2 -translate-x-1/2">
+				<h3>Pero jamás pierdas el contacto contigo</h3>
+				<p class="mt-3 text-[.95rem]">
+					Envíame un correo electrónico a <span
+						class="text-[.95rem] text-primary underline underline-offset-2"
+						>hola@laisladelyoga.com</span
+					> o desde este formulario que ves aquí abajo:
+				</p>
+			</div>
+			<div class="mx-auto h-[600px] w-[600px]">
+				<PoseWomanEight />
+			</div>
+		</div>
 		<div class="mx-auto w-full max-w-2xl">
-			<h1 class="mb-6 font-medium leading-none">Ponte en contacto conmigo</h1>
-			<p class="mt-3 text-[.95rem]">
-				Envíame un correo electrónico a <span
-					class="text-[.95rem] text-primary underline underline-offset-2"
-					>hola@laisladelyoga.com</span
-				> o desde este formulario que ves aquí abajo:
-			</p>
-
 			<form id="contact-form" class="mt-10">
 				<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
 				<div class="grid gap-6 sm:grid-cols-2">
@@ -183,6 +200,7 @@ export const prerender = false
 			})
 
 			errors.forEach((error) => {
+				// console.log({ error })
 				const field = error.path[0] as keyof typeof elementErrors
 
 				// Mostrar el mensaje de error en el <span> correspondiente

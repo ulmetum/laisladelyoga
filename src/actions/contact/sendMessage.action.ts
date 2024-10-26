@@ -7,7 +7,9 @@ export const sendMessage = defineAction({
 		name: z
 			.string({ message: 'Debe escribir un nombre' })
 			.min(4, { message: 'El nombre debe tener al menos 4 caracteres' }),
-		email: z.string({ message: 'Debe escribir un correo electrónico' }).email(),
+		email: z
+			.string({ message: 'Debe escribir un correo electrónico' })
+			.email({ message: 'Debe ser un correo electrónico válido' }),
 		message: z
 			.string({ message: 'Debe escribir un mensaje' })
 			.min(4, { message: 'El mensaje debe tener al menos 4 caracteres' })
