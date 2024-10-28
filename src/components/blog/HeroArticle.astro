@@ -10,36 +10,11 @@ interface Props {
 }
 
 const { title, createdAt, excerpt, image } = Astro.props
-
-const currentPath = Astro.url.pathname
-
-const formatPathTitle = (path: string) =>
-	path
-		.replace('/articles/', '')
-		.replace(/-/g, ' ') // Remplazar guiones con espacios sin parar en el primero que encuentre
-		.replace(/^./, (str) => str.toUpperCase()) // Convertir el primer carácter a mayúscula
-
-const titleFormatted = formatPathTitle(currentPath)
 ---
 
 <div
-	class="relative flex flex-col items-center justify-center gap-2 bg-white py-44 pb-36 xl:flex-row xl:justify-between xl:px-6"
+	class="relative flex flex-col items-center justify-center gap-2 xl:flex-row xl:justify-between"
 >
-	<div
-		class="absolute left-0 top-[calc(var(--header-height)+3.5rem)] w-full -translate-y-1/2 text-center xl:left-6 xl:text-left"
-	>
-		<a
-			class="font-heading text-xl font-light transition-colors duration-300 hover:text-primary"
-			href="/"
-			>Inicio -
-		</a>
-		<a
-			class="font-heading text-xl font-light transition-colors duration-300 hover:text-primary"
-			href="/blog"
-			>Blog -
-		</a>
-		<span class="font-heading text-xl font-light text-primary">{titleFormatted}</span>
-	</div>
 	<FeaturedImageArticle title={title} image={image} />
 	<HeadingArticle excerpt={excerpt} title={title} createdAt={createdAt} />
 </div>

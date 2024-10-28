@@ -55,13 +55,38 @@ const { title, createdAt, content, featuredImage, excerpt } = article
 const image = featuredImage.url.startsWith('http')
 	? featuredImage.url
 	: `${STRAPI_HOST}${featuredImage.url}`
+
+const currentPath = Astro.url.pathname
+
+const formatPathTitle = (path: string) =>
+	path
+		.replace('/articles/', '')
+		.replace(/-/g, ' ') // Remplazar guiones con espacios sin parar en el primero que encuentre
+		.replace(/^./, (str) => str.toUpperCase()) // Convertir el primer carácter a mayúscula
+
+const titleFormatted = formatPathTitle(currentPath)
 ---
 
 <MainLayout title="Blog page | La isla del Yoga">
-	<section class="sticky left-0 top-0 w-full">
+	<section class="sticky left-0 top-0 w-full py-44 pb-36 xl:px-6">
+		<div
+			class="absolute left-0 top-[calc(var(--header-height)+3.5rem)] z-30 w-full -translate-y-1/2 text-center xl:left-6 xl:text-left"
+		>
+			<a
+				class="font-heading text-xl font-light transition-colors duration-300 hover:text-primary"
+				href="/"
+				>Inicio -
+			</a>
+			<a
+				class="font-heading text-xl font-light transition-colors duration-300 hover:text-primary"
+				href="/blog"
+				>Blog -
+			</a>
+			<span class="font-heading text-xl font-light text-primary">{titleFormatted}</span>
+		</div>
 		<HeroArticle title={title} createdAt={createdAt} excerpt={excerpt} image={image} />
 	</section>
-	<section class="relative bg-light py-8 shadow-y-section">
+	<section class="relative bg-white px-2 py-20 shadow-y-section sm:px-6">
 		<ContentPaginationArticle
 			prevArticle={prevArticle}
 			nextArticle={nextArticle}
