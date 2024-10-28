@@ -10,7 +10,7 @@ import Yoga03 from '@/images/yoga-03.webp'
 <div
 	class="mx-auto flex w-[440px] flex-col gap-2 xl:absolute xl:right-[15rem] xl:top-0 xl:h-[220px] xl:w-[350px]"
 >
-	<div class="swiper mySwiper">
+	<div dir="rtl" class="swiper mySwiper">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
 				<Image class="object-cover" src={Yoga01} alt="yoga image 01" width="400" height="200" />
@@ -35,10 +35,10 @@ import Yoga03 from '@/images/yoga-03.webp'
 			centeredSlides: true,
 			slidesPerView: 1,
 			loop: true,
-			speed: 600,
+			speed: 750,
 			autoplay: {
 				pauseOnMouseEnter: true,
-				delay: 2000,
+				delay: 4000,
 				disableOnInteraction: true
 			},
 			pagination: {

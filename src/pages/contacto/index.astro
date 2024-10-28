@@ -16,38 +16,38 @@ export const prerender = false
 	>
 		<Container>
 			<div class="max-xl:space-y-24 xl:flex xl:gap-4 xl:px-4">
-				<div class="relative xl:w-1/2">
+				<div class="relative !leading-[1.125] xl:w-1/2">
 					<h2
-						class="absolute top-1/2 -mt-5 flex h-full w-1/2 -translate-y-1/2 flex-col justify-center bg-white text-right leading-none"
+						class="absolute top-1/2 -mt-5 flex h-full w-1/2 -translate-y-1/2 flex-col justify-center bg-white text-right"
 					>
 						<span
-							class="mr-4 inline-block text-right font-heading leading-none [font-size:var(--fs-700)] sm:text-7xl"
+							class="mr-4 inline-block text-right font-heading font-bold uppercase !leading-[1.125] [font-size:var(--fs-600)] sm:text-6xl"
 							>Puedes</span
 						>
 						<span
-							class="mr-4 inline-block text-right font-heading leading-none [font-size:var(--fs-700)] sm:text-7xl"
+							class="mr-4 inline-block text-right font-heading font-bold uppercase !leading-[1.125] [font-size:var(--fs-600)] sm:text-6xl"
 							>ponerte</span
 						>
 						<span
-							class="mr-4 inline-block text-right font-heading leading-none [font-size:var(--fs-700)] sm:text-7xl"
+							class="mr-4 inline-block text-right font-heading font-bold uppercase !leading-[1.125] [font-size:var(--fs-600)] sm:text-6xl"
 							>en</span
 						>
 						<span
-							class="mr-4 inline-block text-right font-heading leading-none [font-size:var(--fs-700)] sm:text-7xl"
+							class="mr-4 inline-block text-right font-heading font-bold uppercase !leading-[1.125] [font-size:var(--fs-600)] sm:text-6xl"
 							>contacto</span
 						>
 						<span
-							class="mr-4 inline-block text-right font-heading leading-none [font-size:var(--fs-700)] sm:text-7xl"
+							class="mr-4 inline-block text-right font-heading font-bold uppercase !leading-[1.125] [font-size:var(--fs-600)] sm:text-6xl"
 							>conmigo</span
 						>
 					</h2>
 					<div class="absolute -bottom-6 left-1/2 w-full -translate-x-1/2 text-center sm:-bottom-2">
-						<h3>Pero jamás pierdas el contacto contigo</h3>
+						<h3 class="font-normal">Pero jamás pierdas el contacto contigo</h3>
 						<p class="mt-3 text-[.95rem]">
 							Envíame un correo electrónico a <span
 								class="text-[.95rem] text-primary underline underline-offset-2"
 								>hola@laisladelyoga.com</span
-							> o desde este formulario que ves aquí abajo:
+							> o a través del siguiente formulario
 						</p>
 					</div>
 					<div class="mx-auto h-[600px] w-[min(100%,600px)]">
@@ -58,7 +58,8 @@ export const prerender = false
 					class="w-full max-w-2xl rounded-md max-xl:mx-auto xl:flex xl:w-1/2 xl:items-center xl:justify-center"
 				>
 					<form id="contact-form" class="mx-auto mt-10 h-3/4 w-full p-6 xl:mt-0">
-						<input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+						<h2 class="mb-8 text-center font-normal">Respira, Relájate y Escríbeme</h2>
+						<!-- <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" /> -->
 						<div class="grid h-full gap-6 sm:grid-cols-2">
 							<div class="relative z-0">
 								<input
@@ -74,7 +75,7 @@ export const prerender = false
 								>
 								<span
 									id="name-error"
-									class="mt-2 inline-block rounded-md bg-primary px-2 py-[.125rem] text-[.85rem] text-white opacity-0 transition-opacity duration-300"
+									class="mt-2 inline-block rounded-md text-[.85rem] font-normal text-primary opacity-0 transition-opacity duration-300"
 								></span>
 							</div>
 							<div class="relative z-0">
@@ -91,7 +92,7 @@ export const prerender = false
 								>
 								<span
 									id="email-error"
-									class="mt-2 inline-block rounded-md bg-primary px-2 py-[.125rem] text-[.85rem] text-white opacity-0 transition-opacity duration-300"
+									class="mt-2 inline-block rounded-md text-[.85rem] font-normal text-primary opacity-0 transition-opacity duration-300"
 								></span>
 							</div>
 							<div class="relative z-0 col-span-2">
@@ -106,7 +107,7 @@ export const prerender = false
 								>
 								<span
 									id="message-error"
-									class="mt-2 inline-block rounded-md bg-primary px-2 py-[.125rem] text-[.85rem] text-white opacity-0 transition-opacity duration-300"
+									class="mt-2 inline-block rounded-md text-[.85rem] font-normal text-primary opacity-0 transition-opacity duration-300"
 								></span>
 							</div>
 							<div class="col-span-2 flex flex-col items-center justify-center gap-2">
