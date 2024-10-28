@@ -1,7 +1,67 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro'
+import { Image } from 'astro:assets'
 ---
 
 <MainLayout title="About Me">
-	<h1 class="text-4xl font-bold">About Me</h1>
+	<section class="lg:flex">
+		<div class="relative order-1 h-screen w-full">
+			<div
+				style={{ backgroundImage: 'url(/assets/images/perfil.webp)' }}
+				class="h-full w-full bg-cover bg-center bg-no-repeat blur-md"
+			>
+			</div>
+			<div class="absolute inset-0 bg-primary/10 mix-blend-multiply blur-md"></div>
+			<div
+				class="absolute left-0 top-0 z-0 mx-2 flex h-screen w-full flex-col justify-between pb-2 pt-[calc(var(--header-height)+2rem)]"
+			>
+				<div class="absolute inset-0 -z-[1] bg-light/60 blur-md"></div>
+				<h4 class="text-[1.4rem] text-primary">Bienvenid@s</h4>
+				<div class="ml-[2vw] w-[min(90%,600px)]">
+					<h1 class="mb-6 font-bold">Míriam R. Vázquez</h1>
+					<p class="leading-normal lg:text-2xl">
+						¡Hola! Mi nombre es Míriam y soy profesora de yoga certificada. Estoy muy emocionada de
+						poder compartir mi pasión y experiencia contigo a través de mi sitio web. Creo que una
+						vida más bonita está al alcance de tod@s y que con las herramientas y la mentalidad
+						adecuadas, puedes alcanzar tu máximo potencial y vivir una vida plena y significativa.
+					</p>
+				</div>
+				<div class="mx-2 mb-20">
+					<h4 class="origin-left rotate-90 transform">Sígueme en mis redes</h4>
+				</div>
+				<div>
+					<div>Redes</div>
+					<div>Correo Electrónico</div>
+				</div>
+			</div>
+			<!-- <div
+				class="absolute left-1/2 top-1/2 h-[550px] w-[min(100%,400px)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-md border border-text/20 xl:-left-[2rem] xl:-translate-x-0"
+			>
+				<Image
+					class="h-full w-full rounded-md object-cover"
+					src="/assets/images/perfil.webp"
+					alt="Perfil"
+					width={300}
+					height={600}
+				/>
+			</div> -->
+		</div>
+		<!-- <div class="mx-2 my-8 flex h-screen flex-col justify-between bg-light lg:w-1/2">
+			<h4 class="text-primary">Bienvenid@s</h4>
+			<div class="ml-[2vw] w-[min(90%,600px)] lg:max-w-md">
+				<h1 class="mb-6 font-bold">Míriam R. Vázquez</h1>
+				<p class="leading-snug lg:text-2xl">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore tenetur harum
+					reprehenderit laborum ut minima quo debitis.
+				</p>
+			</div>
+			<div class="mx-2">
+				<h4 class="origin-left rotate-90 transform">Sígueme en mis redes</h4>
+			</div>
+			<div>
+				<div>Redes</div>
+				<div>Correo Electrónico</div>
+			</div>
+		</div> -->
+	</section>
 </MainLayout>

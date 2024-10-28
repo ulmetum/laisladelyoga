@@ -38,7 +38,10 @@ const currentPath = Astro.url.pathname
 			class:list={[
 				'light relative z-40 min-h-dvh pt-[calc(var(--header-height)+1rem)]',
 				{
-					'!pt-0': currentPath.includes('/articles/') || currentPath === '/contacto'
+					'!pt-0':
+						currentPath.includes('/articles/') ||
+						currentPath === '/contacto' ||
+						currentPath === '/sobre-mi'
 				}
 			]}
 		>
