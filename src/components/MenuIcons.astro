@@ -7,30 +7,31 @@ import Spotify from '@/components/icons/Spotify.icon.astro'
 interface Props {
 	className?: string
 	color?: 'alternative' | 'dark'
+	size?: 'small' | 'medium' | 'large'
 }
 
-const { className, color = 'dark' } = Astro.props
+const { size = 'small', className, color = 'dark' } = Astro.props
 ---
 
 <ul class:list={['flex gap-2 xl:gap-3', className]}>
 	<li>
 		<a href="#" target="_blank">
-			<TikTok color={color} size="medium" />
+			<TikTok color={color} />
 		</a>
 	</li>
 	<li>
 		<a href="#" target="_blank">
-			<Youtube color={color} size="medium" />
+			<Youtube color={color} />
 		</a>
 	</li>
 	<li>
 		<a href="#" target="_blank">
-			<Instagram color={color} size="medium" />
+			<Instagram color={color} />
 		</a>
 	</li>
 	<li>
 		<a href="#" target="_blank">
-			<Spotify color={color} size="medium" />
+			<Spotify color={color} />
 		</a>
 	</li>
 </ul>
