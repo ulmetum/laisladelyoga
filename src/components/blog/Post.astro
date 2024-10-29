@@ -32,7 +32,7 @@ const image = featuredImage.url.startsWith('http')
 		class="container-image h-[35dvh] w-full xl:h-[calc(50%-1.25rem)]"
 	>
 		<div class="h-full w-full overflow-hidden">
-			<small class="text-light absolute left-1 top-1 z-20 font-heading">
+			<small class="absolute left-1 top-1 z-20 font-heading text-light">
 				Escrito por @{writer.name}
 			</small>
 			<div
@@ -51,22 +51,22 @@ const image = featuredImage.url.startsWith('http')
 	<article class="mx-1 my-6 flex h-full flex-col gap-4 xl:m-0 xl:group-first:w-1/2">
 		<a href={`/articles/${slug}`}>
 			<h3
-				class="group-hover:text-primary text-secondary !my-0 text-center font-light duration-500 ease-[var(--ease)] xl:text-3xl"
+				class="!my-0 text-center font-light text-secondary duration-500 ease-[var(--ease)] group-hover:text-primary xl:text-3xl"
 			>
 				{title}
 			</h3>
 		</a>
 		<div
-			class="group-hover:bg-primary bg-secondary mx-auto h-[1px] w-28 duration-500 ease-[var(--ease)] group-hover:w-44"
+			class="mx-auto h-[1px] w-28 bg-secondary duration-500 ease-[var(--ease)] group-hover:w-44 group-hover:bg-primary"
 		>
 		</div>
 		<h5
 			set:html={excerpt}
 			class="!m-0 flex-1 text-center text-lg font-light italic leading-6 text-gray-600"
 		/>
-		<div class="text-primary flex items-end justify-between">
+		<div class="flex items-end justify-between text-primary">
 			<DateArticle color="alternative" createdAt={createdAt} />
-			<MenuIcons color="alternative" className="items-end" />
+			<MenuIcons color="alternative" className="items-end gap-2 xl:gap-3" />
 		</div>
 	</article>
 </li>
