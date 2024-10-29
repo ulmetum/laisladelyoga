@@ -1,6 +1,7 @@
 ---
+import HeroAboutMe from '@/components/about-me/HeroAboutMe.astro'
+import ContentAboutMe from '@/components/about-me/ContentAboutMe.astro'
 import Container from '@/components/Container.astro'
-import MenuIcons from '@/components/MenuIcons.astro'
 import MainLayout from '@/layouts/MainLayout.astro'
 import { Image } from 'astro:assets'
 ---
@@ -8,94 +9,12 @@ import { Image } from 'astro:assets'
 <MainLayout title="About Me">
 	<section class="sticky left-0 top-0 w-full shadow-y-section lg:flex">
 		<Container className="relative order-1 h-screen w-full py-2">
-			<div
-				style={{ backgroundImage: 'url(/assets/images/perfil.webp)' }}
-				class="h-full w-full bg-cover bg-center bg-no-repeat blur-lg"
-			>
-			</div>
-			<div class="absolute inset-0 bg-primary/10 mix-blend-multiply blur-md"></div>
-			<div class="absolute inset-0 bg-light/60 blur-md"></div>
-			<div
-				class="absolute left-1/2 top-0 z-10 flex h-screen w-[min(100%,1280px)] -translate-x-1/2 flex-col justify-between px-2 py-4 pt-[calc(var(--header-height)+2rem)]"
-			>
-				<h4 class="text-[1.4rem] text-primary">Bienvenid@s</h4>
-				<div class="w-[min(90%,1280px)] lg:mx-auto lg:flex lg:items-center lg:gap-8">
-					<div class="w-[min(90%,600px)] lg:w-2/3">
-						<h1 class="mb-6 font-bold">Míriam R. Vázquez</h1>
-						<p class="leading-normal sm:text-[1.35rem] lg:text-2xl">
-							¡Hola! Mi nombre es Míriam y soy profesora de yoga certificada. Estoy muy emocionada
-							de poder compartir mi pasión y experiencia contigo a través de mi sitio web. Creo que
-							una vida más bonita está al alcance de tod@s y que con las herramientas y la
-							mentalidad adecuadas, puedes alcanzar tu máximo potencial y vivir una vida plena y
-							significativa.
-						</p>
-					</div>
-					<div
-						class="relative hidden h-[450px] w-[min(100%,350px)] overflow-hidden rounded-md shadow-md lg:block lg:w-1/3"
-					>
-						<Image
-							class="relative h-full w-full -scale-x-100 rounded-md object-cover grayscale-[55%]"
-							src="/assets/images/perfil.webp"
-							alt="Perfil"
-							width={300}
-							height={600}
-						/>
-					</div>
-				</div>
-				<div class="mx-2 mb-32">
-					<h4 class="inline-block origin-left rotate-90">Sígueme en mis redes</h4>
-				</div>
-				<div class="flex items-center justify-between gap-4">
-					<div>
-						<MenuIcons className="gap-2 xl:gap-3" />
-					</div>
-					<div class="font-heading text-xl text-primary">hola@laisladelyoga.com</div>
-				</div>
-			</div>
+			<HeroAboutMe />
 		</Container>
 	</section>
 	<section class="relative grid min-h-[100dvh] place-items-center bg-white py-24 shadow-y-section">
 		<Container className="relative flex h-full items-center justify-center xl:justify-start">
-			<div class="absolute left-4 top-4 z-20 md:left-0 md:-rotate-90">
-				<p class="font-heading text-primary">({new Date().getFullYear()})</p>
-				<h5 class="text-primary">Únete a mi viaje</h5>
-			</div>
-			<div class="w-[min(100%,900px)] max-lg:mx-auto">
-				<div
-					class="relative z-10 flex min-h-[30vh] flex-col items-center rounded-lg px-4 py-32 max-xl:bg-white/50 max-xl:shadow-[0_0_15px_rgba(255,255,255,0.5)] max-xl:backdrop-blur-sm sm:px-12"
-				>
-					<div class="mb-8 w-full">
-						<h2 class="text-5xl">Mis habilidades</h2>
-						<small class="">/ Consectetur /</small>
-					</div>
-					<div class="space-y-4">
-						<p class="leading-normal sm:text-[1.35rem] lg:text-2xl">
-							Desde hace más de una década, he podido ver cómo muchas personas se han transformado a
-							si mismas a través del yoga, consiguiendo sentirse mucho mejor consigo mismas y con su
-							entorno.
-						</p>
-						<p class="leading-normal sm:text-[1.35rem] lg:text-2xl">
-							Me he formado en diferentes estilos de yoga (Anusara, terapéutico, aéreo…) y
-							meditación (por la escuela de Satyananda) y en otras disciplinas (Reiki, Danza,
-							Teatro…) que me permiten poder ayudarte a descubrir todo tu potencial.
-						</p>
-						<p class="leading-normal sm:text-[1.35rem] lg:text-2xl">
-							¡Un centenar de personas ya han pasado por mis talleres y cursos quedando plenamente
-							satisfechas!.
-						</p>
-						<p class="leading-normal sm:text-[1.35rem] lg:text-2xl">Anímate y practica conmigo.</p>
-					</div>
-					<h3
-						class="isla absolute bottom-0 right-4 z-20 hidden font-bold sm:block md:-bottom-12 md:right-12"
-					>
-						La isla del Yoga
-					</h3>
-				</div>
-			</div>
-			<div class="absolute bottom-0 left-4 z-20 md:left-0 md:-rotate-90">
-				<p class="font-heading text-primary">(2014)</p>
-				<h5 class="text-primary">Comienza la aventura</h5>
-			</div>
+			<ContentAboutMe />
 		</Container>
 		<Image
 			class="absolute left-1/2 top-0 h-full w-full -translate-x-1/2 object-cover grayscale-[50%] lg:left-[75%]"
@@ -106,11 +25,3 @@ import { Image } from 'astro:assets'
 		/>
 	</section>
 </MainLayout>
-
-<style>
-	.isla {
-		-webkit-text-stroke: 1.5px var(--primary);
-		-webkit-text-fill-color: transparent;
-		letter-spacing: 0.04em;
-	}
-</style>

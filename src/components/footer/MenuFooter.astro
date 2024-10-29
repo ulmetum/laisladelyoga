@@ -9,13 +9,14 @@ const menuItems = [
 const currentPath = Astro.url.pathname
 ---
 
-<nav id="menu-footer" class="text-right md:order-1 md:w-3/5 md:justify-between">
-	<ul>
+<nav id="menu-footer" class="flex md:order-1 md:w-3/5 md:justify-end">
+	<ul class="flex w-[max-content] flex-col md:items-end">
 		{
-			menuItems.map((item) => (
+			menuItems.map((item, index) => (
 				<li
+					id={`wrapper-link-${index}`}
 					class:list={[
-						'',
+						'relative w-[max-content] md:text-right',
 						{
 							'pointer-events-none':
 								currentPath === item.url ||
@@ -23,21 +24,24 @@ const currentPath = Astro.url.pathname
 						}
 					]}
 				>
-					<a href={item.url} class="font-heading text-2xl font-light uppercase">
-						{item.label.split('').map((char, i) => (
-							<span
-								class:list={[
-									'inline-block font-heading text-2xl font-normal uppercase',
-									{
-										'text-primary':
-											currentPath === item.url ||
-											(item.url === '/blog' && currentPath.includes('/articles/'))
-									}
-								]}
-							>
-								{char === ' ' ? '\u00A0' : char}
-							</span>
-						))}
+					<a
+						href={item.url}
+						class:list={['link-top inline-block font-heading text-2xl font-bold uppercase']}
+					>
+						{item.label}
+					</a>
+					<a
+						href={item.url}
+						class:list={[
+							'link-bottom absolute inset-0 inline-block font-heading text-2xl font-bold uppercase',
+							{
+								'active-link':
+									currentPath === item.url ||
+									(item.url === '/blog' && currentPath.includes('/articles/'))
+							}
+						]}
+					>
+						{item.label}
 					</a>
 				</li>
 			))
@@ -45,33 +49,59 @@ const currentPath = Astro.url.pathname
 	</ul>
 </nav>
 
-<script>
-	import { animate, stagger } from 'motion'
-	document.addEventListener('astro:page-load', () => {
-		const menuFooter = document.getElementById('menu-footer') as HTMLElement
-		const links = [...menuFooter.querySelectorAll('a')]
+<style>
+	.active-link {
+		pointer-events: none;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+	}
+	.link-top {
+		color: var(--text); /* Texto inicialmente vacío */
+	}
+	.link-bottom {
+		color: var(--primary);
+	}
 
-		const animateElements = (el: HTMLElement[], color: string, staggerTime: number) => {
-			animate(el, { color: color }, { delay: stagger(staggerTime), easing: [0.83, 0, 0.17, 1] })
+	#wrapper-link-0:hover .link-bottom {
+		animation: show 0.4s var(--ease) forwards;
+	}
+	#wrapper-link-1:hover .link-bottom {
+		animation: show 0.4s var(--ease) forwards;
+	}
+	#wrapper-link-2:hover .link-bottom {
+		animation: show 0.4s var(--ease) forwards;
+	}
+	#wrapper-link-3:hover .link-bottom {
+		animation: show 0.4s var(--ease) forwards;
+	}
+
+	#wrapper-link-0:not(:hover) .link-bottom {
+		animation: hide 0.4s var(--ease) forwards;
+	}
+	#wrapper-link-1:not(:hover) .link-bottom {
+		animation: hide 0.4s var(--ease) forwards;
+	}
+	#wrapper-link-2:not(:hover) .link-bottom {
+		animation: hide 0.4s var(--ease) forwards;
+	}
+	#wrapper-link-3:not(:hover) .link-bottom {
+		animation: hide 0.4s var(--ease) forwards;
+	}
+
+	@keyframes show {
+		from {
+			clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 		}
+		to {
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		}
+	}
 
-		links.forEach((link) => {
-			let isHovered = false
-			link.addEventListener('mouseenter', () => {
-				if (!isHovered) {
-					// Solo animar si no está en hover
-					isHovered = true
-					const spans = [...link.querySelectorAll('span')]
-					animateElements(spans, 'var(--primary-rgb)', 0.05)
-				}
-			})
-
-			link.addEventListener('mouseleave', () => {
-				isHovered = false // Cuando salga del área, se puede volver a animar
-				const spans = [...link.querySelectorAll('span')]
-
-				animateElements(spans, 'var(--text-rgb)', 0.05)
-			})
-		})
-	})
-</script>
+	@keyframes hide {
+		from {
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		}
+		to {
+			clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+		}
+	}
+</style>

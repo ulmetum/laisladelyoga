@@ -1,0 +1,12 @@
+---
+import MainTextAboutMe from '@/components/about-me/MainTextAboutMe.astro'
+import VerticalTextAboutMe from '@/components/about-me/VerticalTextAboutMe.astro'
+import IslaTitleAboutMe from '@/components/about-me/IslaTitleAboutMe.astro'
+---
+
+<div class="relative w-[min(100%,900px)] max-lg:mx-auto">
+	<VerticalTextAboutMe text="Únete a mi viaje" className="-top-4" year={new Date().getFullYear()} />
+	<MainTextAboutMe />
+	<VerticalTextAboutMe text="Comienza la aventura" className="bottom-0" year={2014} />
+	<IslaTitleAboutMe />
+</div>
