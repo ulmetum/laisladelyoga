@@ -2,13 +2,13 @@
 import Container from '@/components/Container.astro'
 import MainHeading from '@/components/homePage/MainHeading.astro'
 import AnimationIsla from '@/components/homePage/AnimationIsla.astro'
-import CarouselYoga from '@/components/homePage/CarouselYoga.astro'
+import CarouselYoga from '@/components/CarouselYoga.astro'
 ---
 
 <Container
-	className="px-2 py-[calc(var(--header-height)/2)] sm:px-6 xl:py-[calc(var(--header-height))]"
+	className="grid h-screen place-items-center px-2 py-[calc(var(--header-height)/2)] sm:px-6"
 >
-	<div class="relative flex flex-col items-center justify-center gap-6">
+	<div class="relative flex flex-col items-center justify-center gap-6 pt-12">
 		<MainHeading />
 		<div class="relative mx-auto flex max-w-[900px] flex-col gap-4 md:flex-row-reverse xl:gap-0">
 			<AnimationIsla

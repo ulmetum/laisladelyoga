@@ -13,6 +13,9 @@ export const getAllArticlesQuery = () => {
 				writer: {
 					fields: ['name', 'email'],
 					populate: { picture: { fields: ['url'] } }
+				},
+				metadata: {
+					populate: { sharedImage: { fields: ['url'] } }
 				}
 			}
 		},

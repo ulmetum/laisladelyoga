@@ -21,8 +21,11 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props
 ---
 
-<MainLayout title="Blog page | La isla del Yoga">
-	<section class="shadow-b-section pb-4">
+<MainLayout
+	description="Pagina de Blog del sitio web La isla del Yoga. Este blog contendrá artículos interesantes con temática relacionada con el yoga, la meditación, la salud, etc."
+	title="Blog | La isla del Yoga"
+>
+	<section class="bg-white pb-4 pt-[calc(var(--header-height)+1rem)] shadow-b-section">
 		<Container className="post my-10">
 			<ul class="grid-blog">
 				{

@@ -1,0 +1,224 @@
+---
+const email = Astro.cookies.get('email')?.value ?? ''
+const name = Astro.cookies.get('name')?.value ?? ''
+const rememberMe = !!email
+
+export const prerender = false
+---
+
+<form id="contact-form" class="mx-auto mt-10 h-3/4 w-full p-6 xl:mt-0">
+	<h2 class="mb-8 text-center font-normal text-primary">Respira, Relájate y Escríbeme</h2>
+	<!-- <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" /> -->
+	<div class="grid h-full gap-6 sm:grid-cols-2">
+		<div class="relative z-0">
+			<input
+				type="text"
+				name="name"
+				value={name}
+				class="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent px-0 py-2.5 text-sm text-gray-900 focus:border-primary focus:outline-none focus:ring-0"
+				placeholder=" "
+			/>
+			<label
+				class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-primary"
+				>Tu nombre</label
+			>
+			<span
+				id="name-error"
+				class="mt-2 inline-block rounded-md text-[.85rem] font-normal text-primary opacity-0 transition-opacity duration-300"
+			></span>
+		</div>
+		<div class="relative z-0">
+			<input
+				type="text"
+				name="email"
+				value={email}
+				class="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent px-0 py-2.5 text-sm text-gray-900 focus:border-primary focus:outline-none focus:ring-0"
+				placeholder=" "
+			/>
+			<label
+				class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-primary"
+				>Correo electrónico</label
+			>
+			<span
+				id="email-error"
+				class="mt-2 inline-block rounded-md text-[.85rem] font-normal text-primary opacity-0 transition-opacity duration-300"
+			></span>
+		</div>
+		<div class="relative z-0 col-span-2">
+			<textarea
+				name="message"
+				rows="5"
+				class="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent px-0 py-2.5 text-sm text-gray-900 focus:border-primary focus:outline-none focus:ring-0"
+				placeholder=" "></textarea>
+			<label
+				class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-primary"
+				>Tu mensaje</label
+			>
+			<span
+				id="message-error"
+				class="mt-2 inline-block rounded-md text-[.85rem] font-normal text-primary opacity-0 transition-opacity duration-300"
+			></span>
+		</div>
+		<div class="col-span-2 flex flex-col items-center justify-center gap-2">
+			<div class="relative z-0 col-span-2 flex items-center">
+				<input
+					id="remember_me"
+					name="remember_me"
+					type="checkbox"
+					checked={rememberMe}
+					class="transition-all duration-200 ease-out"
+				/>
+				<label
+					for="remember_me"
+					class="transition-color ml-2 block text-sm text-gray-800 duration-300"
+				>
+					Recuérdame
+				</label>
+			</div>
+			<button id="btn-submit" type="submit" class="btn-submit mt-5 w-[300px] rounded-md px-10 py-2"
+				>Enviar Mensaje</button
+			>
+		</div>
+	</div>
+</form>
+
+<style>
+	#remember_me:checked + label {
+		color: var(--primary); /* Ajusta esta variable a tu color primario */
+	}
+	.btn-submit {
+		color: var(--text);
+		box-shadow: 0 0 0 1px var(--text) inset;
+		transition:
+			box-shadow 0.3s ease-in-out,
+			color 0.3s ease-in-out;
+		&:hover {
+			color: var(--white);
+			box-shadow: 0 0 0 100px var(--text) inset;
+		}
+	}
+	input[type='checkbox'] {
+		appearance: none;
+		width: 1rem;
+		height: 1rem;
+		border-radius: 0.25rem;
+		background-color: var(--white); /* Fondo gris cuando está desmarcado */
+		border: 1px solid var(--text); /* Borde gris */
+		position: relative;
+		cursor: pointer;
+		box-shadow:
+			0 0 0 0px rgba(255, 255, 255, 1),
+			0 0 0 0px var(--primary);
+		transition:
+			box-shadow 0.2s ease-out,
+			background-color 0.2s ease-out,
+			border-color 0.2s ease-out;
+	}
+
+	/* Fondo y borde al marcar */
+	input[type='checkbox']:checked {
+		background-color: var(--primary); /* Fondo personalizado */
+		border-color: var(--primary);
+		box-shadow:
+			0 0 0 3px rgba(255, 255, 255, 1),
+			0 0 0 4px var(--primary);
+	}
+
+	/* Marca de verificación en blanco al marcar */
+	input[type='checkbox']:checked::before {
+		content: '✓'; /* Marca de verificación */
+		color: white;
+		font-size: 0.75rem;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+</style>
+
+<script>
+	import type { ValidationError } from '@/interfaces/contact.interface'
+	import { actions } from 'astro:actions'
+	import Swal from 'sweetalert2'
+
+	// Elementos HTML
+	const form = document.getElementById('contact-form') as HTMLFormElement
+	const btnSubmit = document.getElementById('btn-submit') as HTMLButtonElement
+	const nameError = document.getElementById('name-error') as HTMLSpanElement
+	const emailError = document.getElementById('email-error') as HTMLSpanElement
+	const messageError = document.getElementById('message-error') as HTMLSpanElement
+
+	const elementErrors = {
+		name: nameError,
+		email: emailError,
+		message: messageError
+	}
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault()
+		btnSubmit.setAttribute('disabled', 'disabled')
+
+		const formData = new FormData(form)
+
+		const { data, error } = await actions.sendMessage(formData)
+
+		if (error) {
+			const errorMessage = error.message
+			const errorMessageArray = errorMessage.replace('Failed to validate: ', '')
+
+			// Array con mensajes de errores
+			const errors: ValidationError[] = JSON.parse(errorMessageArray)
+
+			// Limpiar los mensajes de error antes de procesar nuevos errores
+			Object.values(elementErrors).forEach((span) => {
+				span.classList.add('opacity-0')
+				span.classList.remove('opacity-100')
+			})
+
+			errors.forEach((error) => {
+				// console.log({ error })
+				const field = error.path[0] as keyof typeof elementErrors
+
+				// Mostrar el mensaje de error en el <span> correspondiente
+				elementErrors[field].classList.remove('opacity-0')
+				elementErrors[field].classList.add('opacity-100')
+				elementErrors[field].innerText = error.message
+			})
+
+			btnSubmit.removeAttribute('disabled')
+			return
+		}
+
+		// Limpiar los mensajes de error antes de procesar nuevos errores
+		Object.values(elementErrors).forEach((span) => {
+			span.classList.add('hidden')
+			span.classList.remove('block')
+		})
+
+		// Limpiar el formulario
+		form.reset()
+
+		// Desplazarse hacia arriba
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth' // Esto es opcional para un desplazamiento suave
+		})
+
+		Swal.fire({
+			title: `¡Gracias, ${data.name}!`,
+			text: 'Tu mensaje ha sido enviado con éxito',
+			confirmButtonText: 'Cerrar',
+			confirmButtonColor: 'var(--primary)',
+			scrollbarPadding: false,
+			customClass: {
+				title: 'text-primary',
+				confirmButton: 'rounded-xl	'
+			}
+		}).then(() => {
+			btnSubmit.removeAttribute('disabled')
+			Object.values(elementErrors).forEach((span) => {
+				span.innerText = ''
+			})
+		})
+	})
+</script>

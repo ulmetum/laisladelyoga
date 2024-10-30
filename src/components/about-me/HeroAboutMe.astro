@@ -1,15 +1,10 @@
 ---
 import { Image } from 'astro:assets'
 import MenuIcons from '@/components/MenuIcons.astro'
+import BackgroundImageAboutMe from '@/components/about-me/BackgroundImageAboutMe.astro'
 ---
 
-<div
-	style={{ backgroundImage: 'url(/assets/images/perfil.webp)' }}
-	class="h-full w-full bg-cover bg-center bg-no-repeat blur-lg"
->
-</div>
-<div class="absolute inset-0 bg-primary/10 mix-blend-multiply blur-md"></div>
-<div class="absolute inset-0 bg-light/60 blur-md"></div>
+<BackgroundImageAboutMe />
 <div
 	class="absolute left-1/2 top-0 z-10 flex h-screen w-[min(100%,1280px)] -translate-x-1/2 flex-col justify-between px-2 py-4 pt-[calc(var(--header-height)+2rem)]"
 >

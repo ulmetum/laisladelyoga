@@ -51,7 +51,10 @@ const nextArticleId = articlesIds[(currentIndex + 1) % articlesIds.length]
 const prevArticle = articles.find((article) => article.id === prevArticleId)!
 const nextArticle = articles.find((article) => article.id === nextArticleId)!
 
-const { title, createdAt, content, featuredImage, excerpt } = article
+const { title, createdAt, content, featuredImage, excerpt, metadata } = article
+
+const { metaTitle, metaDescription } = metadata
+
 const image = featuredImage.url.startsWith('http')
 	? featuredImage.url
 	: `${STRAPI_HOST}${featuredImage.url}`
@@ -67,7 +70,7 @@ const formatPathTitle = (path: string) =>
 const titleFormatted = formatPathTitle(currentPath)
 ---
 
-<MainLayout title="Blog page | La isla del Yoga">
+<MainLayout description={metaDescription} image={image} title={`${metaTitle} | La isla del Yoga`}>
 	<section class="sticky left-0 top-0 w-full py-44 pb-36 xl:px-6">
 		<div
 			class="absolute left-0 top-[calc(var(--header-height)+3.5rem)] z-30 w-full -translate-y-1/2 text-center xl:left-6 xl:text-left"
