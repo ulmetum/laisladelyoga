@@ -6,6 +6,6 @@ interface Props {
 const { author, className } = Astro.props
 ---
 
-<h5 class:list={['', className]}>
+<small class:list={['font-heading', className]}>
 	Escrito por @{author}
-</h5>
+</small>
