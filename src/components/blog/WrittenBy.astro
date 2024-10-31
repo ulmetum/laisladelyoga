@@ -1,0 +1,11 @@
+---
+interface Props {
+	author: string
+	className?: string
+}
+const { author, className } = Astro.props
+---
+
+<h5 class:list={['', className]}>
+	Escrito por @{author}
+</h5>

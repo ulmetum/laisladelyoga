@@ -5,6 +5,9 @@ import type { GetStaticPaths } from 'astro'
 import MainLayout from '@/layouts/MainLayout.astro'
 import ContentPaginationArticle from '@/components/blog/ContentPaginationArticle.astro'
 import HeroArticle from '@/components/blog/HeroArticle.astro'
+import BreadCrumbsArticle from '@/components/blog/BreadCrumbsArticle.astro'
+import Container from '@/components/Container.astro'
+import WrittenBy from '@/components/blog/WrittenBy.astro'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/es'
@@ -51,8 +54,9 @@ const nextArticleId = articlesIds[(currentIndex + 1) % articlesIds.length]
 const prevArticle = articles.find((article) => article.id === prevArticleId)!
 const nextArticle = articles.find((article) => article.id === nextArticleId)!
 
-const { title, createdAt, content, featuredImage, excerpt, metadata } = article
+const { title, createdAt, content, featuredImage, excerpt, metadata, writer } = article
 
+const { name } = writer
 const { metaTitle, metaDescription } = metadata
 
 const image = featuredImage.url.startsWith('http')
@@ -71,23 +75,17 @@ const titleFormatted = formatPathTitle(currentPath)
 ---
 
 <MainLayout description={metaDescription} image={image} title={`${metaTitle} | La isla del Yoga`}>
-	<section class="sticky left-0 top-0 w-full py-44 pb-36 xl:px-6">
-		<div
-			class="absolute left-0 top-[calc(var(--header-height)+3.5rem)] z-30 w-full -translate-y-1/2 text-center xl:left-6 xl:text-left"
-		>
-			<a
-				class="font-heading text-xl font-light transition-colors duration-300 hover:text-primary"
-				href="/"
-				>Inicio -
-			</a>
-			<a
-				class="font-heading text-xl font-light transition-colors duration-300 hover:text-primary"
-				href="/blog"
-				>Blog -
-			</a>
-			<span class="font-heading text-xl font-light text-primary">{titleFormatted}</span>
-		</div>
-		<HeroArticle title={title} createdAt={createdAt} excerpt={excerpt} image={image} />
+	<section class="sticky left-0 top-0 h-screen w-full py-44 pb-36 xl:px-6">
+		<Container className="relative flex h-full flex-col justify-center gap-2">
+			<BreadCrumbsArticle title={titleFormatted} />
+			<HeroArticle
+				author={name}
+				title={title}
+				createdAt={createdAt}
+				excerpt={excerpt}
+				image={image}
+			/>
+		</Container>
 	</section>
 	<section class="relative bg-white px-2 py-20 shadow-y-section sm:px-6">
 		<ContentPaginationArticle

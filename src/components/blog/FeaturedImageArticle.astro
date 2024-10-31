@@ -1,15 +1,18 @@
 ---
 import { Image } from 'astro:assets'
+import WrittenBy from './WrittenBy.astro'
 
 interface Props {
 	title: string
 	image: string
+	author: string
 }
 
-const { title, image } = Astro.props
+const { title, image, author } = Astro.props
 ---
 
 <div class="relative h-[360px] w-full overflow-hidden lg:w-[900px] xl:w-[40%]">
+	<WrittenBy author={author} className="absolute bottom-2 right-2 z-10 text-light" />
 	<Image
 		class="block h-full w-full object-cover"
 		src={image}
@@ -17,4 +20,11 @@ const { title, image } = Astro.props
 		width={300}
 		height={200}
 	/>
+	<div class="gradient-90 absolute inset-0"></div>
 </div>
+
+<style>
+	.gradient-90 {
+		background-image: linear-gradient(to bottom right, transparent 65%, #000);
+	}
+</style>

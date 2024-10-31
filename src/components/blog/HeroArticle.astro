@@ -7,14 +7,15 @@ interface Props {
 	createdAt: Date
 	excerpt: string
 	image: string
+	author: string
 }
 
-const { title, createdAt, excerpt, image } = Astro.props
+const { title, createdAt, excerpt, image, author } = Astro.props
 ---
 
 <div
 	class="relative flex flex-col items-center justify-center gap-2 xl:flex-row xl:justify-between"
 >
-	<FeaturedImageArticle title={title} image={image} />
+	<FeaturedImageArticle author={author} title={title} image={image} />
 	<HeadingArticle excerpt={excerpt} title={title} createdAt={createdAt} />
 </div>
