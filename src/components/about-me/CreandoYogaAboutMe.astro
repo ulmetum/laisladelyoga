@@ -6,14 +6,16 @@
 	href="https://creandoyoga.com"
 	target="_blank"
 	data-customTooltip="Haz clic para acceder a la escuela online!"
-	id="isla-title"
-	class="tooltip absolute bottom-0 right-4 z-20 hidden transition-all sm:block md:-bottom-12 md:right-12"
+	id="creando-yoga"
+	class="tooltip transition-all"
 >
 	<div class="top">
 		<span class="font-heading">Haz clic para acceder a la escuela online!</span><i></i>
 	</div>
-	<span class="text-isla inline-block text-5xl font-bold leading-normal">Creando Yoga</span>
-	<span class="mask text-isla absolute inset-0 inline-block text-5xl font-bold leading-normal">
+	<span class="text-creando-yoga inline-block text-5xl font-bold leading-normal">Creando Yoga</span>
+	<span
+		class="mask text-creando-yoga absolute inset-0 inline-block text-5xl font-bold leading-normal"
+	>
 		Creando Yoga
 	</span>
 </a>
@@ -65,41 +67,8 @@
 		background-color: var(--light);
 		box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 	}
-	/* [data-customTooltip] {
-		cursor: pointer;
-	}
 
-	[data-customTooltip]::after {
-		background-color: #fff;
-		font-family: 'Roboto', sans-serif;
-		font-weight: normal;
-		color: #222;
-		font-size: 14px;
-		padding: 8px 12px;
-		height: max-content;
-		width: max-content;
-		border-radius: 6px;
-		position: absolute;
-		text-align: center;
-		bottom: 0px;
-		left: 50%;
-		opacity: 0;
-		content: attr(data-customTooltip);
-		transform: translate(-50%, -200%) scale(0.5);
-		transform-origin: bottom;
-		transition: 0.14s;
-		box-shadow:
-			0 4px 14px 0 rgba(0, 0, 0, 0.2),
-			0 0 0 1px rgba(0, 0, 0, 0.05);
-	}
-
-	[data-customTooltip]:hover:after {
-		opacity: 1;
-		display: block;
-		transform: translate(-50%, -200%) scale(1);
-	} */
-
-	.text-isla {
+	.text-creando-yoga {
 		-webkit-text-stroke: 1.5px var(--primary); /* Contorno de las letras */
 		-webkit-text-fill-color: transparent; /* Texto inicialmente vacío */
 	}
@@ -110,12 +79,12 @@
 	}
 
 	/* Efecto al hacer hover: se revela de izquierda a derecha */
-	#isla-title:hover .mask {
+	#creando-yoga:hover .mask {
 		animation: show 0.75s var(--ease) forwards;
 	}
 
 	/* Efecto al dejar de hacer hover: se oculta de derecha a izquierda */
-	#isla-title:not(:hover) .mask {
+	#creando-yoga:not(:hover) .mask {
 		animation: hide 0.75s var(--ease) forwards;
 	}
 
