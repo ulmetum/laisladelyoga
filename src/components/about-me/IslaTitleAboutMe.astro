@@ -2,17 +2,103 @@
 
 ---
 
-<h3
+<a
+	href="https://creandoyoga.com"
+	target="_blank"
+	data-customTooltip="Haz clic para acceder a la escuela online!"
 	id="isla-title"
-	class="absolute bottom-0 right-4 z-20 hidden sm:block md:-bottom-12 md:right-12"
+	class="tooltip absolute bottom-0 right-4 z-20 hidden transition-all sm:block md:-bottom-12 md:right-12"
 >
-	<span class="text-isla inline-block text-5xl font-bold leading-normal">La Isla del Yoga</span>
+	<div class="top">
+		<span class="font-heading">Haz clic para acceder a la escuela online!</span><i></i>
+	</div>
+	<span class="text-isla inline-block text-5xl font-bold leading-normal">Creando Yoga</span>
 	<span class="mask text-isla absolute inset-0 inline-block text-5xl font-bold leading-normal">
-		La Isla del Yoga
+		Creando Yoga
 	</span>
-</h3>
+</a>
 
 <style>
+	.tooltip .top {
+		min-width: 200px;
+		width: max-content;
+		top: -10px;
+		left: 50%;
+		transform: translate(-50%, -100%);
+		padding: 4px 20px;
+		color: var(--text);
+		background-color: var(--light);
+		font-weight: normal;
+		font-size: 13px;
+		border-radius: 8px;
+		position: absolute;
+		z-index: 99999999;
+		box-sizing: border-box;
+		box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	.tooltip:hover .top {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.tooltip .top i {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -12px;
+		width: 24px;
+		height: 12px;
+		overflow: hidden;
+	}
+
+	.tooltip .top i::after {
+		content: '';
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(45deg);
+		background-color: var(--light);
+		box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+	}
+	/* [data-customTooltip] {
+		cursor: pointer;
+	}
+
+	[data-customTooltip]::after {
+		background-color: #fff;
+		font-family: 'Roboto', sans-serif;
+		font-weight: normal;
+		color: #222;
+		font-size: 14px;
+		padding: 8px 12px;
+		height: max-content;
+		width: max-content;
+		border-radius: 6px;
+		position: absolute;
+		text-align: center;
+		bottom: 0px;
+		left: 50%;
+		opacity: 0;
+		content: attr(data-customTooltip);
+		transform: translate(-50%, -200%) scale(0.5);
+		transform-origin: bottom;
+		transition: 0.14s;
+		box-shadow:
+			0 4px 14px 0 rgba(0, 0, 0, 0.2),
+			0 0 0 1px rgba(0, 0, 0, 0.05);
+	}
+
+	[data-customTooltip]:hover:after {
+		opacity: 1;
+		display: block;
+		transform: translate(-50%, -200%) scale(1);
+	} */
+
 	.text-isla {
 		-webkit-text-stroke: 1.5px var(--primary); /* Contorno de las letras */
 		-webkit-text-fill-color: transparent; /* Texto inicialmente vacío */
