@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import MenuIcons from '@/components/MenuIcons.astro'
 import BackgroundImageAboutMe from '@/components/about-me/BackgroundImageAboutMe.astro'
+import CustomEmail from '../CustomEmail.astro'
 ---
 
 <BackgroundImageAboutMe />
@@ -42,6 +43,10 @@ import BackgroundImageAboutMe from '@/components/about-me/BackgroundImageAboutMe
 		<div>
 			<MenuIcons className="gap-2 xl:gap-3" />
 		</div>
-		<div class="hidden font-heading text-xl text-primary lg:block">hola@laisladelyoga.com</div>
+		<div class="hidden font-heading text-xl text-primary lg:block">
+			<CustomEmail
+				classNames="relative h-8 overflow-hidden sm:h-12 lg:w-[max-content] scale-[65%] "
+			/>
+		</div>
 	</div>
 </div>

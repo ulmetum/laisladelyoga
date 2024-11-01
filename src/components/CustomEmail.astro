@@ -30,31 +30,35 @@ const { classNames } = Astro.props
 	document.addEventListener('astro:page-load', () => {
 		type State = 'enter' | 'default' | 'done'
 
-		const emailContainer = document.querySelector('[data-container]') as HTMLDivElement
-		const emailText = emailContainer.querySelector('.email-text') as HTMLParagraphElement
+		// Por si hay varias instancias de este componente de lo contrario solo funcionaría la primera de ellas
+		const emailContainers = document.querySelectorAll('[data-container]')
 
-		function updateState(newState: State) {
-			const states = ['default', 'enter', 'done'] as const
-			states.forEach((stateClass) => emailContainer.classList.remove(stateClass))
-			emailContainer.classList.add(newState)
-		}
+		emailContainers.forEach((emailContainer) => {
+			const emailText = emailContainer.querySelector('.email-text') as HTMLParagraphElement
 
-		function handleMouseEnter() {
-			updateState('enter')
-		}
+			function updateState(newState: State) {
+				const states = ['default', 'enter', 'done'] as const
+				states.forEach((stateClass) => emailContainer.classList.remove(stateClass))
+				emailContainer.classList.add(newState)
+			}
 
-		function handleMouseLeave() {
-			updateState('default')
-		}
+			function handleMouseEnter() {
+				updateState('enter')
+			}
 
-		function handleMouseClick() {
-			updateState('done')
-			navigator.clipboard.writeText(emailText.innerText)
-		}
+			function handleMouseLeave() {
+				updateState('default')
+			}
 
-		emailContainer.addEventListener('mouseenter', handleMouseEnter)
-		emailContainer.addEventListener('mouseleave', handleMouseLeave)
-		emailContainer.addEventListener('click', handleMouseClick)
+			function handleMouseClick() {
+				updateState('done')
+				navigator.clipboard.writeText(emailText.innerText)
+			}
+
+			emailContainer.addEventListener('mouseenter', handleMouseEnter)
+			emailContainer.addEventListener('mouseleave', handleMouseLeave)
+			emailContainer.addEventListener('click', handleMouseClick)
+		})
 	})
 </script>
 
