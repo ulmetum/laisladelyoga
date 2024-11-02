@@ -8,9 +8,63 @@ import CreandoYoga from '@/components/homePage/CreandoYoga.astro'
 ---
 
 <Container className="flex flex-col gap-16">
-	<PassionYoga />
-	<ServicesYoga />
-	<PracticesYoga />
-	<ChallengeYoga />
-	<CreandoYoga />
+	<div id="container-passion-yoga">
+		<PassionYoga />
+	</div>
+	<div id="container-services-yoga">
+		<ServicesYoga />
+	</div>
+	<div id="container-practices-yoga">
+		<PracticesYoga />
+	</div>
+	<div id="container-chanllenge-yoga">
+		<ChallengeYoga />
+	</div>
+	<div id="container-creando-yoga">
+		<CreandoYoga />
+	</div>
 </Container>
+
+<script>
+	import { inView, animate } from 'motion'
+
+	document.addEventListener('astro:page-load', () => {
+		const containerPassionYoga = document.getElementById('container-passion-yoga') as HTMLDivElement
+		const containerServicesYoga = document.getElementById(
+			'container-services-yoga'
+		) as HTMLDivElement
+		const containerPracticesYoga = document.getElementById(
+			'container-practices-yoga'
+		) as HTMLDivElement
+		const containerChallengeYoga = document.getElementById(
+			'container-chanllenge-yoga'
+		) as HTMLDivElement
+		const containerCreandoYoga = document.getElementById('container-creando-yoga') as HTMLDivElement
+
+		function animationInView(containerElement: HTMLDivElement) {
+			inView(
+				containerElement,
+				(enterInfo) => {
+					console.log('enter', { enterInfo })
+					const firstElementChild = enterInfo.target.firstElementChild as HTMLDivElement
+					console.log({ firstElementChild })
+					animate(
+						firstElementChild,
+						{ opacity: 1, transform: ['translateY(100px)', 'translateY(0px)'] },
+						{ duration: 1.75, easing: [0.83, 0, 0.17, 1] }
+					)
+					// return (leaveInfo) => {
+					// 	console.log('leave', { leaveInfo })
+					// 	animate(firstElementChild, { opacity: 0 }, { duration: 1.75 })
+					// }
+				},
+				{ amount: 0.33 }
+			)
+		}
+		animationInView(containerPassionYoga)
+		animationInView(containerServicesYoga)
+		animationInView(containerPracticesYoga)
+		animationInView(containerChallengeYoga)
+		animationInView(containerCreandoYoga)
+	})
+</script>

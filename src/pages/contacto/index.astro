@@ -4,6 +4,8 @@ import VerticalHeading from '@/components/contact/VerticalHeading.astro'
 import Container from '@/components/Container.astro'
 import PoseWomanEight from '@/components/icons/Pose-woman-eight.icon.astro'
 import MainLayout from '@/layouts/MainLayout.astro'
+
+export const prerender = false
 ---
 
 <MainLayout
@@ -14,7 +16,7 @@ import MainLayout from '@/layouts/MainLayout.astro'
 		class="min-h-screen bg-white py-[calc(var(--header-height)+2rem)] shadow-y-section xl:pt-[calc(var(--header-height)+4rem)]"
 	>
 		<Container>
-			<div class="max-xl:space-y-24 xl:flex xl:gap-4 xl:px-4">
+			<div class="max-xl:space-y-8 xl:flex xl:gap-4 xl:px-4">
 				<div class="relative !leading-[1.125] xl:w-1/2">
 					<VerticalHeading />
 					<div class="absolute -bottom-6 left-1/2 w-full -translate-x-1/2 text-center sm:bottom-0">
