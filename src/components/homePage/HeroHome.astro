@@ -4,6 +4,7 @@ import MainHeading from '@/components/homePage/MainHeading.astro'
 import AnimationIsla from '@/components/homePage/AnimationIsla.astro'
 import Marquee from '@/components/homePage/Marquee.astro'
 import CarouselYoga from '@/components/CarouselYoga.astro'
+import CircularText from '@/components/CircularText.astro'
 ---
 
 <Container
@@ -30,8 +31,13 @@ import CarouselYoga from '@/components/CarouselYoga.astro'
 			</div>
 		</div>
 		<CarouselYoga />
-		<div class="mt-auto max-xl:hidden">
+		<div class="mt-auto w-full max-xl:hidden">
 			<Marquee />
+		</div>
+		<div
+			class="absolute right-32 top-[20%] z-10 hidden h-[300px] w-[300px] -translate-y-1/2 lg:block xl:left-16 xl:top-[55%]"
+		>
+			<CircularText />
 		</div>
 	</div>
 </Container>
