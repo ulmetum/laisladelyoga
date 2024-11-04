@@ -21,6 +21,20 @@ export default {
 			boxShadow: {
 				'b-section': '0px 10px 20px -20px var(--text-rgb)',
 				'y-section': '0px -10px 20px -20px var(--text-rgb), 0px 10px 20px -20px var(--text-rgb)'
+			},
+			animation: {
+				marquee: 'marquee 25s linear infinite',
+				marquee2: 'marquee2 25s linear infinite'
+			},
+			keyframes: {
+				marquee: {
+					'0%': { transform: 'translateX(0%)' },
+					'100%': { transform: 'translateX(-100%)' }
+				},
+				marquee2: {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0%)' }
+				}
 			}
 		}
 	},

@@ -1,0 +1,51 @@
+---
+
+---
+
+<div class="fadeout-horizontal marquee relative flex overflow-x-hidden">
+	<div class="animate-marquee flex whitespace-nowrap py-12">
+		<p class="flex items-center font-heading text-4xl">
+			<span class="mx-2"> - </span> Marquee Item 1
+		</p>
+		<p class="flex items-center font-heading text-4xl">
+			<span class="mx-2"> - </span> Marquee Item 2
+		</p>
+		<p class="flex items-center font-heading text-4xl">
+			<span class="mx-2"> - </span> Marquee Item 3
+		</p>
+		<p class="flex items-center font-heading text-4xl">
+			<span class="mx-2"> - </span> Marquee Item 4
+		</p>
+	</div>
+
+	<div class="animate-marquee2 absolute top-0 flex whitespace-nowrap py-12">
+		<p class="flex items-center font-heading text-4xl">
+			<span class="mx-2"> - </span> Marquee Item 1
+		</p>
+		<p class="flex items-center font-heading text-4xl">
+			<span class="mx-2"> - </span> Marquee Item 2
+		</p>
+		<p class="flex items-center font-heading text-4xl">
+			<span class="mx-2"> - </span> Marquee Item 3
+		</p>
+		<p class="flex items-center font-heading text-4xl">
+			<span class="mx-2"> - </span> Marquee Item 4
+		</p>
+	</div>
+</div>
+
+<style>
+	.marquee:hover .animate-marquee2,
+	.marquee:hover .animate-marquee {
+		animation-play-state: paused;
+	}
+	.fadeout-horizontal {
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 5rem,
+			black calc(100% - 5rem),
+			transparent
+		);
+	}
+</style>
