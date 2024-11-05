@@ -3,7 +3,7 @@ const email = Astro.cookies.get('email')?.value ?? ''
 const name = Astro.cookies.get('name')?.value ?? ''
 const rememberMe = !!email
 
-console.log({ email, name, rememberMe })
+// console.log({ email, name, rememberMe })
 ---
 
 <form id="contact-form" class="mx-auto h-3/4 w-full p-6 xl:mt-0">

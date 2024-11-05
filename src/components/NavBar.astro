@@ -31,10 +31,11 @@ const currentPath = Astro.url.pathname
 		<div
 			class="container mx-auto flex items-center justify-center capitalize text-gray-600 dark:text-gray-300"
 		>
-			<ul class="flex items-center gap-x-4">
+			<div class="flex items-center gap-x-4">
 				{
 					menuItemsLeft.map((item) => (
-						<li
+						<a
+							href={item.url}
 							class:list={[
 								'group relative mx-2 overflow-hidden uppercase',
 								{
@@ -44,22 +45,16 @@ const currentPath = Astro.url.pathname
 								}
 							]}
 						>
-							<a
-								href={item.url}
-								class="block font-heading transition-all duration-[400ms] ease-[var(--ease)] group-hover:-translate-y-full md:text-xl"
-							>
+							<span class="block font-heading transition-all duration-[400ms] ease-[var(--ease)] group-hover:-translate-y-full md:text-xl">
 								{item.label}
-							</a>
-							<a
-								href={item.url}
-								class="absolute left-0 top-full font-heading text-primary transition-all duration-[400ms] ease-[var(--ease)] group-hover:top-0 md:text-xl"
-							>
+							</span>
+							<span class="absolute left-0 top-full font-heading text-primary transition-all duration-[400ms] ease-[var(--ease)] group-hover:top-0 md:text-xl">
 								{item.label}
-							</a>
-						</li>
+							</span>
+						</a>
 					))
 				}
-			</ul>
+			</div>
 		</div>
 	</nav>
 	<div class="mx-8 hidden sm:block">
@@ -69,10 +64,11 @@ const currentPath = Astro.url.pathname
 		<div
 			class="container mx-auto flex items-center justify-center capitalize text-gray-600 dark:text-gray-300"
 		>
-			<ul class="flex items-center gap-x-4">
+			<div class="flex items-center gap-x-4">
 				{
 					menuItemsRight.map((item) => (
-						<li
+						<a
+							href={item.url}
 							class:list={[
 								'group relative mx-2 overflow-hidden uppercase',
 								{
@@ -82,29 +78,27 @@ const currentPath = Astro.url.pathname
 								}
 							]}
 						>
-							<a
-								href={item.url}
-								class="block font-heading transition-all duration-[400ms] ease-[var(--ease)] group-hover:-translate-y-full md:text-xl"
-							>
+							<span class="block font-heading transition-all duration-[400ms] ease-[var(--ease)] group-hover:-translate-y-full md:text-xl">
 								{item.label}
-							</a>
-							<a
-								href={item.url}
-								class="absolute left-0 top-full font-heading text-primary transition-all duration-[400ms] ease-[var(--ease)] group-hover:top-0 md:text-xl"
-							>
+							</span>
+							<span class="absolute left-0 top-full font-heading text-primary transition-all duration-[400ms] ease-[var(--ease)] group-hover:top-0 md:text-xl">
 								{item.label}
-							</a>
-						</li>
+							</span>
+						</a>
 					))
 				}
-			</ul>
+			</div>
 		</div>
 	</nav>
 </header>
 
 <style>
-	.active {
+	.active span {
 		@apply pointer-events-none text-primary;
+	}
+	.header-bar {
+		box-shadow: rgba(8, 47, 73, 0.25) 0px 0px 0px 1px inset;
+		width: var(--header-bar-width);
 	}
 	.animate-up {
 		@apply -translate-y-[var(--header-bar-top)] bg-white backdrop-blur-0 transition-all duration-1000 ease-[var(--ease)];

@@ -14,12 +14,17 @@ import CircularText from '@/components/CircularText.astro'
 		class="relative flex h-full w-full flex-col items-center justify-center gap-6 pt-[calc(var(--header-height))] xl:pt-0"
 	>
 		<MainHeading />
-		<div class="relative mx-auto flex max-w-[900px] flex-col gap-4 md:flex-row-reverse xl:gap-0">
+		<div
+			class="relative mx-auto flex max-w-[900px] flex-col items-center gap-4 md:flex-row-reverse xl:gap-0"
+		>
 			<AnimationIsla
 				color="amber"
 				fill="transparent"
 				className="justify-center md:w-[35%] md:justify-start md:pr-4"
 			/>
+			<div class="hidden h-auto w-[300px] items-center lg:flex">
+				<CircularText />
+			</div>
 			<div class="flex items-center md:w-[65%]">
 				<p
 					class="mx-auto w-[min(100%,480px)] text-center text-[.95rem] leading-snug md:text-right md:text-sm lg:text-base"
@@ -31,13 +36,8 @@ import CircularText from '@/components/CircularText.astro'
 			</div>
 		</div>
 		<CarouselYoga />
-		<div class="mt-auto w-full max-xl:hidden">
+		<div class="mt-auto max-xl:hidden">
 			<Marquee />
-		</div>
-		<div
-			class="absolute right-32 top-[20%] z-10 hidden h-[300px] w-[300px] -translate-y-1/2 lg:block xl:left-16 xl:top-[55%]"
-		>
-			<CircularText />
 		</div>
 	</div>
 </Container>

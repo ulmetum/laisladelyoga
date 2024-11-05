@@ -8,12 +8,20 @@ import ContentHome from '@/components/homePage/ContentHome.astro'
 	description="Página principal de La isla del Yoga. Un sitio web dedicado a la práctica de Yoga y a la meditación entre otros aspectos"
 	title="Inicio"
 >
-	<section class="light sticky left-0 top-0 w-full">
+	<section class="hero-home light sticky left-0 top-0 min-h-[100dvh] w-full">
 		<HeroHome />
 	</section>
 	<section
-		class="relative grid min-h-[100dvh] place-items-center bg-white px-2 py-24 shadow-y-section sm:px-6"
+		class="relative grid min-h-[100dvh] w-full place-items-center bg-white px-2 py-24 shadow-y-section sm:px-6"
 	>
 		<ContentHome />
 	</section>
 </MainLayout>
+
+<style>
+	@media (orientation: landscape) {
+		.hero-home {
+			min-height: 700px;
+		}
+	}
+</style>

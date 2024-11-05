@@ -60,7 +60,7 @@ const colorsFill = {
 <style define:vars={{ color: colors[color], fill: colorsFill[fill], delay }}>
 	.grid-isla {
 		display: grid;
-		grid-template-columns: repeat(4, 53px);
+		grid-template-columns: repeat(4, minmax(50px, 1fr));
 		grid-template-rows: repeat(3, 96px);
 		grid-template-areas:
 			'i s l a'
