@@ -19,9 +19,9 @@
 	--white: #ffffff;
 	--light: #f6f2ef;
 	--primary: #b45309;
-	--primary-rgb: rgb(180, 83, 9);
+	--primary-rgb: 180, 83, 9;
 	--text: #18181b;
-	--text-rgb: rgb(24, 24, 27);
+	--text-rgb: 24, 24, 27;
 	--secondary: #082f49;
 	--turquoise: #349098;
 	--purple-pale: #b06dcc;

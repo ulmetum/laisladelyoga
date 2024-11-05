@@ -11,7 +11,7 @@ interface Props {
 const { title, image, author } = Astro.props
 ---
 
-<div class="relative h-[360px] w-full overflow-hidden lg:w-[900px] xl:w-[40%]">
+<div class="container-image relative h-[360px] w-full lg:w-[900px] xl:w-[40%]">
 	<WrittenBy author={author} className="absolute bottom-2 right-2 z-10 text-light" />
 	<Image
 		class="block h-full w-full object-cover"
@@ -26,5 +26,15 @@ const { title, image, author } = Astro.props
 <style>
 	.gradient-90 {
 		background-image: linear-gradient(to bottom right, transparent 65%, #000);
+	}
+	.container-image {
+		&:before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			box-shadow:
+				0 0 0 2px #f6f2ef,
+				0 0 0 3px rgba(var(--text-rgb), 0.5);
+		}
 	}
 </style>

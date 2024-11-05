@@ -29,7 +29,7 @@ const image = featuredImage.url.startsWith('http')
 	<a
 		href={`/articles/${slug}`}
 		data-image={i + 1}
-		class="container-image h-[35dvh] w-full xl:h-[calc(50%-1.25rem)]"
+		class="container-image h-[300px] w-full xl:h-[calc(50%-1.25rem)]"
 	>
 		<div class="h-full w-full overflow-hidden">
 			<small class="absolute left-1 top-1 z-20 font-heading text-light">
@@ -80,8 +80,8 @@ const image = featuredImage.url.startsWith('http')
 			position: absolute;
 			inset: 0;
 			box-shadow:
-				0 0 0 1px #f6f2ef,
-				0 0 0 2px var(--zinc900);
+				0 0 0 2px #f6f2ef,
+				0 0 0 3px rgba(var(--text-rgb), 0.25);
 			transition: box-shadow 0.5s var(--ease);
 		}
 	}
@@ -89,8 +89,8 @@ const image = featuredImage.url.startsWith('http')
 	.group:hover {
 		.container-image:before {
 			box-shadow:
-				0 0 0 1px #f6f2ef,
-				0 0 0 2px var(--amber700);
+				0 0 0 2px #f6f2ef,
+				0 0 0 3px var(--amber700);
 		}
 	}
 
