@@ -19,9 +19,9 @@ import ContentHome from '@/components/homePage/ContentHome.astro'
 </MainLayout>
 
 <style>
-	@media (orientation: landscape) {
+	@media (orientation: landscape) and (max-height: 900px) {
 		.hero-home {
-			min-height: 700px;
+			position: static;
 		}
 	}
 </style>

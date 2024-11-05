@@ -75,7 +75,9 @@ const titleFormatted = formatPathTitle(currentPath)
 ---
 
 <MainLayout description={metaDescription} image={image} title={`${metaTitle} | La isla del Yoga`}>
-	<section class="sticky left-0 top-0 h-screen w-full py-44 pb-36 xl:px-6">
+	<section
+		class="section-top sticky left-0 top-0 min-h-screen w-full py-[calc(var(--header-height)+1rem)] pb-36 xl:px-6"
+	>
 		<Container className="relative flex h-full flex-col justify-center gap-2">
 			<BreadCrumbsArticle title={titleFormatted} />
 			<HeroArticle
@@ -95,3 +97,12 @@ const titleFormatted = formatPathTitle(currentPath)
 		/>
 	</section>
 </MainLayout>
+
+<style>
+	@media (orientation: landscape) {
+		.section-top {
+			position: static;
+			padding-top: calc(var(--header-height) + 1rem);
+		}
+	}
+</style>

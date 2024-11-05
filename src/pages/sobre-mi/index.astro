@@ -10,8 +10,8 @@ import { Image } from 'astro:assets'
 	description="Página donde se habla de Míriam, creadora de contenido especializado en Yoga y fundadora de La isla del Yoga así como de la escuela creandoyoga.com"
 	title="Sobre mí | La isla del Yoga"
 >
-	<section class="sticky left-0 top-0 w-full shadow-y-section lg:flex">
-		<Container className="relative order-1 h-screen w-full py-2">
+	<section class="hero-about-me sticky left-0 top-0 min-h-[100dvh] w-full shadow-y-section lg:flex">
+		<Container className="relative order-1 w-full py-2">
 			<HeroAboutMe />
 		</Container>
 	</section>
@@ -28,3 +28,10 @@ import { Image } from 'astro:assets'
 		/>
 	</section>
 </MainLayout>
+<style>
+	@media (orientation: landscape) and (max-height: 900px) {
+		.hero-about-me {
+			position: static;
+		}
+	}
+</style>

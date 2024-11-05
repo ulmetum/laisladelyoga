@@ -6,11 +6,15 @@ import AnimationIsla from './homePage/AnimationIsla.astro'
 ---
 
 <footer
-	class="light relative h-[900px] md:h-[700px]"
+	class="main-footer light relative h-[900px] md:h-[700px]"
 	style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
 >
-	<div class="relative -top-[100vh] h-[calc(100vh+900px)] md:h-[calc(100vh+700px)]">
-		<div class="sticky top-[calc(100vh-900px)] h-[900px] md:top-[calc(100vh-700px)] md:h-[700px]">
+	<div
+		class="main-footer-wrapper relative -top-[100vh] h-[calc(100vh+900px)] md:h-[calc(100vh+700px)]"
+	>
+		<div
+			class="main-footer-inner sticky top-[calc(100vh-900px)] h-[900px] md:top-[calc(100vh-700px)] md:h-[700px]"
+		>
 			<Container className="h-full">
 				<div class="flex h-full flex-col justify-between gap-4 px-2 py-10 sm:px-6">
 					<div class="flex flex-col gap-10 md:flex-row">
@@ -41,3 +45,16 @@ import AnimationIsla from './homePage/AnimationIsla.astro'
 		</div>
 	</div>
 </footer>
+
+<style>
+	@media (orientation: landscape) and (max-height: 500px) {
+		.main-footer,
+		.main-footer-wrapper {
+			top: 0;
+			height: auto;
+		}
+		.main-footer-inner {
+			position: static;
+		}
+	}
+</style>
