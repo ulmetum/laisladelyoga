@@ -54,7 +54,7 @@ const nextArticleId = articlesIds[(currentIndex + 1) % articlesIds.length]
 const prevArticle = articles.find((article) => article.id === prevArticleId)!
 const nextArticle = articles.find((article) => article.id === nextArticleId)!
 
-const { title, createdAt, content, featuredImage, excerpt, metadata, writer } = article
+const { title, createdAt, featuredImage, excerpt, metadata, writer, elements } = article
 
 const { name } = writer
 const { metaTitle, metaDescription } = metadata
@@ -89,11 +89,11 @@ const titleFormatted = formatPathTitle(currentPath)
 			/>
 		</Container>
 	</section>
-	<section class="relative bg-white px-2 py-20 shadow-y-section sm:px-6">
+	<section class="post relative bg-white px-2 py-20 shadow-y-section sm:px-6">
 		<ContentPaginationArticle
+			elements={elements}
 			prevArticle={prevArticle}
 			nextArticle={nextArticle}
-			content={content}
 		/>
 	</section>
 </MainLayout>

@@ -1,0 +1,27 @@
+---
+import type { ArticleElement } from '@/interfaces'
+import PhotoArticle from '@/components/blog/PhotoArticle.astro'
+import TextArticle from '@/components/blog/TextArticle.astro'
+import VideoArticle from './VideoArticle.astro'
+
+interface Props {
+	elements: ArticleElement[]
+}
+
+const { elements } = Astro.props
+
+const componentMap = {
+	'elements.photo': PhotoArticle,
+	'elements.text': TextArticle,
+	'elements.video': VideoArticle
+}
+---
+
+<article>
+	{
+		elements.map((element: ArticleElement) => {
+			const Component = componentMap[element.__component as keyof typeof componentMap]
+			return Component ? <Component {...element} /> : null
+		})
+	}
+</article>

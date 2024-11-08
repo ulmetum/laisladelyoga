@@ -1,19 +1,19 @@
 ---
 import Container from '@/components/Container.astro'
-import ContentArticle from '@/components/blog/ContentArticle.astro'
 import PaginationArticle from '@/components/blog/PaginationArticle.astro'
-import type { Datum } from '@/interfaces'
+import type { ArticleElement, Datum } from '@/interfaces'
+import ElementsManager from './ElementsManager.astro'
 
 interface Props {
 	prevArticle: Datum
 	nextArticle: Datum
-	content: string
+	elements: ArticleElement[]
 }
 
-const { prevArticle, nextArticle, content } = Astro.props
+const { prevArticle, nextArticle, elements } = Astro.props
 ---
 
 <Container className="relative flex min-h-screen flex-col justify-between">
-	<ContentArticle className="mx-2" content={content} />
+	<ElementsManager elements={elements} />
 	<PaginationArticle prevArticle={prevArticle} nextArticle={nextArticle} />
 </Container>

@@ -1,0 +1,7 @@
+---
+import type { ElementText } from '@/interfaces'
+
+const { richText } = Astro.props as ElementText
+---
+
+<div set:html={richText} />

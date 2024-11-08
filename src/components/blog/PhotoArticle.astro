@@ -1,0 +1,9 @@
+---
+import type { ElementPhoto, ImageComponent } from '@/interfaces'
+import { Image } from 'astro:assets'
+
+const { image } = Astro.props as ElementPhoto
+const { url } = image!
+---
+
+<Image src={url} alt="Imagen del articulo" width={400} height={400} class="rounded-lg" />
