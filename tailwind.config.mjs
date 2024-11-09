@@ -19,8 +19,8 @@ export default {
 				heading: ['Oswald']
 			},
 			boxShadow: {
-				'b-section': '0px 10px 20px -20px var(--text-rgb)',
-				'y-section': '0px -10px 20px -20px var(--text-rgb), 0px 10px 20px -20px var(--text-rgb)'
+				'b-section': '0px 10px 20px -20px var(--text)',
+				'y-section': '0px -10px 20px -20px var(--text), 0px 10px 20px -20px var(--text)'
 			},
 			animation: {
 				marquee: 'marquee 25s linear infinite',

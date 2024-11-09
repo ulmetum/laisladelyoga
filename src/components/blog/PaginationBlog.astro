@@ -9,53 +9,53 @@ interface Props {
 const { page } = Astro.props
 const { currentPage, size, total } = page
 
+// console.log({ total })
+
 const { prev, next } = page.url
 ---
 
-<div class="my-16 flex flex-col items-center">
-	<span class="text-primary my-2 font-heading text-lg">
-		Mostrando <span class="text-primary font-heading">{(currentPage - 1) * size + 1}</span> a{' '}
-		<span class="text-primary font-heading">
-			{Math.min(total, size * currentPage)}
-		</span>{' '}
-		de <span class="text-primary font-heading">{total}</span> entradas
-	</span>
+{
+	total === 4 ? null : (
+		<div class="my-16 flex flex-col items-center">
+			<span class="my-2 font-heading text-lg text-primary">
+				Mostrando <span class="font-heading text-primary">{(currentPage - 1) * size + 1}</span> a{' '}
+				<span class="font-heading text-primary">{Math.min(total, size * currentPage)}</span> de{' '}
+				<span class="font-heading text-primary">{total}</span> entradas
+			</span>
 
-	<div class="xs:mt-0 mt-2 inline-flex space-x-2">
-		<a
-			href={prev}
-			class:list={[
-				`border-primary text-primary group relative z-10 flex h-8 items-center justify-center overflow-hidden rounded border px-3 font-heading text-base font-medium transition-all duration-700 ease-[var(--ease)] hover:text-white`,
-				{
-					'border-text/20 text-text/20 pointer-events-none': currentPage <= 1
-				}
-			]}
-		>
-			<div
-				class:list={[
-					'bg-primary absolute inset-0 -inset-x-2 -inset-y-2 top-[calc(100%+8px)] -z-[1] skew-y-6 transition-all duration-700 ease-[var(--ease)] group-hover:-top-[30%]',
-					{
-						'border-text/20 text-text/20 pointer-events-none': currentPage <= 1
-					}
-				]}
-			>
+			<div class="xs:mt-0 mt-2 inline-flex space-x-2">
+				<a
+					href={prev}
+					class:list={[
+						`group relative z-10 flex h-8 items-center justify-center overflow-hidden rounded border border-primary px-3 font-heading text-base font-medium text-primary transition-all duration-700 ease-[var(--ease)] hover:text-white`,
+						{
+							'pointer-events-none border-text/20 text-text/20': currentPage <= 1
+						}
+					]}
+				>
+					<div
+						class:list={[
+							'absolute inset-0 -inset-x-2 -inset-y-2 top-[calc(100%+8px)] -z-[1] skew-y-6 bg-primary transition-all duration-700 ease-[var(--ease)] group-hover:-top-[30%]',
+							{
+								'pointer-events-none border-text/20 text-text/20': currentPage <= 1
+							}
+						]}
+					/>
+					Anteriores
+				</a>
+				<a
+					href={next}
+					class:list={[
+						'group relative z-10 flex h-8 items-center justify-center overflow-hidden rounded border border-primary px-3 font-heading text-base font-medium text-primary transition-all duration-700 ease-[var(--ease)] hover:text-white',
+						{
+							'pointer-events-none border-text/20 text-text/20': currentPage >= total / size
+						}
+					]}
+				>
+					<div class="absolute inset-0 -inset-x-2 -inset-y-2 top-[calc(100%+8px)] -z-[1] -skew-y-6 bg-primary transition-all duration-700 ease-[var(--ease)] group-hover:-top-[30%]" />
+					Siguientes
+				</a>
 			</div>
-			Anteriores
-		</a>
-		<a
-			href={next}
-			class:list={[
-				'border-primary text-primary group relative z-10 flex h-8 items-center justify-center overflow-hidden rounded border px-3 font-heading text-base font-medium transition-all duration-700 ease-[var(--ease)] hover:text-white',
-				{
-					'border-text/20 text-text/20 pointer-events-none': currentPage >= total / size
-				}
-			]}
-		>
-			<div
-				class="bg-primary absolute inset-0 -inset-x-2 -inset-y-2 top-[calc(100%+8px)] -z-[1] -skew-y-6 transition-all duration-700 ease-[var(--ease)] group-hover:-top-[30%]"
-			>
-			</div>
-			Siguientes
-		</a>
-	</div>
-</div>
+		</div>
+	)
+}

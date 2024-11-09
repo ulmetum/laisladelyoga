@@ -1,5 +1,4 @@
 ---
-// Importa el tipo de datos del video
 import type { ElementVideo } from '@/interfaces'
 
 const { videoUrl } = Astro.props as ElementVideo
@@ -8,7 +7,6 @@ if (!videoUrl) {
 	throw new Error('No se ha proporcionado un vídeo')
 }
 
-// Función que genera el embed del video, dependiendo de la URL
 const getEmbedCode = (url: string): string | null => {
 	if (url.includes('youtube.com') || url.includes('youtu.be')) {
 		// Si es un enlace de YouTube
@@ -32,9 +30,8 @@ if (!embedUrl) {
 }
 ---
 
-<!-- Mostrar el iframe con el video embebido -->
 <iframe
 	src={embedUrl}
 	allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 	allowfullscreen
-	class="mx-auto my-16 aspect-video w-[min(100%,768px)]"></iframe>
+	class="mx-auto my-12 aspect-video w-[min(100%,768px)]"></iframe>

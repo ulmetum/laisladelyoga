@@ -23,12 +23,14 @@ export interface ArticleElement {
 	image?: ImageComponent
 	richText?: string
 	videoUrl?: VideoURL
+	position?: string
 }
 
 export interface ElementPhoto {
 	__component: string
 	id: number
 	image?: ImageComponent
+	position?: string
 }
 
 export interface ElementText {

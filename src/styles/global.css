@@ -83,6 +83,9 @@ input:-webkit-autofill:active {
 }
 
 article {
+	.image_resized {
+		@apply rounded-[6px];
+	}
 	.image-style-align-right {
 		float: right;
 		margin-left: 1rem;

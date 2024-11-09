@@ -1,5 +1,5 @@
 ---
-import type { FeaturedImage, Writer } from '@/interfaces'
+import type { ImageComponent, Writer } from '@/interfaces'
 import { Image } from 'astro:assets'
 import DateArticle from '@/components/blog/DateArticle.astro'
 import MenuIcons from '@/components/MenuIcons.astro'
@@ -7,7 +7,7 @@ import MenuIcons from '@/components/MenuIcons.astro'
 const { STRAPI_HOST } = import.meta.env
 
 interface Props {
-	featuredImage: FeaturedImage
+	featuredImage: ImageComponent
 	slug: string
 	title: string
 	excerpt: string

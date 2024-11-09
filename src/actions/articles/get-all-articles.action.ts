@@ -10,8 +10,6 @@ export const getAllArticles = defineAction({
 
 		const url = `articles?${query}`
 
-		// console.log({ url })
-
 		const articles = await fetchData<AllArticles>(url)
 
 		return { articles }
