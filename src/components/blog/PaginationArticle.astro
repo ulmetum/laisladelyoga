@@ -1,5 +1,6 @@
 ---
 import type { Datum } from '@/interfaces'
+import { Image } from 'astro:assets'
 
 interface Props {
 	prevArticle: Datum | undefined
@@ -11,11 +12,100 @@ const { prevArticle, nextArticle } = Astro.props
 
 <div
 	class="relative mx-auto mt-12 flex w-full flex-col items-center justify-center gap-16 xl:flex-row xl:justify-between"
+	id="pagination"
 >
-	<a class="flex-1 text-left" href={`/articles/${prevArticle?.slug}`}>
+	<a
+		id="prev"
+		data-img={prevArticle?.featuredImage.url}
+		class="relative inline-block w-[max-content] text-left"
+		href={`/articles/${prevArticle?.slug}`}
+	>
+		{
+			prevArticle && (
+				<Image
+					src={prevArticle?.featuredImage.url}
+					alt={prevArticle?.title}
+					width={150}
+					height={150}
+					class="[translate(-50%, 0%)] image-link pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-[80%] opacity-0"
+				/>
+			)
+		}
+
 		<h3 class="text-primary xl:text-4xl">{prevArticle?.title}</h3>
 	</a>
-	<a class="flex-1 text-right" href={`/articles/${nextArticle?.slug}`}>
+	<a
+		id="next"
+		data-img={nextArticle?.featuredImage.url}
+		class="relative inline-block w-[max-content] text-right"
+		href={`/articles/${nextArticle?.slug}`}
+	>
+		{
+			nextArticle && (
+				<Image
+					src={nextArticle?.featuredImage.url}
+					alt={nextArticle?.title}
+					width={150}
+					height={150}
+					class="[translate(-50%, 0%)] image-link pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-[70%] opacity-0"
+				/>
+			)
+		}
 		<h3 class="text-primary xl:text-4xl">{nextArticle?.title}</h3>
 	</a>
 </div>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		const prev = document.getElementById('prev') as HTMLAnchorElement
+		const next = document.getElementById('next') as HTMLAnchorElement
+
+		const images = document.querySelectorAll('img')
+		let randomAngle = -3
+
+		images.forEach((image) => {
+			image.style.transition = 'transform 0.15s ease-out, opacity 0.15s ease-out'
+		})
+
+		// Función para asignar la imagen de fondo cuando sea necesario
+		function handleImageHover(anchor: HTMLAnchorElement) {
+			const imageLink = anchor.querySelector('img') as HTMLImageElement
+			randomAngle = Math.random() * 6 - 3
+			imageLink.style.opacity = '1'
+			imageLink.style.transform = 'translate(-50%, 0%) scale(1)'
+		}
+
+		function handleImageRemove(anchor: HTMLAnchorElement) {
+			const imageLink = anchor.querySelector('img') as HTMLImageElement
+			imageLink.style.opacity = '0'
+			imageLink.style.transform = 'translate(-50%, 0%) scale(.7) rotate(0deg)'
+		}
+
+		function handleMouseMove(e: MouseEvent, anchor: HTMLAnchorElement) {
+			const { clientX, clientY } = e
+			const target = e.target as HTMLAnchorElement
+			const imageLink = anchor.querySelector('img') as HTMLImageElement
+
+			const rect = target.getBoundingClientRect()
+
+			const { width, height, top, left } = rect
+
+			const x = ((clientX - (left + width / 2)) / width) * -50
+			const y = ((clientY - (top + height / 2)) / height) * -25
+
+			imageLink.style.transform = `translate(-50%, 0%) translate(${x}px, ${y}px) rotate(${randomAngle}deg)`
+		}
+
+		// Agregar event listeners para los enlaces prev y next
+		if (prev) {
+			prev.addEventListener('mouseenter', () => handleImageHover(prev))
+			prev.addEventListener('mouseleave', () => handleImageRemove(prev))
+			prev.addEventListener('mousemove', (e) => handleMouseMove(e, prev))
+		}
+		if (next) {
+			next.addEventListener('mouseenter', () => handleImageHover(next))
+			next.addEventListener('mouseleave', () => handleImageRemove(next))
+			next.addEventListener('mousemove', (e) => handleMouseMove(e, next))
+		}
+	})
+</script>
