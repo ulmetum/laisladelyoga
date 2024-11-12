@@ -95,14 +95,8 @@ article {
 		float: left;
 		margin-right: 1rem;
 		margin-bottom: 1rem;
-		/* box-shadow:
-			0 0 0 2px #f6f2ef,
-			0 0 0 3px rgba(var(--text-rgb), 0.5); */
 	}
 	figure.image_resized {
 		@apply m-auto my-8;
-		/* box-shadow:
-			0 0 0 2px #f6f2ef,
-			0 0 0 3px rgba(var(--text-rgb), 0.5); */
 	}
 }

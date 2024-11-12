@@ -1,4 +1,6 @@
 ---
+import AnimationIslaElement from '@/components/homePage/AnimationIslaElement.astro'
+
 interface Props {
 	color?: 'amber' | 'dark'
 	fill?: 'amber' | 'dark' | 'transparent'
@@ -22,42 +24,27 @@ const colorsFill = {
 
 <div class:list={['flex h-[130px] items-center overflow-hidden', className]}>
 	<div class="grid-isla">
-		<span
-			class="animate-up-1 row-span-2 flex items-end justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:i]"
-			>i</span
+		<AnimationIslaElement className="animate-up-1 row-span-2 items-end [grid-area:i]"
+			>i</AnimationIslaElement
 		>
-		<span
-			class="animate-down-1 flex items-end justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:s] [scale:.9_1]"
-			>o</span
+		<AnimationIslaElement className="animate-down-1 items-end [grid-area:s] [scale:.9_1]"
+			>o</AnimationIslaElement
 		>
-		<span
-			class="animate-up-2 row-span-2 flex items-end justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:l]"
-			>l</span
+		<AnimationIslaElement className="animate-up-2 row-span-2 items-end [grid-area:l]"
+			>l</AnimationIslaElement
 		>
-		<span
-			class="animate-down-2 flex items-end justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:a]"
-			>a</span
+		<AnimationIslaElement className="animate-down-2 items-end [grid-area:a]">a</AnimationIslaElement
 		>
-		<span
-			class="animate-up-1 flex justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:y]"
-			>y</span
-		>
-		<span
-			class="animate-down-1 flex justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:o]"
-			>s</span
-		>
-		<span
-			class="animate-up-2 flex justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:g]"
-			>g</span
-		>
-		<span
-			class="animate-down-2 row-span-2 flex justify-center font-heading text-[6rem] font-bold uppercase leading-none [grid-area:e]"
-			>a</span
+		<AnimationIslaElement className="animate-up-1 items-end [grid-area:y]">y</AnimationIslaElement>
+		<AnimationIslaElement className="animate-down-1 [grid-area:o]">s</AnimationIslaElement>
+		<AnimationIslaElement className="animate-up-2 [grid-area:g]">g</AnimationIslaElement>
+		<AnimationIslaElement className="animate-down-2 row-span-2 [grid-area:e]"
+			>a</AnimationIslaElement
 		>
 	</div>
 </div>
 
-<style define:vars={{ color: colors[color], fill: colorsFill[fill], delay }}>
+<style is:global define:vars={{ color: colors[color], fill: colorsFill[fill], delay }}>
 	.grid-isla {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(50px, 1fr));
@@ -78,7 +65,7 @@ const colorsFill = {
 			transform: translateY(0px);
 		}
 		100% {
-			transform: translateY(-96px); /* Sube 120px */
+			transform: translateY(-96px);
 		}
 	}
 
@@ -87,7 +74,7 @@ const colorsFill = {
 			transform: translateY(0px);
 		}
 		100% {
-			transform: translateY(96px); /* Baja 120px */
+			transform: translateY(96px);
 		}
 	}
 
