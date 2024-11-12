@@ -13,25 +13,17 @@ interface Props {
 const { size = 'small', className, color = 'dark' } = Astro.props
 ---
 
-<ul class:list={['flex', className]}>
-	<li>
-		<a href="#" target="_blank">
-			<TikTok color={color} size={size} />
-		</a>
-	</li>
-	<li>
-		<a href="#" target="_blank">
-			<Youtube color={color} size={size} />
-		</a>
-	</li>
-	<li>
-		<a href="#" target="_blank">
-			<Instagram color={color} size={size} />
-		</a>
-	</li>
-	<li>
-		<a href="#" target="_blank">
-			<Spotify color={color} size={size} />
-		</a>
-	</li>
-</ul>
+<nav class:list={['flex', className]}>
+	<a title="Tiktok" href="#" target="_blank">
+		<TikTok color={color} size={size} />
+	</a>
+	<a title="Youtube" href="#" target="_blank">
+		<Youtube color={color} size={size} />
+	</a>
+	<a title="Instagram" href="#" target="_blank">
+		<Instagram color={color} size={size} />
+	</a>
+	<a title="Spotify" href="#" target="_blank">
+		<Spotify color={color} size={size} />
+	</a>
+</nav>

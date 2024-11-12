@@ -31,6 +31,7 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/typography": "^0.5.15",
-		"@types/qs": "^6.9.16"
+		"@types/qs": "^6.9.16",
+		"tailwindcss-motion": "^0.4.1-beta"
 	}
 }
