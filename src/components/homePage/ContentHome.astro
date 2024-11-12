@@ -45,20 +45,19 @@ import CreandoYoga from '@/components/homePage/CreandoYoga.astro'
 			inView(
 				containerElement,
 				(enterInfo) => {
-					console.log('enter', { enterInfo })
 					const firstElementChild = enterInfo.target.firstElementChild as HTMLDivElement
-					console.log({ firstElementChild })
+
 					animate(
 						firstElementChild,
 						{ opacity: 1, transform: ['translateY(100px)', 'translateY(0px)'] },
-						{ duration: 1.75, easing: [0.83, 0, 0.17, 1] }
+						{ duration: 1.25, easing: 'ease-out' }
 					)
 					// return (leaveInfo) => {
 					// 	console.log('leave', { leaveInfo })
 					// 	animate(firstElementChild, { opacity: 0 }, { duration: 1.75 })
 					// }
 				},
-				{ amount: 0.33 }
+				{ amount: 0.75 }
 			)
 		}
 		animationInView(containerPassionYoga)
