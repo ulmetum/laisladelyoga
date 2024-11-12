@@ -7,7 +7,6 @@ import ContentPaginationArticle from '@/components/blog/ContentPaginationArticle
 import HeroArticle from '@/components/blog/HeroArticle.astro'
 import BreadCrumbsArticle from '@/components/blog/BreadCrumbsArticle.astro'
 import Container from '@/components/Container.astro'
-import WrittenBy from '@/components/blog/WrittenBy.astro'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/es'
@@ -30,7 +29,6 @@ export const getStaticPaths = (async () => {
 	}))
 }) satisfies GetStaticPaths
 
-const { slug } = Astro.params
 const { article, articles } = Astro.props
 
 const currentArticleId = article.id

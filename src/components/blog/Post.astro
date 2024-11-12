@@ -36,11 +36,11 @@ const image = featuredImage.url.startsWith('http')
 				Escrito por @{writer.name}
 			</small>
 			<div
-				class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-black transition-opacity duration-500 ease-[var(--ease)] group-hover:opacity-55"
+				class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-black transition-opacity duration-700 ease-[var(--ease)] group-hover:opacity-55"
 			>
 			</div>
 			<Image
-				class="block h-full w-full object-cover object-center duration-500 ease-[var(--ease)] group-hover:scale-105"
+				class="block h-full w-full object-cover object-center transition-transform duration-700 ease-[var(--ease)] group-hover:scale-105"
 				src={image}
 				alt={title}
 				width={300}
@@ -51,7 +51,7 @@ const image = featuredImage.url.startsWith('http')
 	<article class="mx-1 my-6 flex h-full flex-col gap-4 xl:m-0 xl:group-first:w-1/2">
 		<a href={`/articles/${slug}`}>
 			<h3
-				class="!my-0 text-center font-light text-secondary duration-500 ease-[var(--ease)] group-hover:text-primary xl:text-3xl"
+				class="!my-0 text-center font-light text-secondary transition duration-700 ease-[var(--ease)] group-hover:text-primary xl:text-3xl"
 			>
 				{title}
 			</h3>

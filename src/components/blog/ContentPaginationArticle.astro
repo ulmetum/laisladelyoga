@@ -1,8 +1,9 @@
 ---
+import type { ArticleElement, Datum } from '@/interfaces'
+
 import Container from '@/components/Container.astro'
 import PaginationArticle from '@/components/blog/PaginationArticle.astro'
-import type { ArticleElement, Datum } from '@/interfaces'
-import ElementsManager from './ElementsManager.astro'
+import ElementsManager from '@/components/blog/ElementsManager.astro'
 
 interface Props {
 	prevArticle: Datum

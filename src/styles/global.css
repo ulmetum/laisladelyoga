@@ -23,9 +23,31 @@
 	--text: #18181b;
 	--text-rgb: 24, 24, 27;
 	--secondary: #082f49;
+	--secondary-rgb: 8, 47, 73;
 	--turquoise: #349098;
 	--purple-pale: #b06dcc;
 	--sky-pale: #61bbf7;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--light);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background-color: var(--secondary);
+	border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(var(--secondary-rgb), 0.75);
 }
 
 html {
