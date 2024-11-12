@@ -17,7 +17,7 @@ const { prevArticle, nextArticle } = Astro.props
 	<a
 		id="prev"
 		data-img={prevArticle?.featuredImage.url}
-		class="relative inline-block w-[max-content] text-left"
+		class="group relative inline-block w-[max-content] text-left"
 		href={`/articles/${prevArticle?.slug}`}
 	>
 		{
@@ -27,7 +27,7 @@ const { prevArticle, nextArticle } = Astro.props
 					alt={prevArticle?.title}
 					width={150}
 					height={150}
-					class="image-link pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-[80%] rounded-[3px] opacity-0"
+					class="pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-75 rounded-[3px] opacity-0 group-hover:scale-100 group-hover:opacity-100"
 				/>
 			)
 		}
@@ -37,7 +37,7 @@ const { prevArticle, nextArticle } = Astro.props
 	<a
 		id="next"
 		data-img={nextArticle?.featuredImage.url}
-		class="relative inline-block w-[max-content] text-right"
+		class="group relative inline-block w-[max-content] text-right"
 		href={`/articles/${nextArticle?.slug}`}
 	>
 		{
@@ -47,7 +47,7 @@ const { prevArticle, nextArticle } = Astro.props
 					alt={nextArticle?.title}
 					width={150}
 					height={150}
-					class="image-link pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-[70%] rounded-[3px] opacity-0"
+					class="pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-75 rounded-[3px] opacity-0 group-hover:scale-100 group-hover:opacity-100"
 				/>
 			)
 		}
@@ -67,18 +67,10 @@ const { prevArticle, nextArticle } = Astro.props
 			image.style.transition = 'transform 0.15s ease-out, opacity 0.15s ease-out'
 		})
 
-		// Función para asignar la imagen de fondo cuando sea necesario
-		function handleImageHover(anchor: HTMLAnchorElement) {
-			const imageLink = anchor.querySelector('img') as HTMLImageElement
-			randomAngle = Math.random() * 6 - 3
-			imageLink.style.opacity = '1'
-			imageLink.style.transform = 'translate(-50%, 0%) scale(1)'
-		}
-
 		function handleImageRemove(anchor: HTMLAnchorElement) {
+			randomAngle = Math.random() * 6 - 3
 			const imageLink = anchor.querySelector('img') as HTMLImageElement
-			imageLink.style.opacity = '0'
-			imageLink.style.transform = 'translate(-50%, 0%) scale(.7) rotate(0deg)'
+			imageLink.style.transform = ''
 		}
 
 		function handleMouseMove(e: MouseEvent, anchor: HTMLAnchorElement) {
@@ -98,12 +90,10 @@ const { prevArticle, nextArticle } = Astro.props
 
 		// Agregar event listeners para los enlaces prev y next
 		if (prev) {
-			prev.addEventListener('mouseenter', () => handleImageHover(prev))
 			prev.addEventListener('mouseleave', () => handleImageRemove(prev))
 			prev.addEventListener('mousemove', (e) => handleMouseMove(e, prev))
 		}
 		if (next) {
-			next.addEventListener('mouseenter', () => handleImageHover(next))
 			next.addEventListener('mouseleave', () => handleImageRemove(next))
 			next.addEventListener('mousemove', (e) => handleMouseMove(e, next))
 		}
