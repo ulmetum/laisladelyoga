@@ -55,11 +55,11 @@ const {
 		<meta property="twitter:image" content={image} />
 		<ViewTransitions />
 	</head>
-	<body class="motion-preset-fade-lg motion-preset-focus relative motion-duration-700">
+	<body class="relative">
 		<NavBar idName="main-header" />
 		<main
 			class:list={[
-				'light relative z-40 min-h-dvh'
+				'light motion-preset-fade-lg motion-preset-focus relative z-40 min-h-dvh motion-duration-700'
 				// 'light relative z-40 min-h-dvh pt-[calc(var(--header-height)+1rem)]',
 				// {
 				// 	'!pt-0':
@@ -105,6 +105,7 @@ const {
 		}
 
 		header?.addEventListener('mouseenter', () => {
+			// console.log('enter header')
 			updateState('animate-down')
 		})
 

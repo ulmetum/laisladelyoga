@@ -19,7 +19,9 @@ export const prerender = false
 			<div class="max-xl:space-y-8 xl:flex xl:gap-4 xl:px-4">
 				<div class="relative !leading-[1.125] xl:w-1/2">
 					<VerticalHeading />
-					<div class="absolute -bottom-6 left-1/2 w-full -translate-x-1/2 text-center sm:bottom-0">
+					<div
+						class="absolute -bottom-6 left-1/2 z-10 w-full -translate-x-1/2 text-center sm:bottom-0"
+					>
 						<h3 class="font-normal">Pero jamás pierdas el contacto contigo</h3>
 						<p class="mt-3 text-[.95rem]">
 							Envíame un correo electrónico a <span
@@ -28,7 +30,9 @@ export const prerender = false
 							> o a través del siguiente formulario
 						</p>
 					</div>
-					<div class="mx-auto h-[600px] w-[min(100%,600px)]">
+					<div
+						class="mx-auto h-[600px] w-[min(100%,600px)] -motion-translate-y-loop-[2%]/mirror -motion-rotate-loop-1/mirror motion-duration-[5s] motion-ease-spring-bouncier"
+					>
 						<PoseWomanEight />
 					</div>
 				</div>
