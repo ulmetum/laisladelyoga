@@ -11,7 +11,9 @@ interface Props {
 const { title, image, author } = Astro.props
 ---
 
-<div class="container-image relative h-[360px] w-full lg:w-[900px] xl:w-[40%]">
+<div
+	class="container-image motion-preset-slide-down-sm relative h-[360px] w-full motion-duration-700 motion-ease-spring-bouncier xl:motion-preset-slide-right-sm lg:w-[900px] xl:w-[40%]"
+>
 	<WrittenBy author={author} className="absolute bottom-2 right-2 z-10 text-light" />
 	<Image
 		class="block h-full w-full object-cover"
