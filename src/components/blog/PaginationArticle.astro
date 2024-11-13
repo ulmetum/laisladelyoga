@@ -27,7 +27,7 @@ const { prevArticle, nextArticle } = Astro.props
 					alt={prevArticle?.title}
 					width={150}
 					height={150}
-					class="pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-75 rounded-[3px] opacity-0 group-hover:scale-100 group-hover:opacity-100"
+					class="pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-75 rounded-[3px] opacity-0 motion-ease-spring-bounciest group-hover:opacity-100 group-hover:motion-scale-in-110"
 				/>
 			)
 		}
@@ -47,7 +47,7 @@ const { prevArticle, nextArticle } = Astro.props
 					alt={nextArticle?.title}
 					width={150}
 					height={150}
-					class="pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-75 rounded-[3px] opacity-0 group-hover:scale-100 group-hover:opacity-100"
+					class="pointer-events-none absolute bottom-full left-1/2 w-[150px] -translate-x-1/2 scale-75 rounded-[3px] opacity-0 motion-ease-spring-bounciest group-hover:opacity-100 group-hover:motion-scale-in-110"
 				/>
 			)
 		}
@@ -71,6 +71,7 @@ const { prevArticle, nextArticle } = Astro.props
 			randomAngle = Math.random() * 6 - 3
 			const imageLink = anchor.querySelector('img') as HTMLImageElement
 			imageLink.style.transform = ''
+			imageLink.classList.remove('motion-scale-in-105')
 		}
 
 		function handleMouseMove(e: MouseEvent, anchor: HTMLAnchorElement) {
