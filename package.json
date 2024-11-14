@@ -12,10 +12,11 @@
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
 		"@astrojs/netlify": "^5.5.4",
+		"@astrojs/node": "^8.3.4",
 		"@astrojs/tailwind": "^5.1.2",
 		"@fontsource/oswald": "^5.1.0",
 		"@fontsource/ubuntu": "^5.1.0",
-		"astro": "^4.16.9",
+		"astro": "4.16.10",
 		"dayjs": "^1.11.13",
 		"lenis": "^1.1.14",
 		"motion": "^10.18.0",

@@ -36,28 +36,33 @@ const image = featuredImage.url.startsWith('http')
 				Escrito por @{writer.name}
 			</small>
 			<div
-				class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-black transition-opacity duration-700 ease-[var(--ease)] group-hover:opacity-55"
+				class="absolute inset-0 z-10 bg-gradient-to-t from-transparent to-black transition-all duration-700 ease-[var(--ease-elastic)] group-hover:opacity-55"
 			>
 			</div>
-			<Image
-				class="block h-full w-full object-cover object-center transition-transform duration-700 ease-[var(--ease)] group-hover:scale-105"
+			<div
+				style={{ backgroundImage: `url(${image})` }}
+				class="h-full w-full bg-cover bg-center bg-no-repeat transition-all duration-700 ease-[var(--ease-elastic)] group-hover:scale-105"
+			>
+			</div>
+			<!-- <Image
+				class="block h-full w-full scale-100 object-cover object-center transition-all duration-700 ease-[var(--ease-elastic)] group-hover:scale-105"
 				src={image}
 				alt={title}
 				width={300}
 				height={200}
-			/>
+			/> -->
 		</div>
 	</a>
 	<article class="mx-1 my-6 flex h-full flex-col gap-4 xl:m-0 xl:group-first:w-1/2">
 		<a href={`/articles/${slug}`}>
 			<h3
-				class="!my-0 text-center font-light text-secondary transition duration-700 ease-[var(--ease)] group-hover:text-primary xl:text-3xl"
+				class="!my-0 text-center font-light text-secondary transition duration-700 ease-[var(--ease-elastic)] group-hover:text-primary xl:text-3xl"
 			>
 				{title}
 			</h3>
 		</a>
 		<div
-			class="mx-auto h-[1px] w-28 bg-secondary duration-700 ease-[var(--ease)] group-hover:w-44 group-hover:bg-primary"
+			class="mx-auto h-[1px] w-28 bg-secondary duration-700 ease-[var(--ease-elastic)] group-hover:w-44 group-hover:bg-primary"
 		>
 		</div>
 		<h5
@@ -71,7 +76,13 @@ const image = featuredImage.url.startsWith('http')
 	</article>
 </li>
 
-<style define:vars={{ amber700: 'var(--primary)', zinc900: 'var(--text)' }}>
+<style
+	define:vars={{
+		easeElastic: 'var(--ease-elastic)',
+		amber700: 'var(--primary)',
+		zinc900: 'var(--text)'
+	}}
+>
 	.container-image {
 		position: relative;
 		display: block;
@@ -82,7 +93,7 @@ const image = featuredImage.url.startsWith('http')
 			box-shadow:
 				0 0 0 2px #f6f2ef,
 				0 0 0 3px rgba(var(--text-rgb), 0.25);
-			transition: box-shadow 0.5s var(--ease);
+			transition: box-shadow 0.5s var(--easeElastic);
 		}
 	}
 
