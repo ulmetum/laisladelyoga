@@ -8,19 +8,19 @@ const { classNames } = Astro.props
 
 <div data-container class:list={[classNames]}>
 	<p
-		class="email-text sm:leading-12 font-headings h-8 cursor-pointer text-center font-heading text-xl font-light leading-8 text-primary transition-all ease-[cubic-bezier(.642,0,.328,1)] sm:h-12 sm:text-4xl"
+		class="email-text sm:leading-12 font-headings h-8 cursor-pointer text-center font-heading text-xl font-light leading-8 text-primary sm:h-12 sm:text-4xl"
 	>
 		hola@laisladelyoga.com
 	</p>
 
 	<p
-		class="copy-text sm:leading-12 font-headings h-8 cursor-pointer text-center font-heading text-xl font-light leading-8 text-primary transition-all ease-[cubic-bezier(.642,0,.328,1)] sm:h-12 sm:text-4xl"
+		class="copy-text sm:leading-12 font-headings h-8 cursor-pointer text-center font-heading text-xl font-light leading-8 text-primary sm:h-12 sm:text-4xl"
 	>
 		Clic para copiar
 	</p>
 
 	<p
-		class="copied-text sm:leading-12 font-headings h-8 cursor-pointer text-center font-heading text-xl font-light leading-8 text-primary transition-all ease-[cubic-bezier(.642,0,.328,1)] sm:h-12 sm:text-4xl"
+		class="copied-text sm:leading-12 font-headings h-8 cursor-pointer text-center font-heading text-xl font-light leading-8 text-primary sm:h-12 sm:text-4xl"
 	>
 		¡Email copiado!
 	</p>
@@ -71,33 +71,21 @@ const { classNames } = Astro.props
 	.copy-text,
 	.copied-text {
 		text-align: center;
-		transition: transform 0.5s var(--ease);
+		transition: transform 1s var(--ease-elastic);
 	}
 
-	.default .email-text {
-		transform: translateY(0);
-	}
-
-	.enter .email-text {
-		transform: translateY(-100%);
-	}
-
-	.done .email-text {
-		transform: translateY(-200%);
-	}
-
+	.default .email-text,
 	.default .copy-text {
 		transform: translateY(0);
 	}
 
+	.enter .email-text,
 	.enter .copy-text {
 		transform: translateY(-100%);
 	}
 
-	.done .copy-text {
-		transform: translateY(-200%);
-	}
-
+	.done .email-text,
+	.done .copy-text,
 	.done .copied-text {
 		transform: translateY(-200%);
 	}

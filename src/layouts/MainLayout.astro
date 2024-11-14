@@ -60,13 +60,6 @@ const {
 		<main
 			class:list={[
 				'light motion-preset-fade-lg motion-preset-focus relative z-40 min-h-dvh motion-duration-700'
-				// 'light relative z-40 min-h-dvh pt-[calc(var(--header-height)+1rem)]',
-				// {
-				// 	'!pt-0':
-				// 		currentPath.includes('/articles/') ||
-				// 		currentPath === '/contacto' ||
-				// 		currentPath === '/sobre-mi' ||
-				// }
 			]}
 		>
 			<slot />
@@ -78,9 +71,8 @@ const {
 <script>
 	import Lenis from 'lenis'
 
-	type State = 'animate-up' | 'animate-down'
-
 	document.addEventListener('astro:page-load', () => {
+		type State = 'animate-up' | 'animate-down'
 		const lenis = new Lenis()
 		const header = document.querySelector('#main-header')
 

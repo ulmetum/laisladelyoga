@@ -24,10 +24,21 @@ export default {
 				'y-section': '0px -10px 20px -20px var(--text), 0px 10px 20px -20px var(--text)'
 			},
 			animation: {
+				elastic: 'easeOutElastic 1s ease-out',
 				marquee: 'marquee 25s linear infinite',
 				marquee2: 'marquee2 25s linear infinite'
 			},
 			keyframes: {
+				elastic: {
+					'0%': { transform: 'translateX(0%)' },
+					'16%': { transform: 'translateX(-132.27%)' },
+					'28%': { transform: 'translateX(-86.88%)' },
+					'44%': { transform: 'translateX(-104.63%)' },
+					'59%': { transform: 'translateX(-98.36%)' },
+					'73%': { transform: 'translateX(-100.58%)' },
+					'88%': { transform: 'translateX(-99.8%)' },
+					'100%': { transform: 'translateX(-100%)' }
+				},
 				marquee: {
 					'0%': { transform: 'translateX(0%)' },
 					'100%': { transform: 'translateX(-100%)' }
