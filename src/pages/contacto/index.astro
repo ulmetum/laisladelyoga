@@ -25,7 +25,8 @@ export const prerender = false
 						<h3 class="font-normal">Pero jamás pierdas el contacto contigo</h3>
 						<p class="mt-3 text-[.95rem]">
 							Envíame un correo electrónico a <span
-								class="text-[.95rem] text-primary underline underline-offset-2"
+								id="span-email"
+								class="inline-block scale-100 bg-white px-1 text-[.95rem] text-primary underline underline-offset-2 motion-duration-700 motion-ease-spring-bounciest"
 								>hola@laisladelyoga.com</span
 							> o a través del siguiente formulario
 						</p>
@@ -45,3 +46,29 @@ export const prerender = false
 		</Container>
 	</section>
 </MainLayout>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		const spanEmail = document.getElementById('span-email') as HTMLSpanElement
+
+		const startClasses = ['motion-scale-out-150', 'motion-rotate-out-2']
+		const leaveClasses = ['motion-scale-in-150', 'motion-rotate-in-2']
+
+		function toggleClasses(
+			element: HTMLSpanElement,
+			startClasses: string[],
+			leaveClasses: string[]
+		) {
+			element.classList.add(...startClasses)
+			element.classList.remove(...leaveClasses)
+		}
+
+		spanEmail.addEventListener('mouseenter', () =>
+			toggleClasses(spanEmail, startClasses, leaveClasses)
+		)
+
+		spanEmail.addEventListener('mouseleave', () =>
+			toggleClasses(spanEmail, leaveClasses, startClasses)
+		)
+	})
+</script>

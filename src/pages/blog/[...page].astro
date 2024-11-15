@@ -18,7 +18,9 @@ export const getStaticPaths = (async ({ paginate }) => {
 	return paginate(articles, { pageSize: 4, props: { articles } })
 }) satisfies GetStaticPaths
 
-const { page } = Astro.props
+const { page, articles } = Astro.props
+
+// console.log({ articles })
 ---
 
 <MainLayout
@@ -27,6 +29,34 @@ const { page } = Astro.props
 >
 	<section class="bg-white px-1 pb-4 pt-[calc(var(--header-height)+1rem)] shadow-b-section">
 		<Container className="post my-10">
+			<div class="relative z-0 my-12">
+				<div class="mx-auto flex max-w-md overflow-hidden font-[sans-serif]">
+					<input
+						data-info-article={JSON.stringify(articles)}
+						id="search-input"
+						type="text"
+						placeholder="Busca un artículo..."
+						class="w-full rounded-l-full border-b border-l border-t border-secondary bg-white px-5 py-3 text-sm outline-none"
+					/>
+					<button
+						id="search-btn"
+						type="button"
+						class="flex items-center justify-center rounded-r-full bg-secondary px-6 transition-all duration-300 hover:bg-primary"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 192.904 192.904"
+							width="18px"
+							class="fill-white"
+						>
+							<path
+								d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z"
+							>
+							</path>
+						</svg>
+					</button>
+				</div>
+			</div>
 			<ul class="grid-blog">
 				{
 					page.data.map(({ slug, title, featuredImage, excerpt, createdAt, writer }, i) => (
@@ -46,19 +76,37 @@ const { page } = Astro.props
 			<PaginationBlog page={page} />
 		</Container>
 	</section>
-</MainLayout>
 
-<style>
-	@media (width >= 1280px) {
-		.grid-blog {
-			display: grid;
-			gap: 2.5rem;
-			grid-template-columns: repeat(3, 1fr);
-			grid-template-rows: repeat(3, 35dvh);
-			grid-template-areas:
-				'top top top'
-				'left center right'
-				'left center right';
+	<style>
+		@media (width >= 1280px) {
+			.grid-blog {
+				display: grid;
+				gap: 2.5rem;
+				grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: repeat(3, 35dvh);
+				grid-template-areas:
+					'top top top'
+					'left center right'
+					'left center right';
+			}
 		}
-	}
-</style>
+	</style>
+
+	<script>
+		import type { Datum } from '@/interfaces'
+
+		const searchInput = document.getElementById('search-input') as HTMLInputElement
+		const searchBtn = document.getElementById('search-btn') as HTMLButtonElement
+
+		const articles = JSON.parse(searchInput.dataset.infoArticle!) as Datum[]
+
+		searchInput.addEventListener('keyup', () => {
+			const valueInputSearch = searchInput.value
+			console.log({ articles, valueInputSearch })
+			const filteredArticles = articles.filter((article) =>
+				article.title.toLowerCase().includes(valueInputSearch.toLowerCase())
+			)
+			console.log({ filteredArticles })
+		})
+	</script>
+</MainLayout>
