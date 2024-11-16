@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro check && astro build",
+		"check": "astro check",
+		"build": "astro build && pagefind --site dist",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
@@ -17,6 +18,7 @@
 		"@fontsource/oswald": "^5.1.0",
 		"@fontsource/ubuntu": "^5.1.0",
 		"astro": "4.16.10",
+		"astro-pagefind": "^1.6.0",
 		"dayjs": "^1.11.13",
 		"lenis": "^1.1.14",
 		"motion": "^10.18.0",

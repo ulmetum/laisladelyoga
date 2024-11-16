@@ -37,7 +37,7 @@ const {
 		<meta name="viewport" content="width=device-width" />
 		<title>{title}</title>
 		<!-- Meta tags -->
-		<meta name="title" content={title} />
+		<meta data-pagefind-meta="title[content]" name="title" content={title} />
 		<meta name="description" content={description} />
 
 		<!-- Open Graph / Facebook -->
@@ -58,6 +58,7 @@ const {
 	<body class="relative">
 		<NavBar idName="main-header" />
 		<main
+			data-pagefind-body
 			class:list={[
 				'light motion-preset-fade-lg motion-preset-focus relative z-40 min-h-dvh motion-duration-700'
 			]}

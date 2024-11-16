@@ -1,11 +1,18 @@
 ---
-
+import { Image } from 'astro:assets'
 ---
 
-<div
+<!-- <div
 	style={{ backgroundImage: 'url(/assets/images/perfil.webp)' }}
 	class="h-full w-full -scale-x-100 bg-cover bg-center bg-no-repeat blur-md grayscale-[55%]"
->
-</div>
-<div class="absolute inset-0 bg-primary/10 mix-blend-multiply blur-md"></div>
-<div class="absolute inset-0 bg-light/60 blur-md"></div>
+> -->
+<Image
+	class="s absolute left-[2.5%] top-[2.5%] h-[95%] w-[95%] -scale-x-100 object-cover blur-md grayscale-[55%]"
+	src="/assets/images/perfil.webp"
+	alt="Perfil"
+	width={300}
+	height={600}
+/>
+
+<div class="absolute inset-0 bg-secondary/20 mix-blend-multiply blur-md"></div>
+<div class="absolute inset-0 bg-light/75 blur-md"></div>
