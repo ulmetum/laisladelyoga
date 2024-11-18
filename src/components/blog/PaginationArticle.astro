@@ -18,7 +18,7 @@ const { prevArticle, nextArticle } = Astro.props
 		id="prev"
 		data-img={prevArticle?.featuredImage.url}
 		class="group relative inline-block w-[max-content] text-left"
-		href={`/articles/${prevArticle?.slug}`}
+		href={`/${prevArticle?.slug}`}
 	>
 		{
 			prevArticle && (
@@ -38,7 +38,7 @@ const { prevArticle, nextArticle } = Astro.props
 		id="next"
 		data-img={nextArticle?.featuredImage.url}
 		class="group relative inline-block w-[max-content] text-right"
-		href={`/articles/${nextArticle?.slug}`}
+		href={`/	${nextArticle?.slug}`}
 	>
 		{
 			nextArticle && (

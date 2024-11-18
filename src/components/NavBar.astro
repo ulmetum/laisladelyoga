@@ -1,4 +1,5 @@
 ---
+import { actions } from 'astro:actions'
 import LogoIsla from './icons/Logo-isla.icon.astro'
 
 interface Props {
@@ -17,6 +18,15 @@ const menuItemsRight = [
 ]
 
 const currentPath = Astro.url.pathname
+const { data, error } = await actions.getAllArticles()
+
+if (error) {
+	throw new Error('Hubo un error al obtener los artículos')
+}
+
+const articles = data?.articles.data ?? []
+const isPageArticle = articles.some((article) => currentPath.includes(article.slug!))
+// console.log({ isPageArticle, currentPath })
 ---
 
 <header
@@ -39,9 +49,7 @@ const currentPath = Astro.url.pathname
 							class:list={[
 								'group relative mx-2 overflow-hidden uppercase',
 								{
-									active:
-										currentPath === item.url ||
-										(item.url === '/blog' && currentPath.includes('/articles/'))
+									active: currentPath === item.url
 								}
 							]}
 						>
@@ -73,8 +81,8 @@ const currentPath = Astro.url.pathname
 								'group relative mx-2 overflow-hidden uppercase',
 								{
 									active:
-										currentPath === item.url ||
-										(item.url === '/blog' && currentPath.includes('/articles/'))
+										(item.url === '/blog' && (currentPath.startsWith('/blog') || isPageArticle)) ||
+										currentPath === item.url
 								}
 							]}
 						>
